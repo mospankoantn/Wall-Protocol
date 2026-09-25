@@ -1,0 +1,19 @@
+draw_clear(global.col.bg);
+draw_sprite_stretched_ext(spr_menu_art,0,0,0,WP_W,WP_H,c_white,.2);
+wp_panel(64,64,1238,638,.95);
+wp_text(x,y-58,wp_tr("THE FIELD ARCHIVE","АРХІВ ВАРТИ"),fnt_ui,global.col.gold);
+wp_text(1230,92,string(global.text_page+1)+" / 3",fnt_ui,global.col.muted,fa_right);
+var _title="",_body="";
+switch(global.text_page) {
+    case 0:
+        _title=wp_tr("Keep the last light alive.","Збережіть останнє світло.");
+        _body=wp_tr("The old wall is all that stands between the necromancer's army and the last living valley. Its heart is an aether crystal. If the crystal falls, the ward dies with it.#You are the last warden. Raise your defenses on stone foundations, combine steel and ancient magic, and survive eight assaults. The final wave brings the Bone Colossus.#Every enemy that reaches the core damages it. Defeating enemies and clearing waves grants aether. Spend carefully: a balanced defense is stronger than a single powerful tower.","Стара стіна — остання перепона між військом некроманта та живою долиною. Її серце — кристал ефіру. Якщо кристал впаде, разом із ним згасне захист.#Ви — останній вартовий. Зводьте оборону на кам'яних основах, поєднуйте сталь і давню магію та витримайте вісім штурмів. Останню хвилю очолює Кістяний колос.#Кожен ворог, що дістався ядра, пошкоджує його. Перемоги над ворогами й відбиті хвилі дають ефір. Витрачайте обачно: збалансована оборона сильніша за одну потужну вежу.");break;
+    case 1:
+        _title=wp_tr("A warden's essentials","Пам'ятка вартового");
+        _body=wp_tr("Click a stone foundation, then choose a tower. Ballistae fire quickly; runic spires strike groups; frost wards slow the strongest enemies. Select a tower to see its range and current target.#1 / 2 / 3 — build a tower on the selected foundation. U — upgrade (three levels). X — sell for 70% of its total cost. Space — send the next wave. F — toggle 1x / 2x speed. Esc or P — pause. F11 — fullscreen.#The pause menu lets you save, load, change options or return here. Saving preserves the current wave, enemies and flying projectiles. Progress also saves every 30 seconds, between waves and when returning to the menu. A loaded battle starts paused.","Натисніть кам'яну основу та оберіть вежу. Балісти стріляють швидко; рунні шпилі б'ють по групах; крижані обереги сповільнюють сильних ворогів. Вибрана вежа показує радіус і поточну ціль.#1 / 2 / 3 — збудувати вежу на вибраній основі. U — покращити (три рівні). X — продати за 70% вкладень. Пробіл — почати хвилю. F — темп 1x / 2x. Esc або P — пауза. F11 — повний екран.#У меню паузи можна зберегти чи завантажити похід, змінити опції або відкрити довідник. Зберігаються хвиля, вороги та снаряди в польоті. Автозбереження: кожні 30 секунд, між хвилями й при виході до меню. Завантажений бій починається на паузі.");break;
+    case 2:
+        _title="Eclipse Wire";
+        _body=wp_tr("WALL PROTOCOL / THE LAST WARD#An independent dark-fantasy tower defense by Eclipse Wire.#Development and creative direction: Oleh / Eclipse Wire. Created with GameMaker. Programming assistance and AI-generated environmental and sprite artwork: OpenAI tools. Sound effects and ambient score: original procedural synthesis created for this project. Studio logo supplied by Eclipse Wire.#Thank you for standing the watch.","WALL PROTOCOL / ОСТАННІЙ ОБЕРІГ#Незалежна tower defense у світі темного фентезі від Eclipse Wire.#Розробка та творчий напрям: Олег / Eclipse Wire. Створено в GameMaker. Допомога з програмуванням і згенеровані ШІ ілюстрації та спрайти: інструменти OpenAI. Звукові ефекти й атмосферна музика: власний процедурний синтез для цього проєкту. Логотип студії надано Eclipse Wire.#Дякуємо, що стали на варту.");break;
+}
+wp_text(x,y,_title,fnt_heading);
+wp_wrap(x,y+72,_body,1120,global.col.text);

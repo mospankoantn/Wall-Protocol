@@ -1,0 +1,4852 @@
+{
+  "$GMRoom": "v1",
+  "%Name": "Room1",
+  "creationCodeFile": "RoomCreationCode.gml",
+  "inheritCode": false,
+  "inheritCreationOrder": false,
+  "inheritLayers": false,
+  "instanceCreationOrder": [
+    {
+      "name": "inst_475B8ED4",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_CE2C7EC6",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_1BDF4547",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_2695F5AB",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_D8A582F3",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_515719D1",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_FFD5ACDF",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E67B723D",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E7862491",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_56D89193",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_0D64D7EF",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_63494C59",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E0BF05F0",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_A66ACD6B",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_888D49FC",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E2C5291C",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_98CF4DE2",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_7DA551DB",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_3704C6F4",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_26BA5554",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_902B2C31",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_56406DD2",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_7494B112",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E8410D00",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_D1C56A29",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_4922EC24",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_AF7BD98A",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E93E8DA1",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_C55597B6",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_CB7D61C2",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_39B2427F",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_284C76C8",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_AC6FC531",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_05D7A0C8",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_3E8DBBF9",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_7AE2CCF5",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_FC9D7181",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_397676E3",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_C7AD9ADC",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_CE0A9582",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_4ADE6594",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_84771E49",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_D8138392",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_766109A2",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_923C1081",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_54A3FA49",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_7A354B3A",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_ECB011AA",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_CDB4F029",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_38D1A0F6",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_15A1AF70",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_DB1C7187",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_AF515E44",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_A1FC1CC0",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_E273F370",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_9E8910A0",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_1D895C7E",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_98D3ED09",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_CA2A3950",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_D8853062",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_6FB6F8E4",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_801A06F8",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_EB9DE3E2",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_3C8098F8",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_13319BB1",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_C6CC5A13",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_0A4287C1",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_38D56401",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_84601DE1",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_CD56D8F1",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_3D94C4F5",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_EA7BFA4F",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_5FB65EA7",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_2DF4BD83",
+      "path": "rooms/Room1/Room1.yy"
+    },
+    {
+      "name": "inst_7D9FB029",
+      "path": "rooms/Room1/Room1.yy"
+    }
+  ],
+  "isDnd": false,
+  "layers": [
+    {
+      "$GMRInstanceLayer": "",
+      "%Name": "Instances",
+      "depth": 0,
+      "effectEnabled": true,
+      "effectType": null,
+      "gridX": 32,
+      "gridY": 32,
+      "hierarchyFrozen": false,
+      "inheritLayerDepth": false,
+      "inheritLayerSettings": false,
+      "inheritSubLayers": true,
+      "inheritVisibility": true,
+      "instances": [
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_475B8ED4",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_475B8ED4",
+          "objectId": {
+            "name": "obj_app",
+            "path": "objects/obj_app/obj_app.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 24,
+          "y": 24
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CE2C7EC6",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CE2C7EC6",
+          "objectId": {
+            "name": "obj_audio",
+            "path": "objects/obj_audio/obj_audio.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 64,
+          "y": 24
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_1BDF4547",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_1BDF4547",
+          "objectId": {
+            "name": "obj_game",
+            "path": "objects/obj_game/obj_game.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1000,
+          "y": 24
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_2695F5AB",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_2695F5AB",
+          "objectId": {
+            "name": "obj_wave",
+            "path": "objects/obj_wave/obj_wave.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1040,
+          "y": 24
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_D8A582F3",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_D8A582F3",
+          "objectId": {
+            "name": "obj_board",
+            "path": "objects/obj_board/obj_board.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_515719D1",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_515719D1",
+          "objectId": {
+            "name": "obj_hud",
+            "path": "objects/obj_hud/obj_hud.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1060,
+          "y": 0
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_FFD5ACDF",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_FFD5ACDF",
+          "objectId": {
+            "name": "obj_core",
+            "path": "objects/obj_core/obj_core.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 966,
+          "y": 475
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E67B723D",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E67B723D",
+          "objectId": {
+            "name": "obj_portal",
+            "path": "objects/obj_portal/obj_portal.yy"
+          },
+          "properties": [],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 40,
+          "y": 385
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E7862491",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E7862491",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 38,
+          "y": 385
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_56D89193",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_56D89193",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 145,
+          "y": 385
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_0D64D7EF",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_0D64D7EF",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "2"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 145,
+          "y": 210
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_63494C59",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_63494C59",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "3"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 350,
+          "y": 210
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E0BF05F0",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E0BF05F0",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "4"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 350,
+          "y": 525
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_A66ACD6B",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_A66ACD6B",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "5"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 560,
+          "y": 525
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_888D49FC",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_888D49FC",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "6"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 560,
+          "y": 300
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E2C5291C",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E2C5291C",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "7"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 775,
+          "y": 300
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_98CF4DE2",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_98CF4DE2",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "8"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 775,
+          "y": 475
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_7DA551DB",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_7DA551DB",
+          "objectId": {
+            "name": "obj_path_node",
+            "path": "objects/obj_path_node/obj_path_node.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_path_node",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "propertyId": {
+                "name": "node_order",
+                "path": "objects/obj_path_node/obj_path_node.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "9"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 965,
+          "y": 475
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_3704C6F4",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_3704C6F4",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_00\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 84,
+          "y": 266
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_26BA5554",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_26BA5554",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_01\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 248,
+          "y": 320
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_902B2C31",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_902B2C31",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_02\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 250,
+          "y": 116
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_56406DD2",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_56406DD2",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_03\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 454,
+          "y": 159
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_7494B112",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_7494B112",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_04\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 460,
+          "y": 406
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E8410D00",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E8410D00",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_05\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 469,
+          "y": 635
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_D1C56A29",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_D1C56A29",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_06\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 660,
+          "y": 413
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_4922EC24",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_4922EC24",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_07\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 670,
+          "y": 203
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_AF7BD98A",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_AF7BD98A",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_08\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 870,
+          "y": 203
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E93E8DA1",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E93E8DA1",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_09\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 885,
+          "y": 365
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_C55597B6",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_C55597B6",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_10\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 891,
+          "y": 611
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CB7D61C2",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CB7D61C2",
+          "objectId": {
+            "name": "obj_build_pad",
+            "path": "objects/obj_build_pad/obj_build_pad.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_build_pad",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "propertyId": {
+                "name": "pad_key",
+                "path": "objects/obj_build_pad/obj_build_pad.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pad_11\""
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 711,
+          "y": 619
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_39B2427F",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_39B2427F",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 65,
+          "y": 110
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_284C76C8",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_284C76C8",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 167,
+          "y": 93
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_AC6FC531",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_AC6FC531",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 360,
+          "y": 100
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_05D7A0C8",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_05D7A0C8",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 553,
+          "y": 110
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_3E8DBBF9",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_3E8DBBF9",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 601,
+          "y": 150
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_7AE2CCF5",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_7AE2CCF5",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 752,
+          "y": 120
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_FC9D7181",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_FC9D7181",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 958,
+          "y": 156
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_397676E3",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_397676E3",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1002,
+          "y": 261
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_C7AD9ADC",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_C7AD9ADC",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 84,
+          "y": 555
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CE0A9582",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CE0A9582",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 170,
+          "y": 607
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_4ADE6594",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_4ADE6594",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 280,
+          "y": 669
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_84771E49",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_84771E49",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 554,
+          "y": 687
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_D8138392",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_D8138392",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1000,
+          "y": 641
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_766109A2",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_766109A2",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 52,
+          "y": 696
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_923C1081",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_923C1081",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "2"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 970,
+          "y": 350
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_54A3FA49",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_54A3FA49",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "2"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1000,
+          "y": 542
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_7A354B3A",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_7A354B3A",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "3"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 975,
+          "y": 420
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_ECB011AA",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_ECB011AA",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "3"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 975,
+          "y": 595
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CDB4F029",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CDB4F029",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 243,
+          "y": 454
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_38D1A0F6",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_38D1A0F6",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 669,
+          "y": 517
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_15A1AF70",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_15A1AF70",
+          "objectId": {
+            "name": "obj_decor",
+            "path": "objects/obj_decor/obj_decor.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_decor",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "propertyId": {
+                "name": "decor_kind",
+                "path": "objects/obj_decor/obj_decor.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "4"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 393,
+          "y": 650
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_DB1C7187",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_DB1C7187",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"wave\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "258"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 168
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_AF515E44",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_AF515E44",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"speed\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "124"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 227
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_A1FC1CC0",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_A1FC1CC0",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "124"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "2"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1218,
+          "y": 227
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_E273F370",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_E273F370",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"build0\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "258"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "3"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 398
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_9E8910A0",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_9E8910A0",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"build1\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "258"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "4"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 458
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_1D895C7E",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_1D895C7E",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"build2\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "258"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "5"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 518
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_98D3ED09",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_98D3ED09",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"upgrade\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "258"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "6"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 584
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CA2A3950",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CA2A3950",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"sell\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"game\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "258"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "7"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1084,
+          "y": 641
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_D8853062",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_D8853062",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"resume\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 290
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_6FB6F8E4",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_6FB6F8E4",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"save\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 350
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_801A06F8",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_801A06F8",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"load\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "2"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 410
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_EB9DE3E2",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_EB9DE3E2",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "3"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 470
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_3C8098F8",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_3C8098F8",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"guide\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "4"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 530
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_13319BB1",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_13319BB1",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"menu\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"pause\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "5"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 590
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_C6CC5A13",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_C6CC5A13",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"music\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 300
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_0A4287C1",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_0A4287C1",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"sfx\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 360
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_38D56401",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_38D56401",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"fullscreen\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "2"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 420
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_84601DE1",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_84601DE1",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"language\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "3"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 480
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CD56D8F1",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CD56D8F1",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"effects\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "4"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 540
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_3D94C4F5",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_3D94C4F5",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"back\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"options\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "5"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 622
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_EA7BFA4F",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_EA7BFA4F",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"english\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"language\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 355
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_5FB65EA7",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_5FB65EA7",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"ukrainian\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"language\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 417
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_2DF4BD83",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_2DF4BD83",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"retry\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"result\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "0"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 460
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_7D9FB029",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_7D9FB029",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"menu\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"result\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "360"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "1"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 503,
+          "y": 522
+        }
+      ],
+      "layers": [],
+      "name": "Instances",
+      "properties": [],
+      "resourceType": "GMRInstanceLayer",
+      "resourceVersion": "2.0",
+      "userdefinedDepth": false,
+      "visible": true
+    },
+    {
+      "$GMRBackgroundLayer": "",
+      "%Name": "Background",
+      "animationFPS": 15.0,
+      "animationSpeedType": 0,
+      "colour": 4280162063,
+      "depth": 10000,
+      "effectEnabled": true,
+      "effectType": null,
+      "gridX": 32,
+      "gridY": 32,
+      "hierarchyFrozen": false,
+      "hspeed": 0.0,
+      "htiled": false,
+      "inheritLayerDepth": false,
+      "inheritLayerSettings": false,
+      "inheritSubLayers": true,
+      "inheritVisibility": true,
+      "layers": [],
+      "name": "Background",
+      "properties": [],
+      "resourceType": "GMRBackgroundLayer",
+      "resourceVersion": "2.0",
+      "spriteId": null,
+      "stretch": false,
+      "userdefinedAnimFPS": false,
+      "userdefinedDepth": false,
+      "visible": true,
+      "vspeed": 0.0,
+      "vtiled": false,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "name": "Room1",
+  "parent": {
+    "name": "Rooms",
+    "path": "folders/Rooms.yy"
+  },
+  "parentRoom": null,
+  "physicsSettings": {
+    "inheritPhysicsSettings": false,
+    "PhysicsWorld": false,
+    "PhysicsWorldGravityX": 0.0,
+    "PhysicsWorldGravityY": 10.0,
+    "PhysicsWorldPixToMetres": 0.1
+  },
+  "resourceType": "GMRoom",
+  "resourceVersion": "2.0",
+  "roomSettings": {
+    "Height": 768,
+    "inheritRoomSettings": false,
+    "persistent": false,
+    "Width": 1366
+  },
+  "sequenceId": null,
+  "views": [
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    },
+    {
+      "hborder": 32,
+      "hport": 768,
+      "hspeed": -1,
+      "hview": 768,
+      "inherit": false,
+      "objectId": null,
+      "vborder": 32,
+      "visible": false,
+      "vspeed": -1,
+      "wport": 1366,
+      "wview": 1366,
+      "xport": 0,
+      "xview": 0,
+      "yport": 0,
+      "yview": 0
+    }
+  ],
+  "viewSettings": {
+    "clearDisplayBuffer": true,
+    "clearViewBackground": false,
+    "enableViews": false,
+    "inheritViewSettings": false
+  },
+  "volume": 1.0
+}
