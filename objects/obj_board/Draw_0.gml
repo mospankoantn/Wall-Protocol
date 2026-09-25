@@ -1,12 +1,6 @@
 draw_clear(global.col.bg);
 draw_set_color(make_color_rgb(27,43,43));draw_rectangle(0,0,WP_FIELD,WP_H,false);
-// Deterministic ground detail; Draw does not change simulation or random state.
-for(var _gy=80;_gy<WP_H;_gy+=23)for(var _gx=0;_gx<WP_FIELD;_gx+=29) {
-    var _shade=(_gx*17+_gy*31)mod 13;
-    draw_set_color(make_color_rgb(25+_shade,39+_shade,38+_shade));
-    draw_rectangle(_gx,_gy,_gx+28,_gy+22,false);
-    draw_set_color(make_color_rgb(43,61,57));draw_line(_gx+7,_gy+9,_gx+9,_gy+5);
-}
+draw_sprite_tiled_ext(spr_ground,0,0,0,1,1,make_color_rgb(155,175,175),1);
 if(instance_exists(obj_game)&&obj_game.ready) {
     var _route=obj_game.route;
     for(var _pass=0;_pass<3;++_pass) {
@@ -23,6 +17,9 @@ if(instance_exists(obj_game)&&obj_game.ready) {
         for(var _d=9;_d<_len;_d+=24) {
             var _px=_a[0]+lengthdir_x(_d,_dir),_py=_a[1]+lengthdir_y(_d,_dir);
             draw_set_color(make_color_rgb(59,67,65));draw_line(_px+lengthdir_x(23,_dir+90),_py+lengthdir_y(23,_dir+90),_px+lengthdir_x(23,_dir-90),_py+lengthdir_y(23,_dir-90));
+            draw_line(_px,_py,_px+lengthdir_x(24,_dir),_py+lengthdir_y(24,_dir));
+            draw_set_color(make_color_rgb(85+_s mod 6,91,83));
+            draw_line(_px+lengthdir_x(21,_dir+90)+2,_py+lengthdir_y(21,_dir+90)+2,_px+lengthdir_x(2,_dir-90)+2,_py+lengthdir_y(2,_dir-90)+2);
             draw_set_color(make_color_rgb(91,96,86));draw_circle(_px+3,_py+3,1.3,false);
         }
     }

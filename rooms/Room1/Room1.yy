@@ -536,7 +536,7 @@
           "rotation": 0.0,
           "scaleX": 1.0,
           "scaleY": 1.0,
-          "x": 40,
+          "x": 70,
           "y": 385
         },
         {
@@ -580,7 +580,7 @@
           "rotation": 0.0,
           "scaleX": 1.0,
           "scaleY": 1.0,
-          "x": 38,
+          "x": 70,
           "y": 385
         },
         {
@@ -1522,27 +1522,10 @@
           "isDnd": false,
           "name": "inst_39B2427F",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1566,27 +1549,10 @@
           "isDnd": false,
           "name": "inst_284C76C8",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1610,27 +1576,10 @@
           "isDnd": false,
           "name": "inst_AC6FC531",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_rocks",
+            "path": "objects/obj_rocks/obj_rocks.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "1"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1654,27 +1603,10 @@
           "isDnd": false,
           "name": "inst_05D7A0C8",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1698,27 +1630,10 @@
           "isDnd": false,
           "name": "inst_3E8DBBF9",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1742,27 +1657,10 @@
           "isDnd": false,
           "name": "inst_7AE2CCF5",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1786,27 +1684,10 @@
           "isDnd": false,
           "name": "inst_FC9D7181",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1830,27 +1711,10 @@
           "isDnd": false,
           "name": "inst_397676E3",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1874,27 +1738,10 @@
           "isDnd": false,
           "name": "inst_C7AD9ADC",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1918,27 +1765,10 @@
           "isDnd": false,
           "name": "inst_CE0A9582",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -1962,27 +1792,10 @@
           "isDnd": false,
           "name": "inst_4ADE6594",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2006,27 +1819,10 @@
           "isDnd": false,
           "name": "inst_84771E49",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2050,27 +1846,10 @@
           "isDnd": false,
           "name": "inst_D8138392",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2094,27 +1873,10 @@
           "isDnd": false,
           "name": "inst_766109A2",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_tree",
+            "path": "objects/obj_tree/obj_tree.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "0"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2138,27 +1900,10 @@
           "isDnd": false,
           "name": "inst_923C1081",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_brazier",
+            "path": "objects/obj_brazier/obj_brazier.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "2"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2182,27 +1927,10 @@
           "isDnd": false,
           "name": "inst_54A3FA49",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_brazier",
+            "path": "objects/obj_brazier/obj_brazier.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "2"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2226,27 +1954,10 @@
           "isDnd": false,
           "name": "inst_7A354B3A",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_wall",
+            "path": "objects/obj_wall/obj_wall.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "3"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2270,27 +1981,10 @@
           "isDnd": false,
           "name": "inst_ECB011AA",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_wall",
+            "path": "objects/obj_wall/obj_wall.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "3"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2314,27 +2008,10 @@
           "isDnd": false,
           "name": "inst_CDB4F029",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_rocks",
+            "path": "objects/obj_rocks/obj_rocks.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "1"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2358,27 +2035,10 @@
           "isDnd": false,
           "name": "inst_38D1A0F6",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_rocks",
+            "path": "objects/obj_rocks/obj_rocks.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "1"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,
@@ -2402,27 +2062,10 @@
           "isDnd": false,
           "name": "inst_15A1AF70",
           "objectId": {
-            "name": "obj_decor",
-            "path": "objects/obj_decor/obj_decor.yy"
+            "name": "obj_grave",
+            "path": "objects/obj_grave/obj_grave.yy"
           },
-          "properties": [
-            {
-              "$GMOverriddenProperty": "v1",
-              "%Name": "",
-              "name": "",
-              "objectId": {
-                "name": "obj_decor",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "propertyId": {
-                "name": "decor_kind",
-                "path": "objects/obj_decor/obj_decor.yy"
-              },
-              "resourceType": "GMOverriddenProperty",
-              "resourceVersion": "2.0",
-              "value": "4"
-            }
-          ],
+          "properties": [],
           "resourceType": "GMRInstance",
           "resourceVersion": "2.0",
           "rotation": 0.0,

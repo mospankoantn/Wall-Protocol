@@ -23,7 +23,7 @@ function wp_overlay() {
     switch(global.page) {
         case "language": _title="Language / Мова";_sub="Choose your language / Оберіть мову";break;
         case "options":_title=wp_tr("Options","Налаштування");_sub=wp_tr("Make yourself at home.","Налаштуйте гру під себе.");break;
-        case "pause":_title=wp_tr("Watch suspended","Варту призупинено");_sub=wp_tr("The wall can wait a moment.","Стіна зачекає на ваше повернення.");break;
+        case "pause":_title=room==rm_test?wp_tr("Test range paused","Полігон на паузі"):wp_tr("Watch suspended","Варту призупинено");_sub=room==rm_test?wp_tr("Resume to try the test controls.","Продовжіть, щоб почати тестування."):wp_tr("The wall can wait a moment.","Стіна зачекає на ваше повернення.");break;
         case "confirm_new":_title=wp_tr("A new watch?","Нова варта?");_sub=wp_tr("This will replace your saved expedition.","Попередній похід буде перезаписано.");break;
         case "result":
             _title=obj_game.result==1?wp_tr("The wall holds","Стіна вистояла"):wp_tr("The ward has fallen","Оберіг зруйновано");
@@ -36,7 +36,9 @@ function wp_overlay() {
     wp_text(683,265,_sub,fnt_ui,global.col.muted,fa_center);
 }
 function wp_button_label(_action) {
+    if(string_copy(_action,1,4)=="lab_")return wp_sandbox_label(_action);
     switch(_action) {
+        case "sandbox":return wp_tr("Test room [F2]","Тестова кімната [F2]");
         case "continue":return wp_tr("Continue expedition","Продовжити похід");
         case "new":case "confirm_new":return wp_tr("Begin a new watch","Почати нову варту");
         case "retry":return wp_tr("Try again","Спробувати знову");
@@ -56,7 +58,7 @@ function wp_button_label(_action) {
         case "resume":return wp_tr("Resume","Продовжити");
         case "save":return wp_tr("Save expedition","Зберегти похід");
         case "load":return wp_tr("Load saved expedition","Завантажити похід");
-        case "menu":return wp_tr("Save & main menu","Зберегти й до меню");
+        case "menu":return room==rm_test||(instance_exists(obj_game)&&obj_game.result!=0)?wp_tr("Main menu","Головне меню"):wp_tr("Save & main menu","Зберегти й до меню");
         case "text_next":return wp_tr("Next page","Наступна сторінка");
         case "wave":return instance_exists(obj_wave)&&obj_wave.active?wp_tr("Wave in progress","Хвиля триває"):wp_tr("Start wave  [Space]","Почати хвилю [Пробіл]");
         case "speed":return wp_tr("Speed ","Темп ")+string(obj_game.time_scale)+"x";
@@ -72,9 +74,11 @@ function wp_button_label(_action) {
     return _action;
 }
 function wp_button_enabled(_action) {
+    if(room==rm_test&&(_action=="save"||_action=="load"||_action=="guide"))return false;
+    if(_action=="lab_cycle")return !obj_wave.active;
     switch(_action) {
         case "continue":case "load":return file_exists(global.file_prefix+"save.json") || file_exists(global.file_prefix+"save.bak");
-        case "wave":return instance_exists(obj_wave)&&!obj_wave.active&&obj_game.wave<8;
+        case "wave":return instance_exists(obj_wave)&&!obj_wave.active&&(room==rm_test||obj_game.wave<8);
         case "build0":case "build1":case "build2":
             var _k=real(string_char_at(_action,6));
             return instance_exists(obj_game.selected_pad)&&!instance_exists(wp_selected_tower())&&obj_game.gold>=global.towers[_k].cost;
@@ -85,7 +89,9 @@ function wp_button_enabled(_action) {
 }
 function wp_action(_action) {
     wp_sound(snd_click,.65);
+    if(string_copy(_action,1,4)=="lab_"){wp_sandbox_action(_action);return;}
     switch(_action) {
+        case "sandbox":global.pending_load=undefined;global.resume_text=false;room_goto(rm_test);break;
         case "continue":case "load":wp_load();break;
         case "new":
             if(file_exists(global.file_prefix+"save.json")) wp_page("confirm_new");else wp_new_game();break;
@@ -95,7 +101,7 @@ function wp_action(_action) {
         case "options":global.return_page=global.page;wp_page("options");break;
         case "language":wp_page("language");break;
         case "english":case "ukrainian":
-            global.lang=_action=="english"?"en":"uk";global.language_chosen=true;wp_settings_save();
+            global.lang=_action=="english"?"en":"uk";global.language_chosen=true;global.notice_time=0;wp_settings_save();
             if(room==rm_boot)room_goto(rm_menu);else wp_page("options");break;
         case "music":global.music_volume=round(global.music_volume*10)/10+.1;if(global.music_volume>1.01)global.music_volume=0;wp_audio_apply();wp_settings_save();break;
         case "sfx":global.sfx_volume=round(global.sfx_volume*10)/10+.1;if(global.sfx_volume>1.01)global.sfx_volume=0;wp_settings_save();break;
@@ -112,7 +118,7 @@ function wp_action(_action) {
         case "resume":wp_page("game");break;
         case "save":wp_save();break;
         case "menu":
-            if(instance_exists(obj_game)&&obj_game.result==0)if(!wp_save())break;
+            if(room!=rm_test&&instance_exists(obj_game)&&obj_game.result==0)if(!wp_save())break;
             global.pending_load=undefined;room_goto(rm_menu);break;
         case "wave":wp_start_wave();break;
         case "speed":obj_game.time_scale=obj_game.time_scale==1?2:1;break;

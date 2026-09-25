@@ -81,6 +81,10 @@
     {
       "name": "inst_C6FAD36B",
       "path": "rooms/rm_menu/rm_menu.yy"
+    },
+    {
+      "name": "inst_CB5A7866",
+      "path": "rooms/rm_menu/rm_menu.yy"
     }
   ],
   "isDnd": false,
@@ -1651,6 +1655,98 @@
           "scaleY": 1.0,
           "x": 503,
           "y": 470
+        },
+        {
+          "$GMRInstance": "v4",
+          "%Name": "inst_CB5A7866",
+          "colour": 4294967295,
+          "frozen": false,
+          "hasCreationCode": false,
+          "ignore": false,
+          "imageIndex": 0,
+          "imageSpeed": 0,
+          "inheritCode": false,
+          "inheritedItemId": null,
+          "inheritItemSettings": false,
+          "isDnd": false,
+          "name": "inst_CB5A7866",
+          "objectId": {
+            "name": "obj_button",
+            "path": "objects/obj_button/obj_button.yy"
+          },
+          "properties": [
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "action",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"sandbox\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "page",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "\"main\""
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "button_w",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "280"
+            },
+            {
+              "$GMOverriddenProperty": "v1",
+              "%Name": "",
+              "name": "",
+              "objectId": {
+                "name": "obj_button",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "propertyId": {
+                "name": "nav_order",
+                "path": "objects/obj_button/obj_button.yy"
+              },
+              "resourceType": "GMOverriddenProperty",
+              "resourceVersion": "2.0",
+              "value": "6"
+            }
+          ],
+          "resourceType": "GMRInstance",
+          "resourceVersion": "2.0",
+          "rotation": 0.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "x": 1030,
+          "y": 638
         }
       ],
       "layers": [],

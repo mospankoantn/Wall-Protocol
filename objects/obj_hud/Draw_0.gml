@@ -18,8 +18,9 @@ wp_text(1140,55,string(_g.gold),fnt_heading,global.col.text);
 wp_text(1141,99,wp_tr("aether available","доступного ефіру"),fnt_ui,global.col.muted);
 wp_rule(1084,142,258);
 wp_text(1084,288,wp_tr("NEXT ASSAULT","НАСТУПНИЙ ШТУРМ"),fnt_ui,global.col.gold);
-wp_wrap(1084,320,wp_wave_summary(min(8,_g.wave+(obj_wave.active?0:1))),258);
+wp_wrap(1084,320,wp_wave_summary(room==rm_test?obj_sandbox.test_wave:min(8,_g.wave+(obj_wave.active?0:1))),258);
 var _tower=wp_selected_tower(),_pad=_g.selected_pad;
+wp_panel(0,696,1060,72,.94);
 if(instance_exists(_pad)) {
     wp_text(28,708,instance_exists(_tower)?wp_tower_name(_tower.tower_kind)+"  /  "+wp_tr("Level ","Рівень ")+string(_tower.level):wp_tr("Empty foundation / Choose a defense","Вільна основа / Оберіть оборону"),fnt_ui,global.col.gold);
     if(instance_exists(_tower)) {
@@ -31,7 +32,7 @@ if(instance_exists(_pad)) {
     wp_text(28,740,wp_tr("1/2/3 Build   U Upgrade   X Sell   F Speed   Esc Pause","1/2/3 Будувати   U Покращити   X Продати   F Темп   Esc Пауза"),fnt_ui,global.col.muted);
 }
 // Inspectable tower stats appear beside the field, away from the buttons.
-if(global.page=="game")with(obj_button) {
+if(global.page=="game"&&room!=rm_test)with(obj_button) {
     if(hovered&&string_copy(action,1,5)=="build") {
         var _kind=real(string_char_at(action,6)),_cfg=global.towers[_kind];
         wp_panel(708,555,335,132,.98);
@@ -40,5 +41,5 @@ if(global.page=="game")with(obj_button) {
         wp_text(724,654,wp_tr("DMG ","ШК ")+string(_cfg.damage)+" / "+wp_tr("RNG ","РАД ")+string(_cfg.range)+" / "+string(_cfg.rate)+wp_tr(" s"," с"),fnt_ui,global.col.teal);
     }
 }
-wp_text(1084,719,wp_tr("Auto-save enabled","Автозбереження ввімкнено"),fnt_ui,global.col.muted);
+wp_text(1084,719,room==rm_test?wp_tr("Test: saves disabled","Тест: запис вимкнено"):wp_tr("Auto-save enabled","Автозбереження ввімкнено"),fnt_ui,global.col.muted);
 wp_overlay();

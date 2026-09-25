@@ -16,4 +16,4 @@ switch(global.text_page) {
         _body=wp_tr("WALL PROTOCOL / THE LAST WARD#An independent dark-fantasy tower defense by Eclipse Wire.#Development and creative direction: Oleh / Eclipse Wire. Created with GameMaker. Programming assistance and AI-generated environmental and sprite artwork: OpenAI tools. Sound effects and ambient score: original procedural synthesis created for this project. Studio logo supplied by Eclipse Wire.#Thank you for standing the watch.","WALL PROTOCOL / ОСТАННІЙ ОБЕРІГ#Незалежна tower defense у світі темного фентезі від Eclipse Wire.#Розробка та творчий напрям: Олег / Eclipse Wire. Створено в GameMaker. Допомога з програмуванням і згенеровані ШІ ілюстрації та спрайти: інструменти OpenAI. Звукові ефекти й атмосферна музика: власний процедурний синтез для цього проєкту. Логотип студії надано Eclipse Wire.#Дякуємо, що стали на варту.");break;
 }
 wp_text(x,y,_title,fnt_heading);
-wp_wrap(x,y+72,_body,1120,global.col.text);
+wp_wrap(x,y+72,string_replace_all(_body,"#","\n\n"),1120,global.col.text);

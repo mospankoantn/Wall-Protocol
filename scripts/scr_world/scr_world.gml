@@ -5,7 +5,7 @@ function wp_room_setup() {
     if(room==rm_menu) {wp_ensure(obj_menu);wp_page("main");wp_ensure_buttons();return;}
     if(room==rm_text) {wp_ensure(obj_text,100,150);wp_page("text");wp_ensure_buttons();return;}
     wp_ensure(obj_game);wp_ensure(obj_wave);wp_ensure(obj_board);wp_ensure(obj_hud);
-    wp_ensure(obj_core,966,475);wp_ensure(obj_portal,40,385);
+    wp_ensure(obj_core,966,475);wp_ensure(obj_portal,70,385);
     if(instance_number(obj_path_node)<2) {
         with(obj_path_node)instance_destroy();
         for(var _i=0;_i<array_length(global.default_route);++_i) wp_spawn(obj_path_node,global.default_route[_i][0],global.default_route[_i][1],{node_order:_i});
@@ -34,6 +34,7 @@ function wp_room_setup() {
     }
     obj_game.ready=true;
     wp_page("game");
+    if(room==rm_test){wp_sandbox_setup();wp_ensure_buttons();return;}
     var _loaded=false;
     if(!is_undefined(global.pending_load)) {
         _loaded=wp_restore(global.pending_load);global.pending_load=undefined;
@@ -79,6 +80,7 @@ function wp_sell(_tower) {
     return true;
 }
 function wp_start_wave() {
+    if(room==rm_test&&wp_active()&&!obj_wave.active)obj_game.wave=obj_sandbox.test_wave-1;
     if(!wp_active()||!instance_exists(obj_wave)||obj_wave.active||obj_game.wave>=8)return false;
     obj_game.wave++;
     obj_wave.queue=wp_wave_list(obj_game.wave);obj_wave.spawn_index=0;obj_wave.spawn_timer=.6;obj_wave.active=true;
@@ -102,6 +104,7 @@ function wp_end_run(_result) {
     if(obj_game.result!=0)return;
     obj_game.result=_result;obj_game.base_hp=max(0,obj_game.base_hp);wp_page("result");
     wp_sound(_result==1?snd_victory:snd_breach);
+    if(room==rm_test)return;
     // Completed runs cannot be resumed as an already-finished combat state.
     var _file=global.file_prefix+"save.json",_bak=global.file_prefix+"save.bak";
     if(file_exists(_file))file_delete(_file);if(file_exists(_bak))file_delete(_bak);

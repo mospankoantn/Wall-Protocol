@@ -9,7 +9,8 @@ while(_move>0&&path_i<array_length(_route)-1) {
 }
 depth=-y;
 if(path_i>=array_length(_route)-1) {
-    obj_game.base_hp-=breach_damage;wp_fx(x,y,1,global.col.red,70);wp_sound(snd_breach,.65);
+    if(room!=rm_test||!obj_sandbox.invulnerable)obj_game.base_hp-=breach_damage;
+    wp_fx(x,y,1,global.col.red,70);wp_sound(snd_breach,.65);
     if(instance_exists(obj_core))obj_core.flash=.6;
     if(obj_game.base_hp<=0)wp_end_run(2);
     instance_destroy();

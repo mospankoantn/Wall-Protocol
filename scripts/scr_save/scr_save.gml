@@ -95,6 +95,7 @@ function wp_read_save() {
     return undefined;
 }
 function wp_save(_quiet=false) {
+    if(room==rm_test)return false;
     if(!instance_exists(obj_game)||!obj_game.ready||obj_game.result!=0)return false;
     var _s=wp_snapshot();
     if(!wp_validate_save(_s)) {wp_notice(wp_tr("Cannot save this game state.","Цей стан гри неможливо зберегти."));return false;}
@@ -110,6 +111,7 @@ function wp_save(_quiet=false) {
     return _ok;
 }
 function wp_load() {
+    if(room==rm_test)return false;
     var _s=wp_read_save();
     if(is_undefined(_s)) {wp_notice(wp_tr("Save is missing or damaged.","Збереження відсутнє або пошкоджене."));return false;}
     global.pending_load=_s;
@@ -147,4 +149,4 @@ function wp_restore(_s) {
     }
     return true;
 }
-function wp_new_game() {global.pending_load=undefined;global.resume_text=false;if(room==rm_game)room_restart();else room_goto(rm_game);}
+function wp_new_game() {global.pending_load=undefined;global.resume_text=false;if(room==rm_game||room==rm_test)room_restart();else room_goto(rm_game);}

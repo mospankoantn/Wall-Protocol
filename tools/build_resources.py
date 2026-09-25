@@ -22,8 +22,8 @@ def base(kind, name, version=''):
 project = read(ROOT/'Wall Protocol.yyp')
 object_template = read(ROOT/'objects/obj_game/obj_game.yy')
 room_template = read(ROOT/'rooms/Room1/Room1.yy')
-sprite_template = read(Path('E:/GameMakerProgects/Transylvanian famine/sprites/spr_button/spr_button.yy'))
-sound_template = read(Path('E:/GameMakerProgects/Transylvanian famine/sounds/snd_sword_fight/snd_sword_fight.yy'))
+sprite_template = read(ROOT/'sprites/spr_button/spr_button.yy')
+sound_template = read(ROOT/'sounds/snd_click/snd_click.yy')
 resources = [r for r in project['resources'] if r['id']['name']=='fnt_ua']
 folders = ['Systems','Interface','World','Towers','Enemies','Art','Audio','Rooms','Scripts','Font']
 project['Folders'] = []
@@ -203,6 +203,6 @@ project['RoomOrderNodes']=[{'roomId':ref('rooms',n)} for n in ['rm_boot','rm_men
 write('Wall Protocol.yyp',project)
 write('Wall Protocol.resource_order',{'FolderOrderSettings':[{'name':n,'order':i,'path':f'folders/{n}.yy'} for i,n in enumerate(folders)],'ResourceOrderSettings':[]})
 options=read(ROOT/'options/windows/options_windows.yy')
-options.update(option_windows_company_info='Eclipse Wire',option_windows_copyright_info='Eclipse Wire',option_windows_description_info='Wall Protocol - The Last Ward',option_windows_resize_window=True,option_windows_version='1.1.0.0',option_windows_icon='${base_options_dir}/windows/icons/icon.ico')
+options.update(option_windows_company_info='Eclipse Wire',option_windows_copyright_info='Eclipse Wire',option_windows_description_info='Wall Protocol - The Last Ward',option_windows_resize_window=True,option_windows_version='1.1.0.0',option_windows_icon='${options_dir}/windows/icons/icon.ico')
 write('options/windows/options_windows.yy',options)
 print(f'Authored {len(resources)} resources and 5 rooms. Original backup: build/before-rework.zip')

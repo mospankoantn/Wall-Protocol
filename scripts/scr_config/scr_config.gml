@@ -37,7 +37,7 @@ function wp_init() {
     ];
     global.enemy_objects = [obj_skeleton,obj_brute,obj_runner,obj_boss];
     global.enemy_sprites = [spr_skeleton,spr_brute,spr_runner,spr_boss];
-    global.default_route = [[38,385],[145,385],[145,210],[350,210],[350,525],[560,525],[560,300],[775,300],[775,475],[965,475]];
+    global.default_route = [[70,385],[145,385],[145,210],[350,210],[350,525],[560,525],[560,300],[775,300],[775,475],[965,475]];
     global.default_pads = [[84,266],[248,320],[250,116],[454,159],[460,406],[469,635],[660,413],[670,203],[870,203],[885,365],[891,611],[711,619]];
     wp_settings_load();
     game_set_speed(60,gamespeed_fps);
