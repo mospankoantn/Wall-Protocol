@@ -1,4 +1,5 @@
 if(page!=global.page)exit;
+if(action=="target"&&!instance_exists(wp_selected_tower()))exit;
 var _enabled=wp_button_enabled(action),_hot=_enabled&&(hovered||global.focus_button==id);
 var _c=_hot?global.col.gold:global.col.line;
 draw_set_alpha(.97);draw_set_color(_hot?make_color_rgb(43,48,45):global.col.panel);draw_roundrect(x,y,x+button_w,y+button_h,false);

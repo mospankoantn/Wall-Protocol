@@ -10,6 +10,8 @@ function wp_ensure_buttons() {
     }
     if(room==rm_test)_layout=wp_sandbox_buttons();
     if(room==rm_menu)array_push(_layout,{x:1030,y:638,action:"sandbox",page:"main",button_w:280,nav_order:6});
+    // 1.2: targeting-mode button in the bottom bar; hidden until a tower is selected.
+    if(room==rm_game||room==Room1)array_push(_layout,{x:760,y:708,action:"target",page:"game",button_w:280,nav_order:8});
     for(var _i=0;_i<array_length(_layout);++_i) {
         var _b=_layout[_i],_found=false;
         with(obj_button) if(action==_b.action&&page==_b.page)_found=true;

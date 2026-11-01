@@ -9,7 +9,7 @@
 - UI plates, editor handles, road and particles: code-native shapes.
 - Audio: original deterministic procedural synthesis produced for this project, 44.1 kHz mono WAV sources in `sounds/`. Nine short effects and one 32-second ambient loop. No downloaded music or sample pack was used. Synthesis is recorded in `tools/build_resources.py`.
 - Fonts: bitmap atlases rendered from installed Arial and Georgia, with Latin and Ukrainian glyph ranges. The project contains compiled font bitmaps rather than copies of Windows TTF files.
-- Coding and production assistance: OpenAI tools. Creative direction and studio attribution: Oleh / Eclipse Wire.
+- Coding and production assistance: OpenAI tools (version 1.0–1.1); version 1.2 code polish (target priority, feedback effects, result screen, tooling): Claude by Anthropic, reviewed and owned by the project author. Creative direction and studio attribution: Oleh / Eclipse Wire. No new art or audio was added in 1.2.
 - Development-only JSON5 parser: `json5` 0.15.0, Apache-2.0; its license is preserved in `tools/vendor/json5-0.15.0.dist-info/licenses/LICENSE`. It is not part of the playable Windows package.
 
 These generated images should be described as AI-assisted assets in the portfolio; the logo is owner-supplied. No third-party artists are credited as having painted them.

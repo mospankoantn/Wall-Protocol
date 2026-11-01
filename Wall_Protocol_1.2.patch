@@ -1,0 +1,1033 @@
+diff -ruN -x '*.png' -x __pycache__ a/AGENTS.md b/AGENTS.md
+--- a/AGENTS.md	2026-11-01 15:51:53.899903543 +0000
++++ b/AGENTS.md	2026-11-01 15:56:46.423465326 +0000
+@@ -21,7 +21,7 @@
+ - Після ручного редагування метаданих перевіряти їх JSON5-парсером або в GameMaker Project Health.
+ - Не створювати спрайт-ресурс без усіх PNG/sequence-файлів, які очікує GameMaker.
+ 
+-## 4. Архітектура версії 1.1
++## 4. Архітектура версії 1.1 (діє і в 1.2)
+ 
+ За прямим запитом власника гру перебудовано на окремі об'єкти та редаговані кімнати. Не повертати монолітний контролер.
+ 
+@@ -39,7 +39,7 @@
+ 
+ 1. Прочитати `README.md`, `Довідка програміста.md`, `Що треба зробити.md`.
+ 2. Зробити точкову зміну у GML.
+-3. Перевірити дужки, лапки, назви функцій GameMaker та змінних.
++3. Перевірити дужки, лапки, назви функцій GameMaker та змінних (`python tools/check_gml.py` допомагає, але не замінює компіляцію).
+ 4. Якщо змінювалися `.yy/.yyp` — окремо перевірити метадані.
+ 5. Відкрити проєкт у GameMaker, запустити Project Health, потім Run.
+ 6. Лише після успішного запуску позначати пункт як готовий у README/TODO.
+diff -ruN -x '*.png' -x __pycache__ a/CHANGELOG.md b/CHANGELOG.md
+--- a/CHANGELOG.md	1970-01-01 00:00:00.000000000 +0000
++++ b/CHANGELOG.md	2026-11-01 15:56:46.401329910 +0000
+@@ -0,0 +1,32 @@
++# Changelog
++
++## 1.2 — полірування та глибина (код написано без GameMaker; потребує першого запуску)
++
++**Геймплей**
++- Пріоритет цілі кожної вежі: перший на дорозі / останній / найсильніший (найбільше HP) / найближчий до вежі. Змінюється клавішею `T` або кнопкою в нижній панелі (з'являється, коли вибрано вежу). Режим «Перший» математично збігається з поведінкою 1.1.
++- Режим цілі зберігається: поле `mode` у веж у `wp_save.json`. Збереження без цього поля (з 1.1) валідні й завантажуються з режимом «Перший»; версія формату збереження лишається `2`.
++- Кнопки Numpad 1–3 будують вежі; ПКМ знімає вибір основи.
++
++**Відгук і читабельність**
++- Спливаючі тексти: `+N` ефіру на місці вбивства, `-N` на місці прориву (поважають опцію «Ефекти оточення»).
++- Червона рамка поля при ударі по ядру; смуга ядра пульсує при ≤ 6 HP.
++- Банер початку хвилі; окремий червоний банер для фінальної хвилі.
++- Смуга прогресу хвилі у верхній панелі, лічильник «ще N», склад хвилі іконками ворогів (наведення показує назву) замість рядка тексту, що переносився.
++- Підказка при наведенні на «Покращити»: що саме зміниться (шкода, радіус, інтервал / радіус вибуху / сповільнення).
++- Вороги: крок із підстрибуванням у ритм кадрів, розворот спрайта за напрямком руху (для кастомних карт), аура Кістяного колоса, потужні ефекти його загибелі.
++- Виправлено: підпис «THE CORE» перекривався жаровнею/стіною — тепер малюється в HUD на підкладці.
++
++**Результат і прогрес**
++- Екран перемоги: 1–3 зірки (≥ 15 HP — 3, ≥ 8 — 2, інакше 1), час проходження, «NEW RECORD».
++- Найкращий результат (зірки, потім час) зберігається в `wp_settings.json` (`best_stars`, `best_time`) і показується в головному меню. Тестова кімната рекорди не змінює.
++
++**Надійність**
++- Автопауза під час бою, коли вікно втрачає фокус (вимкнено в режимі `--wp-test`).
++- `tools/check_gml.py`: статична перевірка GML (дужки, лапки, undefined `wp_*`, кількість аргументів, `_локальні` змінні, назви ресурсів і кольорів палітри). Перевірено на навмисно зіпсованих копіях.
++
++**Версія** — `WP_VERSION` у `scr_config` (меню більше не містить захардкодженого номера).
++
++**Файли, яких торкнулися зміни** — тільки GML: `scr_config`, `scr_ui`, `scr_world`, `scr_save`, `scr_layout`, `obj_app`, `obj_button`, `obj_core`, `obj_effect`, `obj_enemy`, `obj_game`, `obj_hud`, `obj_menu`, `obj_text`, `obj_tower`, `obj_wave`. `.yy`, `.yyp`, кімнати й ресурси не змінювалися.
++
++## 1.1 — модульна перебудова
++Див. [README.md](README.md) і [docs/VERIFICATION.md](docs/VERIFICATION.md).
+diff -ruN -x '*.png' -x __pycache__ a/README.md b/README.md
+--- a/README.md	2026-11-01 15:51:53.901268967 +0000
++++ b/README.md	2026-11-01 15:56:20.415108528 +0000
+@@ -1,5 +1,7 @@
+ # Wall Protocol — The Last Ward
+ 
++![Бій](docs/screenshots/battle.png)
++
+ Темне фентезі / tower defense від **Eclipse Wire**. Захистіть кристалічне ядро, поєднуючи балісти, рунні шпилі та крижані обереги. Вісім хвиль завершуються боєм із Кістяним колосом.
+ 
+ ## Запуск
+@@ -26,13 +28,28 @@
+ - Кнопки, майданчики, маршрут, портал, ядро й декорації вже розставлені в кімнатах. Fallback відновлює відсутні необхідні елементи.
+ - Окремий тестовий полігон: вежі й вороги, ручний виклик хвиль, ефір, безсмертя, ремонт ядра, екрани результатів і скидання. Збереження походу захищені.
+ 
++## Нове у версії 1.2
++
++Усі зміни — точкові правки GML у наявних подіях; нових ресурсів, подій чи кімнат немає. Деталі — у [CHANGELOG.md](CHANGELOG.md).
++
++- **Пріоритет цілі веж** (T або кнопка в нижній панелі): перший на дорозі / останній / найсильніший / найближчий. Режим зберігається в збереженні; старі збереження сумісні.
++- **Відгук бою:** спливаючі `+ефір` при вбивстві, `-N` при прориві, червона рамка при ударі по ядру, пульсація смуги ядра при ≤ 6 HP, вибухи при загибелі Колоса, ритм кроку ворогів, аура боса.
++- **Інформація:** банер початку хвилі (окремий для фінальної), смуга прогресу хвилі, склад хвилі іконками ворогів із лічильниками, підказка «що дасть покращення» при наведенні на кнопку Upgrade.
++- **Результат:** 1–3 зірки за міцністю ядра, час проходження, рекорд (зберігається в налаштуваннях і показується в головному меню).
++- **Зручність:** автопауза при втраті фокусу вікна, Numpad 1–3 для будівництва, ПКМ знімає вибір, підпис «THE CORE» більше не перекривається декораціями.
++- **Інструмент:** `tools/check_gml.py` — статична перевірка GML без GameMaker (дужки, лапки, виклики `wp_*`, кількість аргументів, змінні, ресурси).
++
++> **Важливо:** версія 1.2 написана без доступу до GameMaker і **не компілювалась та не запускалась**. Статична перевірка (`check_gml.py`, `validate_project.py`) пройдена, але Project Health і Run в IDE ще треба виконати — див. [Що треба зробити.md](Що%20треба%20зробити.md).
++
+ ## Керування
+ 
+ | Дія | Клавіші |
+ | --- | --- |
+ | Вибрати основу / вежу / кнопку | ЛКМ |
+-| Побудувати балісту / рунний шпиль / оберіг | 1 / 2 / 3 після вибору основи |
++| Побудувати балісту / рунний шпиль / оберіг | 1 / 2 / 3 (або Numpad 1 / 2 / 3) після вибору основи |
+ | Покращити / продати | U / X |
++| Змінити пріоритет цілі вибраної вежі | T або кнопка «Ціль» у нижній панелі |
++| Зняти вибір основи | ПКМ |
+ | Почати наступну хвилю | Пробіл |
+ | Змінити швидкість 1x / 2x | F |
+ | Пауза / повернення | Esc або P для відкриття паузи |
+@@ -56,7 +73,9 @@
+ 
+ `rm_test` відкривається на паузі. Натисніть «Продовжити» або Esc, щоб увімкнути тестові кнопки. Стартові ефір, хвиля й безсмертя задаються у властивостях `obj_sandbox`; вежі, вороги, маршрут і кнопки редагуються безпосередньо в Room Editor. Попередня версія перед додаванням полігона: `build/before-sandbox.zip` (код і метадані).
+ 
+-## Перевірка збірки 26.09.2026
++## Перевірка збірки 26.09.2026 (версія 1.1)
++
++Нижче — результати для версії 1.1. Зміни 1.2 цією перевіркою **не охоплені**.
+ 
+ - GameMaker runtime **2026.0.0.23**: ресурси завантажені й зв'язані, GML скомпільований, Windows-пакет створений.
+ - **64 runtime-перевірки пройдено**, включно з повними 8 хвилями на 1x та 2x без додаткового ефіру.
+diff -ruN -x '*.png' -x __pycache__ a/docs/ART.md b/docs/ART.md
+--- a/docs/ART.md	2026-11-01 15:51:53.873020896 +0000
++++ b/docs/ART.md	2026-11-01 15:56:46.422900765 +0000
+@@ -9,7 +9,7 @@
+ - UI plates, editor handles, road and particles: code-native shapes.
+ - Audio: original deterministic procedural synthesis produced for this project, 44.1 kHz mono WAV sources in `sounds/`. Nine short effects and one 32-second ambient loop. No downloaded music or sample pack was used. Synthesis is recorded in `tools/build_resources.py`.
+ - Fonts: bitmap atlases rendered from installed Arial and Georgia, with Latin and Ukrainian glyph ranges. The project contains compiled font bitmaps rather than copies of Windows TTF files.
+-- Coding and production assistance: OpenAI tools. Creative direction and studio attribution: Oleh / Eclipse Wire.
++- Coding and production assistance: OpenAI tools (version 1.0–1.1); version 1.2 code polish (target priority, feedback effects, result screen, tooling): Claude by Anthropic, reviewed and owned by the project author. Creative direction and studio attribution: Oleh / Eclipse Wire. No new art or audio was added in 1.2.
+ - Development-only JSON5 parser: `json5` 0.15.0, Apache-2.0; its license is preserved in `tools/vendor/json5-0.15.0.dist-info/licenses/LICENSE`. It is not part of the playable Windows package.
+ 
+ These generated images should be described as AI-assisted assets in the portfolio; the logo is owner-supplied. No third-party artists are credited as having painted them.
+diff -ruN -x '*.png' -x __pycache__ a/docs/PLAY.md b/docs/PLAY.md
+--- a/docs/PLAY.md	2026-11-01 15:51:53.873099000 +0000
++++ b/docs/PLAY.md	2026-11-01 15:56:20.415726572 +0000
+@@ -7,11 +7,14 @@
+ Defend the glowing core against eight waves. Click an empty foundation, then choose a tower. Combine ballistae, runic area attacks and frost slows. Spend aether from defeated enemies to build or upgrade. The final wave includes the Bone Colossus.
+ 
+ - **1 / 2 / 3:** build on the selected foundation.
+-- **U / X:** upgrade / sell the selected tower.
++- **U / X:** upgrade / sell the selected tower. **T:** change its target priority (first / last / strongest / closest).
++- **Right click:** deselect. **Numpad 1–3** also build.
+ - **Space:** start a wave. **F:** 1x / 2x speed.
+ - **Esc:** pause or resume. **F11:** fullscreen.
+ - **Tab / arrows / Enter:** navigate menus.
+ 
++Clear all eight waves to earn 1–3 stars from the remaining core integrity; your best result is shown in the main menu. The game pauses by itself when the window loses focus.
++
+ The pause menu includes Save, Load and the Field Guide. Loading restores the battle paused. Progress also saves periodically, between waves and when returning to the menu. A new expedition replaces the previous one after confirmation; completed runs end the active save.
+ 
+ **Test room:** choose Test room or press F2 in the main menu. Resume the paused room to experiment with all towers and enemies, wave selection, extra aether, core invulnerability and victory/defeat screens. Reset restores the starting layout. The test room leaves your expedition save and backup untouched.
+@@ -23,11 +26,14 @@
+ Захистіть ядро від восьми хвиль. Натисніть вільну кам'яну основу й оберіть вежу. Поєднуйте швидкі балісти, вибухи рунних шпилів і сповільнення крижаних оберегів. Останню хвилю очолює Кістяний колос.
+ 
+ - **1 / 2 / 3:** будувати на вибраній основі.
+-- **U / X:** покращити / продати вибрану вежу.
++- **U / X:** покращити / продати вибрану вежу. **T:** змінити пріоритет цілі (перший / останній / найсильніший / найближчий).
++- **ПКМ:** зняти вибір. **Numpad 1–3** теж будують.
+ - **Пробіл:** почати хвилю. **F:** темп 1x / 2x.
+ - **Esc:** пауза або продовження. **F11:** повний екран.
+ - **Tab / стрілки / Enter:** навігація меню.
+ 
++За відбиті вісім хвиль гравець отримує 1–3 зірки залежно від міцності ядра; найкращий результат видно в головному меню. Гра сама ставиться на паузу, коли вікно втрачає фокус.
++
+ Пауза містить збереження, завантаження й довідник. Завантажений бій починається на паузі. Працює автозбереження. Новий похід після підтвердження замінює попередній; завершені походи закривають активне збереження.
+ 
+ **Тестова кімната:** кнопка в головному меню або F2. Зніміть паузу, щоб випробувати вежі, ворогів, вибір хвиль, додатковий ефір, безсмертя ядра та екрани перемоги/поразки. Скидання відновлює початкову розстановку. Збереження походу та його резервна копія залишаються недоторканними.
+diff -ruN -x '*.png' -x __pycache__ a/docs/VERIFICATION.md b/docs/VERIFICATION.md
+--- a/docs/VERIFICATION.md	2026-11-01 15:51:53.878136943 +0000
++++ b/docs/VERIFICATION.md	2026-11-01 15:56:46.422493562 +0000
+@@ -1,4 +1,16 @@
+-# Verification — 26 September 2026
++# Verification
++
++## Version 1.2 — static checks only
++
++The 1.2 changes (see `CHANGELOG.md`) were written without access to GameMaker. What *was* done:
++
++- `python tools/check_gml.py` — brackets, strings, project function calls and argument counts, `_local` variables, resource and palette names across all 80 GML files: **OK**. The checker itself was validated against deliberately corrupted copies of the project.
++- `python tools/validate_project.py` — JSON5 metadata, resource links, room order, sprites, fonts (including Ukrainian glyph coverage), audio, icon, UTF-8/LF: **2594 checks passed**. No `.yy`/`.yyp` file was modified.
++- Hand review of every changed GML line against the original; the save format change is additive (optional `mode`, optional `best_*`) so 1.1 saves and the existing round-trip test remain valid by construction.
++
++**Not done:** compiling, Project Health, Run, `tools/test.ps1`. Until those pass, treat 1.2 as unverified. The checklist is in `Що треба зробити.md`.
++
++# Verification — 26 September 2026 (version 1.1)
+ 
+ GameMaker IDE metadata version: 2026.0.0.16. Windows VM compiler/runner: 2026.0.0.23.
+ 
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_app/Step_1.gml b/objects/obj_app/Step_1.gml
+--- a/objects/obj_app/Step_1.gml	2026-11-01 15:51:53.879684818 +0000
++++ b/objects/obj_app/Step_1.gml	2026-11-01 15:55:00.486554921 +0000
+@@ -3,6 +3,8 @@
+ global.notice_time=max(0,global.notice_time-_dt);
+ global.input_lock=max(0,global.input_lock-1);
+ if(keyboard_check_pressed(vk_f11))wp_action("fullscreen");
++// Alt-Tab safety: a running battle pauses itself when the window loses focus (never during automated tests).
++if(!global.test_mode&&global.page=="game"&&global.input_lock<=0&&!window_has_focus())wp_page("pause");
+ if(global.input_lock>0)exit;
+ if(keyboard_check_pressed(vk_escape)) {
+     switch(global.page) {
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_button/Draw_0.gml b/objects/obj_button/Draw_0.gml
+--- a/objects/obj_button/Draw_0.gml	2026-11-01 15:51:53.880292679 +0000
++++ b/objects/obj_button/Draw_0.gml	2026-11-01 15:53:50.260371980 +0000
+@@ -1,4 +1,5 @@
+ if(page!=global.page)exit;
++if(action=="target"&&!instance_exists(wp_selected_tower()))exit;
+ var _enabled=wp_button_enabled(action),_hot=_enabled&&(hovered||global.focus_button==id);
+ var _c=_hot?global.col.gold:global.col.line;
+ draw_set_alpha(.97);draw_set_color(_hot?make_color_rgb(43,48,45):global.col.panel);draw_roundrect(x,y,x+button_w,y+button_h,false);
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_core/Draw_0.gml b/objects/obj_core/Draw_0.gml
+--- a/objects/obj_core/Draw_0.gml	2026-11-01 15:51:53.880402478 +0000
++++ b/objects/obj_core/Draw_0.gml	2026-11-01 15:55:00.485609155 +0000
+@@ -1,3 +1,2 @@
+ draw_set_color(global.col.teal);draw_set_alpha(.07+.02*sin(global.ui_time*2));draw_circle(x,y-22,84,false);draw_set_alpha(1);
+ draw_sprite_ext(spr_core,0,x,y-30,1,1,0,flash>0?global.col.red:c_white,1);
+-wp_text(x,y+51,wp_tr("THE CORE","ЯДРО"),fnt_ui,global.col.teal,fa_center);
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_effect/Create_0.gml b/objects/obj_effect/Create_0.gml
+--- a/objects/obj_effect/Create_0.gml	2026-11-01 15:51:53.880551105 +0000
++++ b/objects/obj_effect/Create_0.gml	2026-11-01 15:53:20.266287539 +0000
+@@ -1,4 +1,5 @@
+ if(!variable_instance_exists(id,"fx_kind"))fx_kind=0;
+ if(!variable_instance_exists(id,"tint"))tint=c_white;
+ if(!variable_instance_exists(id,"radius"))radius=30;
+-life=.5;max_life=life;depth=-920;
++if(!variable_instance_exists(id,"fx_text"))fx_text="";
++life=fx_kind==2?1:.5;max_life=life;depth=-920;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_effect/Draw_0.gml b/objects/obj_effect/Draw_0.gml
+--- a/objects/obj_effect/Draw_0.gml	2026-11-01 15:51:53.880602734 +0000
++++ b/objects/obj_effect/Draw_0.gml	2026-11-01 15:53:20.266704208 +0000
+@@ -1,4 +1,5 @@
+ var _p=1-life/max_life;
++if(fx_kind==2){wp_text_a(x,y-30*sqrt(_p),fx_text,fnt_ui,tint,fa_center,1-_p*_p);exit;}
+ draw_set_color(tint);draw_set_alpha(1-_p);
+ if(fx_kind==1){draw_circle(x,y,radius*_p,true);draw_set_alpha((1-_p)*.15);draw_circle(x,y,radius*_p,false);}
+ else for(var _i=0;_i<6;++_i)draw_circle(x+lengthdir_x(radius*_p,_i*60),y+lengthdir_y(radius*_p,_i*60),2*(1-_p),false);
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_enemy/Create_0.gml b/objects/obj_enemy/Create_0.gml
+--- a/objects/obj_enemy/Create_0.gml	2026-11-01 15:51:53.880698996 +0000
++++ b/objects/obj_enemy/Create_0.gml	2026-11-01 15:53:07.875334638 +0000
+@@ -2,6 +2,6 @@
+ var _wave=instance_exists(obj_game)?obj_game.wave:1;
+ max_hp=[70+_wave*13,180+_wave*32,88+_wave*17,950+_wave*80][enemy_kind];hp=max_hp;
+ move_speed=[56,38,84,30][enemy_kind];reward=[10,19,15,100][enemy_kind];breach_damage=[1,2,1,6][enemy_kind];
+-path_i=0;progress=0;slow_t=0;slow_factor=1;hit_flash=0;walk_time=0;image_speed=0;
++path_i=0;progress=0;slow_t=0;slow_factor=1;hit_flash=0;walk_time=0;face=1;image_speed=0;
+ sprite_index=global.enemy_sprites[enemy_kind];depth=-y;
+ uid=instance_exists(obj_game)?obj_game.next_uid++:1;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_enemy/Draw_0.gml b/objects/obj_enemy/Draw_0.gml
+--- a/objects/obj_enemy/Draw_0.gml	2026-11-01 15:51:53.880729647 +0000
++++ b/objects/obj_enemy/Draw_0.gml	2026-11-01 15:53:07.876061828 +0000
+@@ -1,6 +1,8 @@
+ draw_set_color(c_black);draw_set_alpha(.3);draw_ellipse(x-15,y-7,x+15,y+7,false);draw_set_alpha(1);
+ var _tint=hit_flash>0?merge_color(c_white,global.col.gold,.65):(slow_t>0?make_color_rgb(150,226,255):c_white);
+-draw_sprite_ext(sprite_index,floor(walk_time)mod 2,x,y-15,1,1,0,_tint,1);
++if(enemy_kind==3){draw_set_color(global.col.purple);draw_set_alpha(.14+.05*sin(global.ui_time*4));draw_ellipse(x-34,y-12,x+34,y+12,false);draw_set_alpha(1);}
++var _bob=abs(sin(walk_time*pi))*2.5;
++draw_sprite_ext(sprite_index,floor(walk_time)mod 2,x,y-15-_bob,face,1,0,_tint,1);
+ if(hp<max_hp||enemy_kind==3) {
+     var _width=enemy_kind==3?64:36;
+     draw_set_color(global.col.bg);draw_rectangle(x-_width/2,y-48,x+_width/2,y-43,false);
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_enemy/Step_0.gml b/objects/obj_enemy/Step_0.gml
+--- a/objects/obj_enemy/Step_0.gml	2026-11-01 15:51:53.880788751 +0000
++++ b/objects/obj_enemy/Step_0.gml	2026-11-01 15:53:07.875792193 +0000
+@@ -1,5 +1,5 @@
+ if(!wp_active())exit;
+-var _dt=wp_dt();walk_time+=_dt*5;hit_flash=max(0,hit_flash-_dt);
++var _dt=wp_dt(),_old_x=x;walk_time+=_dt*5;hit_flash=max(0,hit_flash-_dt);
+ slow_t=max(0,slow_t-_dt);if(slow_t==0)slow_factor=1;
+ var _move=move_speed*slow_factor*_dt,_route=obj_game.route;
+ while(_move>0&&path_i<array_length(_route)-1) {
+@@ -7,9 +7,10 @@
+     if(_distance<=_move) {x=_tx;y=_ty;progress+=_distance;_move-=_distance;path_i++;}
+     else {var _dir=point_direction(x,y,_tx,_ty);x+=lengthdir_x(_move,_dir);y+=lengthdir_y(_move,_dir);progress+=_move;_move=0;}
+ }
++if(abs(x-_old_x)>.05)face=sign(x-_old_x);
+ depth=-y;
+ if(path_i>=array_length(_route)-1) {
+-    if(room!=rm_test||!obj_sandbox.invulnerable)obj_game.base_hp-=breach_damage;
++    if(room!=rm_test||!obj_sandbox.invulnerable){obj_game.base_hp-=breach_damage;wp_popup(x,y-30,"-"+string(breach_damage),global.col.red);}
+     wp_fx(x,y,1,global.col.red,70);wp_sound(snd_breach,.65);
+     if(instance_exists(obj_core))obj_core.flash=.6;
+     if(obj_game.base_hp<=0)wp_end_run(2);
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_game/Create_0.gml b/objects/obj_game/Create_0.gml
+--- a/objects/obj_game/Create_0.gml	2026-11-01 15:51:53.880818091 +0000
++++ b/objects/obj_game/Create_0.gml	2026-11-01 15:52:45.706376093 +0000
+@@ -1,4 +1,4 @@
+ /// Run state only. Entities, rendering and spawning belong to separate objects.
+ wp_init();
+ ready=false;gold=280;base_hp=20;wave=0;kills=0;elapsed=0;next_uid=1;
+-result=0;time_scale=1;selected_pad=noone;route=[];sim_dt=0;depth=0;
++result=0;new_record=false;time_scale=1;selected_pad=noone;route=[];sim_dt=0;depth=0;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_game/Step_1.gml b/objects/obj_game/Step_1.gml
+--- a/objects/obj_game/Step_1.gml	2026-11-01 15:51:53.880869017 +0000
++++ b/objects/obj_game/Step_1.gml	2026-11-01 15:52:45.706698380 +0000
+@@ -4,8 +4,10 @@
+     if(keyboard_check_pressed(ord("P"))){wp_page("pause");exit;}
+     if(keyboard_check_pressed(vk_space))wp_start_wave();
+     if(keyboard_check_pressed(ord("F")))time_scale=time_scale==1?2:1;
+-    for(var _k=0;_k<3;++_k)if(keyboard_check_pressed(ord("1")+_k))wp_build(selected_pad,_k);
++    for(var _k=0;_k<3;++_k)if(keyboard_check_pressed(ord("1")+_k)||keyboard_check_pressed(vk_numpad1+_k))wp_build(selected_pad,_k);
+     if(keyboard_check_pressed(ord("U")))wp_upgrade(wp_selected_tower());
+     if(keyboard_check_pressed(ord("X")))wp_sell(wp_selected_tower());
++    if(keyboard_check_pressed(ord("T")))wp_cycle_target(wp_selected_tower());
++    if(mouse_check_button_pressed(mb_right))selected_pad=noone;
+ }
+ if(wp_active())sim_dt=(global.test_mode?1/60:min(delta_time/1000000,.05))*time_scale;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_hud/Draw_0.gml b/objects/obj_hud/Draw_0.gml
+--- a/objects/obj_hud/Draw_0.gml	2026-11-01 15:51:53.880996786 +0000
++++ b/objects/obj_hud/Draw_0.gml	2026-11-01 15:54:46.481516786 +0000
+@@ -1,24 +1,43 @@
+ if(!instance_exists(obj_game)||!obj_game.ready)exit;
+ var _g=obj_game;
++var _low=_g.base_hp<=6;
++// Wave progress: enemies still to spawn plus those alive on the road.
++var _total=array_length(obj_wave.queue);
++var _left=obj_wave.active?instance_number(obj_enemy)+max(0,_total-obj_wave.spawn_index):0;
++var _progress=(obj_wave.active&&_total>0)?clamp(1-_left/_total,0,1):0;
+ wp_panel(0,0,1060,77,.97);
+ draw_sprite_ext(spr_emblem,0,42,38,.23,.23,0,c_white,1);
+ wp_text(79,14,"WALL PROTOCOL",fnt_ui,global.col.gold);
+ wp_text(79,41,wp_tr("THE LAST WARD","ОСТАННІЙ ОБЕРІГ"),fnt_ui,global.col.muted);
+ wp_text(433,15,wp_tr("CORE INTEGRITY","МІЦНІСТЬ ЯДРА"),fnt_ui,global.col.muted);
+ draw_set_color(global.col.line);draw_rectangle(434,46,634,55,false);
+-draw_set_color(_g.base_hp>6?global.col.teal:global.col.red);draw_rectangle(434,46,434+200*max(0,_g.base_hp/20),55,false);
+-wp_text(653,35,string(max(0,_g.base_hp))+" / 20",fnt_ui,global.col.text);
++draw_set_color(_low?merge_color(global.col.red,c_white,.18+.18*sin(global.ui_time*8)):global.col.teal);draw_rectangle(434,46,434+200*max(0,_g.base_hp/20),55,false);
++wp_text(653,35,string(max(0,_g.base_hp))+" / 20",fnt_ui,_low?global.col.red:global.col.text);
+ wp_text(819,15,wp_tr("WAVE","ХВИЛЯ"),fnt_ui,global.col.muted);
+ wp_text(819,41,string(_g.wave)+" / 8",fnt_ui,global.col.gold);
+-wp_text(1028,41,string(floor(_g.elapsed/60))+":"+(floor(_g.elapsed)mod 60<10?"0":"")+string(floor(_g.elapsed)mod 60),fnt_ui,global.col.muted,fa_right);
++draw_set_color(global.col.line);draw_rectangle(886,46,970,55,false);
++draw_set_color(global.col.gold);draw_rectangle(886,46,886+84*_progress,55,false);
++wp_text(1028,41,wp_clock(_g.elapsed),fnt_ui,global.col.muted,fa_right);
+ wp_panel(1060,0,306,768,.99);
+ wp_text(1084,26,wp_tr("DEFENSE COMMAND","ОБОРОНА РУБЕЖУ"),fnt_ui,global.col.gold);
+ draw_sprite_ext(spr_aether,0,1103,83,.57,.57,0,c_white,1);
+ wp_text(1140,55,string(_g.gold),fnt_heading,global.col.text);
+ wp_text(1141,99,wp_tr("aether available","доступного ефіру"),fnt_ui,global.col.muted);
+ wp_rule(1084,142,258);
+-wp_text(1084,288,wp_tr("NEXT ASSAULT","НАСТУПНИЙ ШТУРМ"),fnt_ui,global.col.gold);
+-wp_wrap(1084,320,wp_wave_summary(room==rm_test?obj_sandbox.test_wave:min(8,_g.wave+(obj_wave.active?0:1))),258);
++wp_text(1084,288,obj_wave.active?wp_tr("CURRENT ASSAULT","ПОТОЧНИЙ ШТУРМ"):wp_tr("NEXT ASSAULT","НАСТУПНИЙ ШТУРМ"),fnt_ui,global.col.gold);
++if(obj_wave.active)wp_text(1342,288,wp_tr(string(_left)+" left","ще "+string(_left)),fnt_ui,global.col.muted,fa_right);
++// Composition of the wave as enemy icons with counts. Hover an icon to read the enemy name.
++var _counts=wp_wave_counts(room==rm_test?obj_sandbox.test_wave:clamp(_g.wave+(obj_wave.active?0:1),1,8));
++var _names=[wp_tr("Risen","Мерці"),wp_tr("Brutes","Громили"),wp_tr("Runners","Бігуни"),wp_tr("Colossus","Колос")];
++var _slot=0;
++for(var _k=0;_k<4;++_k) {
++    if(_counts[_k]<=0)continue;
++    var _sx=1084+_slot*64;
++    draw_sprite_ext(global.enemy_sprites[_k],0,_sx+14,332,.48,.48,0,c_white,1);
++    wp_text(_sx+32,320,string(_counts[_k]),fnt_ui,global.col.text);
++    if(point_in_rectangle(mouse_x,mouse_y,_sx,314,_sx+62,350))wp_text(1084,352,_names[_k],fnt_ui,global.col.muted);
++    _slot++;
++}
+ var _tower=wp_selected_tower(),_pad=_g.selected_pad;
+ wp_panel(0,696,1060,72,.94);
+ if(instance_exists(_pad)) {
+@@ -29,7 +48,7 @@
+     }
+ } else {
+     wp_text(28,710,wp_tr("Select a stone foundation to raise a tower.","Оберіть кам'яну основу, щоб збудувати вежу."),fnt_ui,global.col.gold);
+-    wp_text(28,740,wp_tr("1/2/3 Build   U Upgrade   X Sell   F Speed   Esc Pause","1/2/3 Будувати   U Покращити   X Продати   F Темп   Esc Пауза"),fnt_ui,global.col.muted);
++    wp_text(28,740,wp_tr("1/2/3 Build   U Upgrade   X Sell   T Target   F Speed   Esc Pause","1/2/3 Будувати   U Покращити   X Продати   T Ціль   F Темп   Esc Пауза"),fnt_ui,global.col.muted);
+ }
+ // Inspectable tower stats appear beside the field, away from the buttons.
+ if(global.page=="game"&&room!=rm_test)with(obj_button) {
+@@ -39,7 +58,47 @@
+         wp_text(724,568,wp_tower_name(_kind),fnt_ui,global.col.gold);
+         wp_wrap(724,599,wp_tower_desc(_kind),300);
+         wp_text(724,654,wp_tr("DMG ","ШК ")+string(_cfg.damage)+" / "+wp_tr("RNG ","РАД ")+string(_cfg.range)+" / "+string(_cfg.rate)+wp_tr(" s"," с"),fnt_ui,global.col.teal);
++    } else if(hovered&&action=="upgrade") {
++        // Preview of what the next level changes (same formulas as obj_tower / obj_projectile).
++        var _up=wp_selected_tower();
++        if(instance_exists(_up)&&_up.level<3) {
++            var _uk=_up.tower_kind,_uc=global.towers[_uk],_l=_up.level;
++            wp_panel(708,555,335,132,.98);
++            wp_text(724,568,wp_tower_name(_uk)+"  /  "+wp_tr("Level ","Рівень ")+string(_l)+" > "+string(_l+1),fnt_ui,global.col.gold);
++            wp_text(724,599,wp_tr("Damage ","Шкода ")+string(round(_uc.damage*(1+(_l-1)*.58)))+" > "+string(round(_uc.damage*(1+_l*.58))),fnt_ui,global.col.text);
++            wp_text(724,626,wp_tr("Range ","Радіус ")+string(_uc.range+(_l-1)*10)+" > "+string(_uc.range+_l*10),fnt_ui,global.col.text);
++            if(_uk==0)wp_text(724,653,wp_tr("Shot every ","Постріл кожні ")+string(round(_uc.rate/(1+(_l-1)*.12)*100)/100)+" > "+string(round(_uc.rate/(1+_l*.12)*100)/100)+wp_tr(" s"," с"),fnt_ui,global.col.teal);
++            else if(_uk==1)wp_text(724,653,wp_tr("Blast radius ","Радіус вибуху ")+string(58+(_l-1)*7)+" > "+string(58+_l*7),fnt_ui,global.col.teal);
++            else wp_text(724,653,wp_tr("Slow ","Сповільнення ")+string(round((1-max(.42,.6-(_l-1)*.07))*100))+"% > "+string(round((1-max(.42,.6-_l*.07))*100))+"%",fnt_ui,global.col.teal);
++        }
+     }
+ }
+ wp_text(1084,719,room==rm_test?wp_tr("Test: saves disabled","Тест: запис вимкнено"):wp_tr("Auto-save enabled","Автозбереження ввімкнено"),fnt_ui,global.col.muted);
++// The core label lives here (not in obj_core) so decorations can never cover it.
++if(instance_exists(obj_core)) {
++    var _core_label=wp_tr("THE CORE","ЯДРО");
++    draw_set_font(fnt_ui);
++    var _cw=string_width(_core_label)+20;
++    draw_set_color(global.col.bg);draw_set_alpha(.72);
++    draw_roundrect(obj_core.x-_cw/2,obj_core.y+48,obj_core.x+_cw/2,obj_core.y+75,false);
++    draw_set_alpha(1);
++    wp_text(obj_core.x,obj_core.y+51,_core_label,fnt_ui,global.col.teal,fa_center);
++    // Red frame while the core is being hit.
++    if(obj_core.flash>0) {
++        draw_set_color(global.col.red);draw_set_alpha(min(.4,obj_core.flash*.7));
++        draw_rectangle(0,77,WP_FIELD,113,false);draw_rectangle(0,660,WP_FIELD,696,false);
++        draw_rectangle(0,113,36,660,false);draw_rectangle(WP_FIELD-36,113,WP_FIELD,660,false);
++        draw_set_alpha(1);
++    }
++}
++// Wave banner: fades in, holds, fades out (timer lives in obj_wave and only runs while the game runs).
++if(obj_wave.banner_t>0&&global.page=="game") {
++    var _bt=obj_wave.banner_t,_ba=clamp(min((2.4-_bt)/.3,_bt/.6),0,1),_final=_g.wave>=8;
++    var _bc=_final?global.col.red:global.col.gold;
++    draw_set_color(global.col.bg);draw_set_alpha(.55*_ba);draw_rectangle(0,282,WP_FIELD,372,false);
++    draw_set_color(_bc);draw_set_alpha(.5*_ba);draw_line(0,282,WP_FIELD,282);draw_line(0,372,WP_FIELD,372);
++    draw_set_alpha(1);
++    wp_text_a(WP_FIELD/2,291,_final?wp_tr("FINAL WAVE","ОСТАННЯ ХВИЛЯ"):wp_tr("WAVE ","ХВИЛЯ ")+string(_g.wave),fnt_heading,_bc,fa_center,_ba);
++    wp_text_a(WP_FIELD/2,336,_final?wp_tr("The Bone Colossus marches.","Кістяний колос наближається."):wp_tr("The dead are on the road.","Мерці на дорозі."),fnt_ui,global.col.muted,fa_center,_ba);
++}
+ wp_overlay();
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_menu/Draw_0.gml b/objects/obj_menu/Draw_0.gml
+--- a/objects/obj_menu/Draw_0.gml	2026-11-01 15:51:53.881112116 +0000
++++ b/objects/obj_menu/Draw_0.gml	2026-11-01 15:55:00.487109128 +0000
+@@ -6,7 +6,11 @@
+ wp_text(76,193,"PROTOCOL",fnt_title,global.col.text);
+ wp_rule(80,287,360);
+ wp_text(80,302,wp_tr("Hold the line. Keep the light.","Втримай рубіж. Збережи світло."),fnt_ui,global.col.muted);
+-wp_text(80,728,"1.1  /  "+wp_tr("THE LAST WARD","ОСТАННІЙ ОБЕРІГ"),fnt_ui,global.col.muted);
++wp_text(80,728,WP_VERSION+"  /  "+wp_tr("THE LAST WARD","ОСТАННІЙ ОБЕРІГ"),fnt_ui,global.col.muted);
++if(global.page=="main"&&global.best_stars>0) {
++    wp_stars(94,709,global.best_stars,9);
++    wp_text(80+66+14,698,wp_tr("Best: ","Рекорд: ")+wp_clock(global.best_time),fnt_ui,global.col.gold);
++}
+ wp_text(1288,728,wp_tr("Mouse or Tab + Enter","Миша або Tab + Enter"),fnt_ui,global.col.muted,fa_right);
+ if(global.effects) {
+     for(var _i=0;_i<28;++_i){var _px=540+((_i*97+global.ui_time*8)mod 820),_py=760-((_i*53+global.ui_time*(8+_i mod 4))mod 760);draw_set_alpha(.2+.15*sin(global.ui_time+_i));draw_set_color(global.col.gold);draw_circle(_px,_py,1.4,false);}
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_text/Draw_0.gml b/objects/obj_text/Draw_0.gml
+--- a/objects/obj_text/Draw_0.gml	2026-11-01 15:51:53.882205526 +0000
++++ b/objects/obj_text/Draw_0.gml	2026-11-01 15:55:15.456738428 +0000
+@@ -10,7 +10,7 @@
+         _body=wp_tr("The old wall is all that stands between the necromancer's army and the last living valley. Its heart is an aether crystal. If the crystal falls, the ward dies with it.#You are the last warden. Raise your defenses on stone foundations, combine steel and ancient magic, and survive eight assaults. The final wave brings the Bone Colossus.#Every enemy that reaches the core damages it. Defeating enemies and clearing waves grants aether. Spend carefully: a balanced defense is stronger than a single powerful tower.","Стара стіна — остання перепона між військом некроманта та живою долиною. Її серце — кристал ефіру. Якщо кристал впаде, разом із ним згасне захист.#Ви — останній вартовий. Зводьте оборону на кам'яних основах, поєднуйте сталь і давню магію та витримайте вісім штурмів. Останню хвилю очолює Кістяний колос.#Кожен ворог, що дістався ядра, пошкоджує його. Перемоги над ворогами й відбиті хвилі дають ефір. Витрачайте обачно: збалансована оборона сильніша за одну потужну вежу.");break;
+     case 1:
+         _title=wp_tr("A warden's essentials","Пам'ятка вартового");
+-        _body=wp_tr("Click a stone foundation, then choose a tower. Ballistae fire quickly; runic spires strike groups; frost wards slow the strongest enemies. Select a tower to see its range and current target.#1 / 2 / 3 — build a tower on the selected foundation. U — upgrade (three levels). X — sell for 70% of its total cost. Space — send the next wave. F — toggle 1x / 2x speed. Esc or P — pause. F11 — fullscreen.#The pause menu lets you save, load, change options or return here. Saving preserves the current wave, enemies and flying projectiles. Progress also saves every 30 seconds, between waves and when returning to the menu. A loaded battle starts paused.","Натисніть кам'яну основу та оберіть вежу. Балісти стріляють швидко; рунні шпилі б'ють по групах; крижані обереги сповільнюють сильних ворогів. Вибрана вежа показує радіус і поточну ціль.#1 / 2 / 3 — збудувати вежу на вибраній основі. U — покращити (три рівні). X — продати за 70% вкладень. Пробіл — почати хвилю. F — темп 1x / 2x. Esc або P — пауза. F11 — повний екран.#У меню паузи можна зберегти чи завантажити похід, змінити опції або відкрити довідник. Зберігаються хвиля, вороги та снаряди в польоті. Автозбереження: кожні 30 секунд, між хвилями й при виході до меню. Завантажений бій починається на паузі.");break;
++        _body=wp_tr("Click a stone foundation, then choose a tower. Ballistae fire quickly; runic spires strike groups; frost wards slow the strongest enemies. Select a tower to see its range and current target.#1 / 2 / 3 — build a tower on the selected foundation. U — upgrade (three levels). X — sell for 70% of its total cost. Space — send the next wave. F — toggle 1x / 2x speed. Esc or P — pause. F11 — fullscreen. T — change the selected tower's target priority (first, last, strongest, closest). Right click — deselect.#The pause menu lets you save, load, change options or return here. Saving preserves the current wave, enemies and flying projectiles. Progress also saves every 30 seconds, between waves and when returning to the menu. A loaded battle starts paused.","Натисніть кам'яну основу та оберіть вежу. Балісти стріляють швидко; рунні шпилі б'ють по групах; крижані обереги сповільнюють сильних ворогів. Вибрана вежа показує радіус і поточну ціль.#1 / 2 / 3 — збудувати вежу на вибраній основі. U — покращити (три рівні). X — продати за 70% вкладень. Пробіл — почати хвилю. F — темп 1x / 2x. Esc або P — пауза. F11 — повний екран. T — змінити пріоритет цілі вежі (перший, останній, найсильніший, найближчий). Права кнопка миші — зняти вибір.#У меню паузи можна зберегти чи завантажити похід, змінити опції або відкрити довідник. Зберігаються хвиля, вороги та снаряди в польоті. Автозбереження: кожні 30 секунд, між хвилями й при виході до меню. Завантажений бій починається на паузі.");break;
+     case 2:
+         _title="Eclipse Wire";
+         _body=wp_tr("WALL PROTOCOL / THE LAST WARD#An independent dark-fantasy tower defense by Eclipse Wire.#Development and creative direction: Oleh / Eclipse Wire. Created with GameMaker. Programming assistance and AI-generated environmental and sprite artwork: OpenAI tools. Sound effects and ambient score: original procedural synthesis created for this project. Studio logo supplied by Eclipse Wire.#Thank you for standing the watch.","WALL PROTOCOL / ОСТАННІЙ ОБЕРІГ#Незалежна tower defense у світі темного фентезі від Eclipse Wire.#Розробка та творчий напрям: Олег / Eclipse Wire. Створено в GameMaker. Допомога з програмуванням і згенеровані ШІ ілюстрації та спрайти: інструменти OpenAI. Звукові ефекти й атмосферна музика: власний процедурний синтез для цього проєкту. Логотип студії надано Eclipse Wire.#Дякуємо, що стали на варту.");break;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_tower/Create_0.gml b/objects/obj_tower/Create_0.gml
+--- a/objects/obj_tower/Create_0.gml	2026-11-01 15:51:53.882246879 +0000
++++ b/objects/obj_tower/Create_0.gml	2026-11-01 15:52:54.336362872 +0000
+@@ -1,4 +1,4 @@
+-wp_init();image_speed=0;cooldown=0;recoil=0;target=noone;pad_key="";
++wp_init();image_speed=0;cooldown=0;recoil=0;target=noone;pad_key="";target_mode=0;
+ tower_kind=clamp(tower_kind,0,2);level=clamp(level,1,3);invested=global.towers[tower_kind].cost;
+ for(var _l=1;_l<level;++_l)invested+=round(global.towers[tower_kind].cost*(.65+.35*_l));
+ sprite_index=global.towers[tower_kind].sprite;depth=-y;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_tower/Step_0.gml b/objects/obj_tower/Step_0.gml
+--- a/objects/obj_tower/Step_0.gml	2026-11-01 15:51:53.882348927 +0000
++++ b/objects/obj_tower/Step_0.gml	2026-11-01 15:52:54.336791484 +0000
+@@ -1,10 +1,13 @@
+ if(!wp_active())exit;
+ var _dt=wp_dt();cooldown=max(-.5,cooldown-_dt);recoil=max(0,recoil-_dt*4);depth=-y;
+ var _range=global.towers[tower_kind].range+(level-1)*10;
+-target=noone;var _best=-1;
++target=noone;var _best=-1000000000;
+ for(var _i=0;_i<instance_number(obj_enemy);++_i) {
+-    var _e=instance_find(obj_enemy,_i);
+-    if(_e.hp>0&&_e.progress>_best&&point_distance(x,y,_e.x,_e.y)<=_range){target=_e;_best=_e.progress;}
++    var _e=instance_find(obj_enemy,_i),_dist=point_distance(x,y,_e.x,_e.y);
++    if(_e.hp<=0||_dist>_range)continue;
++    // target_mode: 0 first on the road, 1 last, 2 strongest (most HP), 3 closest to this tower.
++    var _score=[_e.progress,-_e.progress,_e.hp,-_dist][target_mode];
++    if(_score>_best){target=_e;_best=_score;}
+ }
+ if(cooldown<=0&&instance_exists(target)) {
+     var _power=1+(level-1)*.58;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_wave/Create_0.gml b/objects/obj_wave/Create_0.gml
+--- a/objects/obj_wave/Create_0.gml	2026-11-01 15:51:53.882709928 +0000
++++ b/objects/obj_wave/Create_0.gml	2026-11-01 15:52:45.706948262 +0000
+@@ -1 +1 @@
+-active=false;queue=[];spawn_index=0;spawn_timer=0;
++active=false;queue=[];spawn_index=0;spawn_timer=0;banner_t=0;
+diff -ruN -x '*.png' -x __pycache__ a/objects/obj_wave/Step_0.gml b/objects/obj_wave/Step_0.gml
+--- a/objects/obj_wave/Step_0.gml	2026-11-01 15:51:53.882737506 +0000
++++ b/objects/obj_wave/Step_0.gml	2026-11-01 15:52:45.707166466 +0000
+@@ -1,3 +1,4 @@
++banner_t=max(0,banner_t-wp_dt());
+ if(!wp_active()||!active)exit;
+ var _dt=wp_dt();spawn_timer-=_dt;
+ if(spawn_index<array_length(queue)&&spawn_timer<=0) {
+diff -ruN -x '*.png' -x __pycache__ a/scripts/scr_config/scr_config.gml b/scripts/scr_config/scr_config.gml
+--- a/scripts/scr_config/scr_config.gml	2026-11-01 15:51:53.883994258 +0000
++++ b/scripts/scr_config/scr_config.gml	2026-11-01 15:52:34.003064667 +0000
+@@ -3,6 +3,7 @@
+ #macro WP_FIELD 1060
+ #macro WP_STUDIO "Eclipse Wire"
+ #macro WP_SAVE_VERSION 2
++#macro WP_VERSION "1.2"
+ 
+ function wp_init() {
+     if (variable_global_exists("wp_ready")) return;
+@@ -18,6 +19,8 @@
+     global.sfx_volume = 0.65;
+     global.fullscreen = false;
+     global.effects = true;
++    global.best_stars = 0;
++    global.best_time = 0;
+     global.page = "main";
+     global.return_page = "main";
+     global.text_page = 0;
+@@ -54,6 +57,12 @@
+ function wp_tower_desc(_kind) {
+     return [wp_tr("Fast, precise single-target shots.","Швидкі точні постріли в одну ціль."),wp_tr("Explosions damage nearby enemies.","Вибух завдає шкоди групі ворогів."),wp_tr("Slows enemies, buying you time.","Сповільнює ворогів, виграючи час.")][_kind];
+ }
++// Targeting priority of a tower: 0 first on the road, 1 last, 2 highest HP, 3 nearest to the tower.
++function wp_target_name(_mode) {
++    return [wp_tr("First","Перший"),wp_tr("Last","Останній"),wp_tr("Strongest","Найсильніший"),wp_tr("Closest","Найближчий")][clamp(_mode,0,3)];
++}
++// Victory rating from the remaining core integrity (out of 20).
++function wp_rating(_hp) { return _hp>=15?3:(_hp>=8?2:1); }
+ function wp_notice(_text) { global.notice = _text; global.notice_time = 3; }
+ function wp_page(_page) {
+     global.page = _page;
+@@ -83,6 +92,11 @@
+     if(_wave==8) array_push(_list,3);
+     return _list;
+ }
++function wp_wave_counts(_wave) {
++    var _list=wp_wave_list(_wave),_counts=[0,0,0,0];
++    for(var _i=0;_i<array_length(_list);++_i) _counts[_list[_i]]++;
++    return _counts;
++}
+ function wp_wave_summary(_wave) {
+     var _list=wp_wave_list(_wave),_counts=[0,0,0,0];
+     for(var _i=0;_i<array_length(_list);++_i) _counts[_list[_i]]++;
+diff -ruN -x '*.png' -x __pycache__ a/scripts/scr_layout/scr_layout.gml b/scripts/scr_layout/scr_layout.gml
+--- a/scripts/scr_layout/scr_layout.gml	2026-11-01 15:51:53.884075123 +0000
++++ b/scripts/scr_layout/scr_layout.gml	2026-11-01 15:53:50.260012018 +0000
+@@ -10,6 +10,8 @@
+     }
+     if(room==rm_test)_layout=wp_sandbox_buttons();
+     if(room==rm_menu)array_push(_layout,{x:1030,y:638,action:"sandbox",page:"main",button_w:280,nav_order:6});
++    // 1.2: targeting-mode button in the bottom bar; hidden until a tower is selected.
++    if(room==rm_game||room==Room1)array_push(_layout,{x:760,y:708,action:"target",page:"game",button_w:280,nav_order:8});
+     for(var _i=0;_i<array_length(_layout);++_i) {
+         var _b=_layout[_i],_found=false;
+         with(obj_button) if(action==_b.action&&page==_b.page)_found=true;
+diff -ruN -x '*.png' -x __pycache__ a/scripts/scr_save/scr_save.gml b/scripts/scr_save/scr_save.gml
+--- a/scripts/scr_save/scr_save.gml	2026-11-01 15:51:53.884195081 +0000
++++ b/scripts/scr_save/scr_save.gml	2026-11-01 15:52:34.003451000 +0000
+@@ -37,15 +37,18 @@
+     if(wp_number(_s.sfx,0,1))global.sfx_volume=_s.sfx;
+     if(is_bool(_s.fullscreen))global.fullscreen=_s.fullscreen;
+     if(is_bool(_s.effects))global.effects=_s.effects;
++    // Records were added in 1.2; older settings files simply do not contain them.
++    if(variable_struct_exists(_s,"best_stars")&&wp_integer(_s.best_stars,0,3))global.best_stars=_s.best_stars;
++    if(variable_struct_exists(_s,"best_time")&&wp_number(_s.best_time,0,10000000))global.best_time=_s.best_time;
+ }
+ function wp_settings_save() {
+-    if(!wp_write_json(global.file_prefix+"settings.json",{version:1,language:global.lang,music:global.music_volume,sfx:global.sfx_volume,fullscreen:global.fullscreen,effects:global.effects}))wp_notice(wp_tr("Could not save options.","Не вдалося зберегти налаштування."));
++    if(!wp_write_json(global.file_prefix+"settings.json",{version:1,language:global.lang,music:global.music_volume,sfx:global.sfx_volume,fullscreen:global.fullscreen,effects:global.effects,best_stars:global.best_stars,best_time:global.best_time}))wp_notice(wp_tr("Could not save options.","Не вдалося зберегти налаштування."));
+ }
+ function wp_snapshot() {
+     var _g=obj_game,_w=obj_wave;
+     var _data={version:WP_SAVE_VERSION,gold:_g.gold,hp:_g.base_hp,wave:_g.wave,kills:_g.kills,elapsed:_g.elapsed,time_scale:_g.time_scale,next_uid:_g.next_uid,route:_g.route,active:_w.active,spawn_index:_w.spawn_index,spawn_timer:_w.spawn_timer,towers:[],enemies:[],projectiles:[]};
+     with(obj_tower) {
+-        array_push(_data.towers,{pad_key:pad_key,kind:tower_kind,level:level,invested:invested,cooldown:cooldown,x:x,y:y});
++        array_push(_data.towers,{pad_key:pad_key,kind:tower_kind,level:level,invested:invested,cooldown:cooldown,x:x,y:y,mode:target_mode});
+     }
+     with(obj_enemy) {
+         if(hp>0)array_push(_data.enemies,{uid:uid,kind:enemy_kind,x:x,y:y,hp:hp,max_hp:max_hp,path_i:path_i,progress:progress,slow_t:slow_t,slow_factor:slow_factor});
+@@ -71,6 +74,8 @@
+         var _t=_s.towers[_j];
+         if(!wp_fields(_t,["pad_key","kind","level","invested","cooldown","x","y"]))return false;
+         if(!is_string(_t.pad_key)||string_length(_t.pad_key)>100||variable_struct_exists(_keys,_t.pad_key)||!wp_integer(_t.kind,0,2)||!wp_integer(_t.level,1,3)||!wp_integer(_t.invested,0,10000)||!wp_number(_t.cooldown,-1,10)||!wp_number(_t.x,-1000,10000)||!wp_number(_t.y,-1000,10000))return false;
++        // Targeting mode was added in 1.2; saves without it are still valid and default to "first".
++        if(variable_struct_exists(_t,"mode")&&!wp_integer(_t.mode,0,3))return false;
+         _keys[$ _t.pad_key]=true;
+     }
+     var _uids={};
+@@ -134,7 +139,7 @@
+     for(var _j=0;_j<array_length(_s.towers);++_j) {
+         var _t=_s.towers[_j],_p=wp_pad_by_key(_t.pad_key);
+         var _new=wp_spawn(global.towers[_t.kind].object,_p.x,_p.y,{tower_kind:_t.kind,level:_t.level});
+-        _new.pad_key=_t.pad_key;_new.invested=_t.invested;_new.cooldown=_t.cooldown;_p.tower=_new;
++        _new.pad_key=_t.pad_key;_new.invested=_t.invested;_new.cooldown=_t.cooldown;_new.target_mode=variable_struct_exists(_t,"mode")?_t.mode:0;_p.tower=_new;
+     }
+     var _lookup={};
+     for(var _k=0;_k<array_length(_s.enemies);++_k) {
+diff -ruN -x '*.png' -x __pycache__ a/scripts/scr_ui/scr_ui.gml b/scripts/scr_ui/scr_ui.gml
+--- a/scripts/scr_ui/scr_ui.gml	2026-11-01 15:51:53.884319412 +0000
++++ b/scripts/scr_ui/scr_ui.gml	2026-11-01 15:53:41.163897771 +0000
+@@ -4,6 +4,34 @@
+     draw_text(_x,_y,_text);
+     draw_set_halign(fa_left);
+ }
++// Same as wp_text, but with transparency and a soft shadow (wp_text always resets alpha to 1).
++function wp_text_a(_x,_y,_text,_font=fnt_ui,_color=undefined,_align=fa_left,_alpha=1) {
++    draw_set_font(_font);draw_set_halign(_align);draw_set_valign(fa_top);
++    draw_set_color(c_black);draw_set_alpha(_alpha*.7);draw_text(_x+1,_y+2,_text);
++    draw_set_color(is_undefined(_color)?global.col.text:_color);draw_set_alpha(_alpha);draw_text(_x,_y,_text);
++    draw_set_alpha(1);draw_set_halign(fa_left);
++}
++function wp_clock(_seconds) {
++    var _s=floor(max(0,_seconds));
++    return string(floor(_s/60))+":"+(_s mod 60<10?"0":"")+string(_s mod 60);
++}
++// Five-point star made of triangles (no font glyph needed). _filled=false draws only the outline.
++function wp_star(_x,_y,_radius,_filled,_color) {
++    var _pts=[];
++    for(var _i=0;_i<10;++_i) {
++        var _r=(_i mod 2==0)?_radius:_radius*.45,_a=90+_i*36;
++        array_push(_pts,[_x+lengthdir_x(_r,_a),_y+lengthdir_y(_r,_a)]);
++    }
++    draw_set_color(_color);
++    for(var _j=0;_j<10;++_j) {
++        var _p=_pts[_j],_q=_pts[(_j+1)mod 10];
++        if(_filled)draw_triangle(_x,_y,_p[0],_p[1],_q[0],_q[1],false);
++        else draw_line(_p[0],_p[1],_q[0],_q[1]);
++    }
++}
++function wp_stars(_x,_y,_count,_radius) {
++    for(var _s=0;_s<3;++_s)wp_star(_x+_s*_radius*2.4,_y,_radius,_s<_count,_s<_count?global.col.gold:global.col.line);
++}
+ function wp_wrap(_x,_y,_text,_width,_color=undefined) {
+     draw_set_font(fnt_ui);draw_set_color(is_undefined(_color)?global.col.muted:_color);
+     draw_set_halign(fa_left);draw_set_valign(fa_top);draw_set_alpha(1);
+@@ -28,8 +56,13 @@
+         case "result":
+             _title=obj_game.result==1?wp_tr("The wall holds","Стіна вистояла"):wp_tr("The ward has fallen","Оберіг зруйновано");
+             _sub=wp_tr("Waves held: ","Відбиті хвилі: ")+string(obj_game.wave)+" / 8";
+-            wp_text(683,330,wp_tr("Enemies defeated: ","Знищено ворогів: ")+string(obj_game.kills),fnt_ui,global.col.gold,fa_center);
+-            wp_text(683,371,wp_tr("Core integrity: ","Міцність ядра: ")+string(obj_game.base_hp)+" / 20",fnt_ui,global.col.teal,fa_center);
++            wp_text(683,300,wp_tr("Enemies defeated: ","Знищено ворогів: ")+string(obj_game.kills),fnt_ui,global.col.gold,fa_center);
++            wp_text(683,328,wp_tr("Core integrity: ","Міцність ядра: ")+string(obj_game.base_hp)+" / 20",fnt_ui,global.col.teal,fa_center);
++            wp_text(683,356,wp_tr("Time: ","Час: ")+wp_clock(obj_game.elapsed),fnt_ui,global.col.muted,fa_center);
++            if(obj_game.result==1) {
++                wp_stars(683-12*2.4,404,wp_rating(obj_game.base_hp),12);
++                if(obj_game.new_record)wp_text(683,424,wp_tr("NEW RECORD","НОВИЙ РЕКОРД"),fnt_ui,global.col.gold,fa_center);
++            }
+             break;
+     }
+     wp_text(683,213,_title,fnt_heading,global.col.text,fa_center);
+@@ -70,6 +103,8 @@
+             return instance_exists(_t)&&_t.level>=3?wp_tr("Maximum level","Найвищий рівень"):wp_tr("Upgrade [U]","Покращити [U]")+(instance_exists(_t)?"   "+string(wp_upgrade_cost(_t)):"");
+         case "sell":
+             var _t=wp_selected_tower();return wp_tr("Sell [X]","Продати [X]")+(instance_exists(_t)?"  +"+string(round(_t.invested*.7)):"");
++        case "target":
++            var _t=wp_selected_tower();return instance_exists(_t)?wp_tr("Target: ","Ціль: ")+wp_target_name(_t.target_mode)+"  [T]":"";
+     }
+     return _action;
+ }
+@@ -83,7 +118,7 @@
+             var _k=real(string_char_at(_action,6));
+             return instance_exists(obj_game.selected_pad)&&!instance_exists(wp_selected_tower())&&obj_game.gold>=global.towers[_k].cost;
+         case "upgrade":var _t=wp_selected_tower();return instance_exists(_t)&&_t.level<3&&obj_game.gold>=wp_upgrade_cost(_t);
+-        case "sell":return instance_exists(wp_selected_tower());
++        case "sell":case "target":return instance_exists(wp_selected_tower());
+     }
+     return true;
+ }
+@@ -125,5 +160,6 @@
+         case "build0":case "build1":case "build2":wp_build(obj_game.selected_pad,real(string_char_at(_action,6)));break;
+         case "upgrade":wp_upgrade(wp_selected_tower());break;
+         case "sell":wp_sell(wp_selected_tower());break;
++        case "target":wp_cycle_target(wp_selected_tower());break;
+     }
+ }
+diff -ruN -x '*.png' -x __pycache__ a/scripts/scr_world/scr_world.gml b/scripts/scr_world/scr_world.gml
+--- a/scripts/scr_world/scr_world.gml	2026-11-01 15:51:53.884400757 +0000
++++ b/scripts/scr_world/scr_world.gml	2026-11-01 15:52:45.701837352 +0000
+@@ -83,7 +83,7 @@
+     if(room==rm_test&&wp_active()&&!obj_wave.active)obj_game.wave=obj_sandbox.test_wave-1;
+     if(!wp_active()||!instance_exists(obj_wave)||obj_wave.active||obj_game.wave>=8)return false;
+     obj_game.wave++;
+-    obj_wave.queue=wp_wave_list(obj_game.wave);obj_wave.spawn_index=0;obj_wave.spawn_timer=.6;obj_wave.active=true;
++    obj_wave.queue=wp_wave_list(obj_game.wave);obj_wave.spawn_index=0;obj_wave.spawn_timer=.6;obj_wave.active=true;obj_wave.banner_t=2.4;
+     wp_notice(wp_tr("Wave ","Хвиля ")+string(obj_game.wave)+wp_tr(" approaches."," наближається."));wp_sound(snd_wave);
+     return true;
+ }
+@@ -91,20 +91,42 @@
+     if(!global.effects)return;
+     wp_spawn(obj_effect,_x,_y,{fx_kind:_kind,tint:_color,radius:_radius});
+ }
++// Short floating text (aether gained, core damage). Purely cosmetic, so it follows the effects option.
++function wp_popup(_x,_y,_text,_color) {
++    if(!global.effects)return;
++    wp_spawn(obj_effect,_x,_y,{fx_kind:2,tint:_color,radius:0,fx_text:_text});
++}
++function wp_cycle_target(_tower) {
++    if(!wp_active()||!instance_exists(_tower))return false;
++    _tower.target_mode=(_tower.target_mode+1)mod 4;
++    wp_sound(snd_click,.5);
++    return true;
++}
+ function wp_damage(_enemy,_damage) {
+     if(!instance_exists(_enemy)||_enemy.hp<=0)return;
+     _enemy.hp-=_damage;_enemy.hit_flash=.12;
+     if(_enemy.hp<=0) {
+         obj_game.gold+=_enemy.reward;obj_game.kills++;
+         wp_fx(_enemy.x,_enemy.y,0,global.col.gold,22);wp_sound(snd_hit,.35);
++        wp_popup(_enemy.x,_enemy.y-34,"+"+string(_enemy.reward),global.col.gold);
++        if(_enemy.enemy_kind==3){wp_fx(_enemy.x,_enemy.y,1,global.col.purple,130);wp_fx(_enemy.x,_enemy.y,0,global.col.gold,70);}
+         instance_destroy(_enemy);
+     }
+ }
++// Keeps the best victory: more stars first, then the faster time. Stored with the settings.
++function wp_record_result() {
++    var _stars=wp_rating(obj_game.base_hp),_time=obj_game.elapsed;
++    var _better=_stars>global.best_stars||(_stars==global.best_stars&&(global.best_time<=0||_time<global.best_time));
++    if(!_better)return;
++    global.best_stars=_stars;global.best_time=_time;obj_game.new_record=true;
++    wp_settings_save();
++}
+ function wp_end_run(_result) {
+     if(obj_game.result!=0)return;
+     obj_game.result=_result;obj_game.base_hp=max(0,obj_game.base_hp);wp_page("result");
+     wp_sound(_result==1?snd_victory:snd_breach);
+     if(room==rm_test)return;
++    if(_result==1)wp_record_result();
+     // Completed runs cannot be resumed as an already-finished combat state.
+     var _file=global.file_prefix+"save.json",_bak=global.file_prefix+"save.bak";
+     if(file_exists(_file))file_delete(_file);if(file_exists(_bak))file_delete(_bak);
+diff -ruN -x '*.png' -x __pycache__ a/tools/check_gml.py b/tools/check_gml.py
+--- a/tools/check_gml.py	1970-01-01 00:00:00.000000000 +0000
++++ b/tools/check_gml.py	2026-11-01 15:52:07.613422860 +0000
+@@ -0,0 +1,215 @@
++"""Static sanity checks for GML source (no GameMaker required).
++
++This is NOT a compiler. It catches the mistakes that are easy to make when GML
++is edited outside the IDE: unbalanced brackets, unterminated strings, calls to
++undefined project functions, wrong argument counts, misspelled resources,
++reads of never-assigned globals and use of undeclared `_local` variables
++(project convention: every local starts with an underscore).
++
++Usage: python tools/check_gml.py        (exit code 1 when problems are found)
++"""
++from pathlib import Path
++import re, sys
++
++ROOT = Path(__file__).resolve().parents[1]
++PREFIXES = ('obj_', 'spr_', 'snd_', 'rm_', 'fnt_', 'scr_')
++TOKEN = re.compile(r'''
++    (?P<lc>//[^\n]*) | (?P<bc>/\*.*?\*/) |
++    (?P<str>@?"(?:[^"\\\n]|\\.)*") | (?P<str2>'(?:[^'\\\n]|\\.)*') |
++    (?P<num>0x[0-9a-fA-F]+|\d+\.?\d*(?:[eE][+-]?\d+)?|\.\d+) |
++    (?P<id>[A-Za-z_][A-Za-z0-9_]*) |
++    (?P<nl>\n) | (?P<ws>[ \t\r]+) | (?P<op>.)
++''', re.X | re.S)
++PAIRS = {')': '(', ']': '[', '}': '{'}
++
++
++def tokenize(text, problems, name):
++    out, line, pos = [], 1, 0
++    while pos < len(text):
++        m = TOKEN.match(text, pos)
++        if not m:
++            problems.append(f'{name}:{line}: cannot tokenize'); break
++        kind, val = m.lastgroup, m.group()
++        if kind in ('str', 'str2', 'num', 'id', 'op'):
++            out.append((kind, val, line))
++        line += val.count('\n')
++        pos = m.end()
++    # an unterminated string shows up as a lone quote character
++    for kind, val, ln in out:
++        if kind == 'op' and val in '"\'':
++            problems.append(f'{name}:{ln}: unterminated string')
++    return out
++
++
++def check_brackets(tokens, problems, name):
++    stack = []
++    for kind, val, ln in tokens:
++        if kind != 'op':
++            continue
++        if val in '([{':
++            stack.append((val, ln))
++        elif val in PAIRS:
++            if not stack or stack[-1][0] != PAIRS[val]:
++                problems.append(f'{name}:{ln}: unexpected {val!r}'); return
++            stack.pop()
++    for val, ln in stack:
++        problems.append(f'{name}:{ln}: unclosed {val!r}')
++
++
++def param_list(tokens, i):
++    """tokens[i] is '(' after `function name`; return [(name, has_default)]."""
++    depth, params, cur, j = 0, [], [], i
++    while j < len(tokens):
++        kind, val, _ = tokens[j]
++        if kind == 'op' and val in '([{': depth += 1
++        elif kind == 'op' and val in ')]}':
++            depth -= 1
++            if depth == 0:
++                break
++        if depth == 1 and kind == 'op' and val == ',':
++            params.append(cur); cur = []
++        elif not (depth == 1 and kind == 'op' and val == '('):
++            cur.append((kind, val))
++        j += 1
++    if cur: params.append(cur)
++    res = []
++    for p in params:
++        if p and p[0][0] == 'id':
++            res.append((p[0][1], any(v == '=' for _, v in p)))
++    return res, j
++
++
++def call_args(tokens, i):
++    """tokens[i] is '(' of a call; return the number of top-level arguments."""
++    depth, count, seen, j = 0, 0, False, i
++    while j < len(tokens):
++        kind, val, _ = tokens[j]
++        if kind == 'op' and val in '([{': depth += 1
++        elif kind == 'op' and val in ')]}':
++            depth -= 1
++            if depth == 0: break
++        elif depth == 1 and kind == 'op' and val == ',': count += 1
++        if depth >= 1 and not (depth == 1 and kind == 'op' and val == '('):
++            seen = True
++        j += 1
++    return (count + 1 if seen else 0)
++
++
++def declared_locals(tokens):
++    names = set()
++    for i, (kind, val, _) in enumerate(tokens):
++        if kind == 'id' and val == 'function':
++            j = i + 1
++            if j < len(tokens) and tokens[j][0] == 'id': j += 1
++            if j < len(tokens) and tokens[j][1] == '(':
++                ps, _ = param_list(tokens, j)
++                names.update(p for p, _ in ps)
++        if kind == 'id' and val == 'catch' and i + 2 < len(tokens) and tokens[i+1][1] == '(' and tokens[i+2][0] == 'id':
++            names.add(tokens[i+2][1])
++        if kind == 'id' and val == 'var':
++            j, depth = i + 1, 0
++            expect = True
++            while j < len(tokens):
++                k, v, _ = tokens[j]
++                if k == 'op' and v in '([{': depth += 1
++                elif k == 'op' and v in ')]}':
++                    if depth == 0: break
++                    depth -= 1
++                elif depth == 0 and k == 'op' and v == ';': break
++                elif depth == 0 and k == 'op' and v == ',': expect = True; j += 1; continue
++                elif depth == 0 and k == 'id' and expect:
++                    names.add(v); expect = False
++                j += 1
++    return names
++
++
++def main():
++    problems, warnings = [], []
++    yyp = (ROOT / 'Wall Protocol.yyp').read_text(encoding='utf-8-sig')
++    resources = set(re.findall(r'"name":"([A-Za-z0-9_]+)"', yyp)) | {'Room1'}
++    files = sorted(p for p in ROOT.rglob('*.gml') if 'build' not in p.parts)
++    parsed = {}
++    for p in files:
++        rel = str(p.relative_to(ROOT))
++        text = p.read_text(encoding='utf-8')
++        if '\r' in text: problems.append(f'{rel}: CRLF line endings (project uses LF)')
++        toks = tokenize(text, problems, rel)
++        check_brackets(toks, problems, rel)
++        parsed[rel] = toks
++
++    funcs, macros, global_writes = {}, set(), set()
++    for rel, toks in parsed.items():
++        for i, (k, v, ln) in enumerate(toks):
++            if k == 'id' and v == 'function' and i + 2 < len(toks) and toks[i+1][0] == 'id' and toks[i+2][1] == '(':
++                ps, _ = param_list(toks, i + 2)
++                if toks[i+1][1] in funcs: problems.append(f'{rel}:{ln}: duplicate function {toks[i+1][1]}')
++                funcs[toks[i+1][1]] = (sum(1 for _, d in ps if not d), len(ps))
++    for p in files:
++        for m in re.finditer(r'^#macro\s+(\w+)', p.read_text(encoding='utf-8'), re.M): macros.add(m.group(1))
++    for rel, toks in parsed.items():
++        for i in range(len(toks) - 3):
++            if toks[i][1] == 'global' and toks[i+1][1] == '.' and toks[i+2][0] == 'id':
++                nxt = toks[i+3][1]
++                if nxt in ('=', '+', '-', '*', '/', '|', '&', '^') or (nxt == '[' ) or nxt == '.' or nxt == '+':
++                    global_writes.add(toks[i+2][1])
++    palette = set(re.findall(r'(\w+):make_color_rgb', (ROOT / 'scripts/scr_config/scr_config.gml').read_text(encoding='utf-8')))
++    for rel, toks in parsed.items():
++        for i in range(len(toks) - 4):
++            if toks[i][1] == 'global' and toks[i+2][1] == 'col' and toks[i+3][1] == '.' and toks[i+4][0] == 'id':
++                if toks[i+4][1] not in palette:
++                    problems.append(f'{rel}:{toks[i][2]}: unknown palette colour global.col.{toks[i+4][1]}')
++
++    for rel, toks in parsed.items():
++        is_script = rel.startswith('scripts/')
++        # scope handling: scripts are checked per top-level function, events per file
++        scopes, cur, depth, start = [], [], 0, 0
++        if is_script:
++            i = 0
++            while i < len(toks):
++                if toks[i][1] == 'function' and depth == 0:
++                    j = i
++                    while j < len(toks) and toks[j][1] != '{': j += 1
++                    d = 0
++                    while j < len(toks):
++                        if toks[j][1] == '{': d += 1
++                        elif toks[j][1] == '}':
++                            d -= 1
++                            if d == 0: break
++                        j += 1
++                    scopes.append(toks[i:j + 1]); i = j + 1
++                else:
++                    i += 1
++        else:
++            scopes = [toks]
++        for scope in scopes:
++            names = declared_locals(scope)
++            for i, (k, v, ln) in enumerate(scope):
++                prev = scope[i-1][1] if i else ''
++                nxt = scope[i+1][1] if i + 1 < len(scope) else ''
++                if k != 'id' or prev == '.':
++                    continue
++                if v.startswith('_') and not v.startswith('__') and v not in names and nxt != ':':
++                    problems.append(f'{rel}:{ln}: local {v} used but never declared')
++                if v.startswith('wp_') and nxt == '(' and prev != 'function':
++                    if v not in funcs: problems.append(f'{rel}:{ln}: call to undefined function {v}')
++                    else:
++                        n = call_args(scope, i + 1)
++                        lo, hi = funcs[v]
++                        if not lo <= n <= hi: problems.append(f'{rel}:{ln}: {v} called with {n} args (expects {lo}..{hi})')
++                if v.startswith(PREFIXES) and nxt != '(' and prev != 'function':
++                    if v not in resources and v not in funcs: problems.append(f'{rel}:{ln}: unknown resource {v}')
++                if prev == '.' :
++                    continue
++        for i in range(len(scope := toks) - 2):
++            if toks[i][1] == 'global' and toks[i+1][1] == '.' and toks[i+2][0] == 'id':
++                g = toks[i+2][1]
++                if g not in global_writes:
++                    problems.append(f'{rel}:{toks[i][2]}: global.{g} is read but never assigned')
++    for p in sorted(set(problems)): print('PROBLEM', p)
++    print(f'{len(files)} GML files, {len(funcs)} project functions, {len(macros)} macros checked: '
++          + ('OK' if not problems else f'{len(set(problems))} problem(s)'))
++    return 1 if problems else 0
++
++
++if __name__ == '__main__':
++    sys.exit(main())
+diff -ruN -x '*.png' -x __pycache__ "a/\320\224\320\276\320\262\321\226\320\264\320\272\320\260 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\321\226\321\201\321\202\320\260.md" "b/\320\224\320\276\320\262\321\226\320\264\320\272\320\260 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\321\226\321\201\321\202\320\260.md"
+--- "a/\320\224\320\276\320\262\321\226\320\264\320\272\320\260 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\321\226\321\201\321\202\320\260.md"	2026-11-01 15:51:53.901321674 +0000
++++ "b/\320\224\320\276\320\262\321\226\320\264\320\272\320\260 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\321\226\321\201\321\202\320\260.md"	2026-11-01 15:56:46.421687885 +0000
+@@ -1,4 +1,4 @@
+-# Довідка програміста — Wall Protocol 1.1
++# Довідка програміста — Wall Protocol 1.2
+ 
+ ## Архітектура
+ 
+@@ -11,14 +11,14 @@
+ | `obj_splash`, `obj_menu`, `obj_text` | Відповідні екрани |
+ | `obj_button` | Самостійна кнопка: геометрія, hover, дія, стан доступності |
+ | `obj_game` | Стан походу та єдиний крок часу симуляції |
+-| `obj_wave` | Черга ворогів, інтервал появи, завершення хвилі |
++| `obj_wave` | Черга ворогів, інтервал появи, завершення хвилі; `banner_t` — таймер банера початку хвилі |
+ | `obj_board`, `obj_hud` | Лише відображення землі/дороги та інтерфейсу |
+ | `obj_path_node` | Редагована точка маршруту; невидима під час гри |
+ | `obj_build_pad` | Основа, вибір і посилання на конкретну вежу |
+-| `obj_tower` + 3 нащадки | Пошук цілі, перезарядження, запуск снаряда |
++| `obj_tower` + 3 нащадки | Пошук цілі за `target_mode` (0 перший, 1 останній, 2 найсильніший, 3 найближчий), перезарядження, запуск снаряду |
+ | `obj_enemy` + 4 нащадки | Рух, HP, сповільнення, прорив |
+ | `obj_projectile` | Політ і застосування одиночної/AoE/крижаної атаки |
+-| `obj_effect` | Короткочасні частинки й кільця |
++| `obj_effect` | Короткочасні ефекти: `fx_kind` 0 — іскри, 1 — кільце, 2 — спливаючий текст (`fx_text`) |
+ | `obj_core`, `obj_portal` | Об'єкти кінця й початку шляху |
+ | `obj_decor` + 5 нащадків | Дерева, камені, жаровні, стіни, надгробки |
+ | `obj_test` | Лише явний запуск із параметром `--wp-test` |
+@@ -28,7 +28,7 @@
+ 
+ - `scr_config`: бренд Eclipse Wire, палітра, каталог веж, хвилі, локалізація, запасний маршрут.
+ - `scr_world`: запуск кімнати, будівництво/продаж/покращення, damage, результат походу.
+-- `scr_ui`: спільне малювання UI, підписи, дії кнопок і діалоги.
++- `scr_ui`: спільне малювання UI, підписи, дії кнопок і діалоги; допоміжні `wp_text_a` (текст із прозорістю), `wp_clock`, `wp_star`/`wp_stars` (зірки з трикутників, без гліфів шрифту).
+ - `scr_save`: перевірка схеми, settings, JSON-запис, резервна копія, snapshot/restore.
+ - `scr_audio`: SFX і зміна гучності.
+ - `scr_layout`: лише запасні координати кнопок, якщо конкретна пара `page + action` відсутня.
+@@ -104,27 +104,38 @@
+ 
+ Для тексту використовується `wp_tr("English", "Українська")`. Шрифти містять повний український алфавіт, включно з Ґ/Є/І/Ї. Зміна мови в опціях застосовується одразу.
+ 
++## Версія 1.2: нові механіки
++
++- **Пріоритет цілі.** `obj_tower.target_mode` (0–3). Змінюється `wp_cycle_target()` (клавіша `T` в `obj_game/Step_1`, або кнопка `action="target"`). Кнопка створюється fallback-ом `wp_ensure_buttons()` лише в `rm_game`/`Room1` і не малюється, поки вежу не вибрано. Її можна перемістити в Room Editor, як і будь-яку іншу.
++- **Рекорди.** `wp_record_result()` викликається з `wp_end_run()` лише при перемозі поза `rm_test`. Зберігає `global.best_stars` / `global.best_time` у settings; `obj_game.new_record` керує написом на екрані результату. Пороги зірок — `wp_rating()` у `scr_config`.
++- **Спливаючі тексти.** `wp_popup(x,y,text,color)` створює `obj_effect` із `fx_kind=2`. Для тексту з прозорістю використовуйте `wp_text_a`, бо `wp_text` завжди скидає alpha до 1.
++- **Банер хвилі, смуга прогресу, склад хвилі, червона рамка, підпис ядра, підказка покращення** малюються в `obj_hud/Draw_0.gml`; жодних симуляційних змін там немає.
++- **Автопауза** у `obj_app/Step_1` через `window_has_focus()`; не діє з `--wp-test`.
++
+ ## Збереження
+ 
+ Windows sandbox: `%LOCALAPPDATA%/Wall_Protocol/`.
+ 
+-- `wp_settings.json` — мова, гучність, fullscreen, ефекти.
++- `wp_settings.json` — мова, гучність, fullscreen, ефекти; з 1.2 також `best_stars` та `best_time` (необов'язкові, старі файли валідні).
+ - `wp_save.json` — останній похід; `wp_save.bak` — попередній перевірений стан.
+ - `wp_save.json.tmp` — проміжний запис; неповний файл не підміняє резервну копію.
+ - Тести використовують лише окремий префікс `wp_test_`.
+ 
+-Зберігаються plain JSON-значення, без instance ID: у ворогів є стабільний `uid`, снаряди посилаються на нього. При restore зв'язки будуються заново. Валідація перевіряє версію, діапазони, масиви, унікальність ключів, відомі типи, снаряди й маршрут. Відновлення перевіряє всі майданчики та маршрут перед зміною світу.
++У кожної вежі з 1.2 є необов'язкове поле `mode` (пріоритет цілі); відсутнє поле означає 0. Зберігаються plain JSON-значення, без instance ID: у ворогів є стабільний `uid`, снаряди посилаються на нього. При restore зв'язки будуються заново. Валідація перевіряє версію, діапазони, масиви, унікальність ключів, відомі типи, снаряди й маршрут. Відновлення перевіряє всі майданчики та маршрут перед зміною світу.
+ 
+ Після зміни маршруту чи переміщення зайнятої основи старий save не завантажується; гравець повертається до меню без втрати старого файлу. Почніть новий похід. Перемога/поразка завершують активний save. Ефекти й декоративний стан не зберігаються.
+ 
+ ## Інструменти
+ 
+ ```powershell
++python tools/check_gml.py
+ python tools/validate_project.py
+ ./tools/build.ps1
+ ./tools/test.ps1
+ ```
+ 
++`check_gml.py` не потребує GameMaker: ловить незбалансовані дужки/лапки, невизначені `wp_*`, неправильну кількість аргументів, неоголошені `_локальні` змінні, невідомі ресурси та кольори палітри. Це **не** компілятор — він не знає вбудованих функцій GML, тож Project Health в IDE усе одно обов'язковий.
++
+ `build.ps1` знаходить runtime автоматично; можна передати `-RuntimePath` і `-UserPath`.
+ `test.ps1` запускає готову збірку з `--wp-test` та копіює звіт/знімки до `build/verification`.
+ 
+diff -ruN -x '*.png' -x __pycache__ "a/\320\251\320\276 \321\202\321\200\320\265\320\261\320\260 \320\267\321\200\320\276\320\261\320\270\321\202\320\270.md" "b/\320\251\320\276 \321\202\321\200\320\265\320\261\320\260 \320\267\321\200\320\276\320\261\320\270\321\202\320\270.md"
+--- "a/\320\251\320\276 \321\202\321\200\320\265\320\261\320\260 \320\267\321\200\320\276\320\261\320\270\321\202\320\270.md"	2026-11-01 15:51:53.901379637 +0000
++++ "b/\320\251\320\276 \321\202\321\200\320\265\320\261\320\260 \320\267\321\200\320\276\320\261\320\270\321\202\320\270.md"	2026-11-01 15:56:20.416294267 +0000
+@@ -1,4 +1,4 @@
+-# Стан роботи — Wall Protocol 1.1
++# Стан роботи — Wall Protocol 1.2
+ 
+ Оновлено 26.09.2026. Пункти нижче відмічені після компіляції та запуску Windows Runner.
+ 
+@@ -25,6 +25,20 @@
+ - [x] Перевірити безсмертя, фінальну хвилю, тестові результати й захист основного збереження та резервної копії.
+ - [x] Зібрати Windows ZIP, оновити документацію.
+ 
++## Версія 1.2: написано, але НЕ перевірено в GameMaker
++
++Ці зміни зроблено без доступу до IDE/компілятора; перевірено лише статично (`python tools/check_gml.py`, `python tools/validate_project.py`). За правилами `AGENTS.md` пункти лишаються відкритими до першого запуску.
++
++- [ ] Project Health + Run: немає помилок компіляції (особливо нові функції в `scr_ui`, `scr_world`, `obj_hud/Draw_0.gml`).
++- [ ] `./tools/build.ps1` і `./tools/test.ps1`: усі 64 перевірки досі проходять (збереження з новим полем `mode`, кнопка `target` ідемпотентна).
++- [ ] Режими цілі: T і кнопка в нижній панелі міняють пріоритет; «Перший» поводиться як у 1.1; режим переживає Save/Load.
++- [ ] Спливаючі `+ефір` / `-N`, банер хвилі, смуга прогресу, іконки складу хвилі: читаються на 1x і 2x, нічого не перекривається.
++- [ ] Підказка покращення при наведенні на Upgrade показує коректні числа для всіх трьох веж.
++- [ ] Екран результату: зірки, час, «NEW RECORD»; рекорд зберігається між запусками й видно в меню.
++- [ ] Автопауза при Alt-Tab не заважає запуску з IDE (гра не має стартувати «завислою»).
++- [ ] Підпис «THE CORE» читається поверх жаровні/стіни; червона рамка при ударі по ядру не дратує.
++- [ ] Перевірити поведінку збереження з 1.1 (без поля `mode`): має завантажитися з режимом «Перший».
++
+ ## Перед публічним показом
+ 
+ - [ ] Відкрити оновлений проєкт в IDE GameMaker LTS 2026, виконати Project Health і Run саме з IDE. Автоматизоване керування вікнами було зупинене; CLI-компілятор успішно завантажив і зв'язав ресурси.

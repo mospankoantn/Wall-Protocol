@@ -1,4 +1,16 @@
-# Verification — 26 September 2026
+# Verification
+
+## Version 1.2 — static checks only
+
+The 1.2 changes (see `CHANGELOG.md`) were written without access to GameMaker. What *was* done:
+
+- `python tools/check_gml.py` — brackets, strings, project function calls and argument counts, `_local` variables, resource and palette names across all 80 GML files: **OK**. The checker itself was validated against deliberately corrupted copies of the project.
+- `python tools/validate_project.py` — JSON5 metadata, resource links, room order, sprites, fonts (including Ukrainian glyph coverage), audio, icon, UTF-8/LF: **2594 checks passed**. No `.yy`/`.yyp` file was modified.
+- Hand review of every changed GML line against the original; the save format change is additive (optional `mode`, optional `best_*`) so 1.1 saves and the existing round-trip test remain valid by construction.
+
+**Not done:** compiling, Project Health, Run, `tools/test.ps1`. Until those pass, treat 1.2 as unverified. The checklist is in `Що треба зробити.md`.
+
+# Verification — 26 September 2026 (version 1.1)
 
 GameMaker IDE metadata version: 2026.0.0.16. Windows VM compiler/runner: 2026.0.0.23.
 

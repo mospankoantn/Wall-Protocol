@@ -1,3 +1,4 @@
+banner_t=max(0,banner_t-wp_dt());
 if(!wp_active()||!active)exit;
 var _dt=wp_dt();spawn_timer-=_dt;
 if(spawn_index<array_length(queue)&&spawn_timer<=0) {

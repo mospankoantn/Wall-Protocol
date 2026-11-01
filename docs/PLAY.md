@@ -7,10 +7,13 @@ Extract the complete archive and run **Wall Protocol.exe**. Keep `data.win` and 
 Defend the glowing core against eight waves. Click an empty foundation, then choose a tower. Combine ballistae, runic area attacks and frost slows. Spend aether from defeated enemies to build or upgrade. The final wave includes the Bone Colossus.
 
 - **1 / 2 / 3:** build on the selected foundation.
-- **U / X:** upgrade / sell the selected tower.
+- **U / X:** upgrade / sell the selected tower. **T:** change its target priority (first / last / strongest / closest).
+- **Right click:** deselect. **Numpad 1–3** also build.
 - **Space:** start a wave. **F:** 1x / 2x speed.
 - **Esc:** pause or resume. **F11:** fullscreen.
 - **Tab / arrows / Enter:** navigate menus.
+
+Clear all eight waves to earn 1–3 stars from the remaining core integrity; your best result is shown in the main menu. The game pauses by itself when the window loses focus.
 
 The pause menu includes Save, Load and the Field Guide. Loading restores the battle paused. Progress also saves periodically, between waves and when returning to the menu. A new expedition replaces the previous one after confirmation; completed runs end the active save.
 
@@ -23,10 +26,13 @@ The pause menu includes Save, Load and the Field Guide. Loading restores the bat
 Захистіть ядро від восьми хвиль. Натисніть вільну кам'яну основу й оберіть вежу. Поєднуйте швидкі балісти, вибухи рунних шпилів і сповільнення крижаних оберегів. Останню хвилю очолює Кістяний колос.
 
 - **1 / 2 / 3:** будувати на вибраній основі.
-- **U / X:** покращити / продати вибрану вежу.
+- **U / X:** покращити / продати вибрану вежу. **T:** змінити пріоритет цілі (перший / останній / найсильніший / найближчий).
+- **ПКМ:** зняти вибір. **Numpad 1–3** теж будують.
 - **Пробіл:** почати хвилю. **F:** темп 1x / 2x.
 - **Esc:** пауза або продовження. **F11:** повний екран.
 - **Tab / стрілки / Enter:** навігація меню.
+
+За відбиті вісім хвиль гравець отримує 1–3 зірки залежно від міцності ядра; найкращий результат видно в головному меню. Гра сама ставиться на паузу, коли вікно втрачає фокус.
 
 Пауза містить збереження, завантаження й довідник. Завантажений бій починається на паузі. Працює автозбереження. Новий похід після підтвердження замінює попередній; завершені походи закривають активне збереження.
 

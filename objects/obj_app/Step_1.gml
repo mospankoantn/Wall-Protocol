@@ -3,6 +3,8 @@ global.ui_time+=_dt;
 global.notice_time=max(0,global.notice_time-_dt);
 global.input_lock=max(0,global.input_lock-1);
 if(keyboard_check_pressed(vk_f11))wp_action("fullscreen");
+// Alt-Tab safety: a running battle pauses itself when the window loses focus (never during automated tests).
+if(!global.test_mode&&global.page=="game"&&global.input_lock<=0&&!window_has_focus())wp_page("pause");
 if(global.input_lock>0)exit;
 if(keyboard_check_pressed(vk_escape)) {
     switch(global.page) {

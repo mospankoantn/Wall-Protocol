@@ -37,15 +37,18 @@ function wp_settings_load() {
     if(wp_number(_s.sfx,0,1))global.sfx_volume=_s.sfx;
     if(is_bool(_s.fullscreen))global.fullscreen=_s.fullscreen;
     if(is_bool(_s.effects))global.effects=_s.effects;
+    // Records were added in 1.2; older settings files simply do not contain them.
+    if(variable_struct_exists(_s,"best_stars")&&wp_integer(_s.best_stars,0,3))global.best_stars=_s.best_stars;
+    if(variable_struct_exists(_s,"best_time")&&wp_number(_s.best_time,0,10000000))global.best_time=_s.best_time;
 }
 function wp_settings_save() {
-    if(!wp_write_json(global.file_prefix+"settings.json",{version:1,language:global.lang,music:global.music_volume,sfx:global.sfx_volume,fullscreen:global.fullscreen,effects:global.effects}))wp_notice(wp_tr("Could not save options.","Не вдалося зберегти налаштування."));
+    if(!wp_write_json(global.file_prefix+"settings.json",{version:1,language:global.lang,music:global.music_volume,sfx:global.sfx_volume,fullscreen:global.fullscreen,effects:global.effects,best_stars:global.best_stars,best_time:global.best_time}))wp_notice(wp_tr("Could not save options.","Не вдалося зберегти налаштування."));
 }
 function wp_snapshot() {
     var _g=obj_game,_w=obj_wave;
     var _data={version:WP_SAVE_VERSION,gold:_g.gold,hp:_g.base_hp,wave:_g.wave,kills:_g.kills,elapsed:_g.elapsed,time_scale:_g.time_scale,next_uid:_g.next_uid,route:_g.route,active:_w.active,spawn_index:_w.spawn_index,spawn_timer:_w.spawn_timer,towers:[],enemies:[],projectiles:[]};
     with(obj_tower) {
-        array_push(_data.towers,{pad_key:pad_key,kind:tower_kind,level:level,invested:invested,cooldown:cooldown,x:x,y:y});
+        array_push(_data.towers,{pad_key:pad_key,kind:tower_kind,level:level,invested:invested,cooldown:cooldown,x:x,y:y,mode:target_mode});
     }
     with(obj_enemy) {
         if(hp>0)array_push(_data.enemies,{uid:uid,kind:enemy_kind,x:x,y:y,hp:hp,max_hp:max_hp,path_i:path_i,progress:progress,slow_t:slow_t,slow_factor:slow_factor});
@@ -71,6 +74,8 @@ function wp_validate_save(_s) {
         var _t=_s.towers[_j];
         if(!wp_fields(_t,["pad_key","kind","level","invested","cooldown","x","y"]))return false;
         if(!is_string(_t.pad_key)||string_length(_t.pad_key)>100||variable_struct_exists(_keys,_t.pad_key)||!wp_integer(_t.kind,0,2)||!wp_integer(_t.level,1,3)||!wp_integer(_t.invested,0,10000)||!wp_number(_t.cooldown,-1,10)||!wp_number(_t.x,-1000,10000)||!wp_number(_t.y,-1000,10000))return false;
+        // Targeting mode was added in 1.2; saves without it are still valid and default to "first".
+        if(variable_struct_exists(_t,"mode")&&!wp_integer(_t.mode,0,3))return false;
         _keys[$ _t.pad_key]=true;
     }
     var _uids={};
@@ -134,7 +139,7 @@ function wp_restore(_s) {
     for(var _j=0;_j<array_length(_s.towers);++_j) {
         var _t=_s.towers[_j],_p=wp_pad_by_key(_t.pad_key);
         var _new=wp_spawn(global.towers[_t.kind].object,_p.x,_p.y,{tower_kind:_t.kind,level:_t.level});
-        _new.pad_key=_t.pad_key;_new.invested=_t.invested;_new.cooldown=_t.cooldown;_p.tower=_new;
+        _new.pad_key=_t.pad_key;_new.invested=_t.invested;_new.cooldown=_t.cooldown;_new.target_mode=variable_struct_exists(_t,"mode")?_t.mode:0;_p.tower=_new;
     }
     var _lookup={};
     for(var _k=0;_k<array_length(_s.enemies);++_k) {

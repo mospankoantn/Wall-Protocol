@@ -3,6 +3,7 @@
 #macro WP_FIELD 1060
 #macro WP_STUDIO "Eclipse Wire"
 #macro WP_SAVE_VERSION 2
+#macro WP_VERSION "1.2"
 
 function wp_init() {
     if (variable_global_exists("wp_ready")) return;
@@ -18,6 +19,8 @@ function wp_init() {
     global.sfx_volume = 0.65;
     global.fullscreen = false;
     global.effects = true;
+    global.best_stars = 0;
+    global.best_time = 0;
     global.page = "main";
     global.return_page = "main";
     global.text_page = 0;
@@ -54,6 +57,12 @@ function wp_tower_name(_kind) {
 function wp_tower_desc(_kind) {
     return [wp_tr("Fast, precise single-target shots.","Швидкі точні постріли в одну ціль."),wp_tr("Explosions damage nearby enemies.","Вибух завдає шкоди групі ворогів."),wp_tr("Slows enemies, buying you time.","Сповільнює ворогів, виграючи час.")][_kind];
 }
+// Targeting priority of a tower: 0 first on the road, 1 last, 2 highest HP, 3 nearest to the tower.
+function wp_target_name(_mode) {
+    return [wp_tr("First","Перший"),wp_tr("Last","Останній"),wp_tr("Strongest","Найсильніший"),wp_tr("Closest","Найближчий")][clamp(_mode,0,3)];
+}
+// Victory rating from the remaining core integrity (out of 20).
+function wp_rating(_hp) { return _hp>=15?3:(_hp>=8?2:1); }
 function wp_notice(_text) { global.notice = _text; global.notice_time = 3; }
 function wp_page(_page) {
     global.page = _page;
@@ -82,6 +91,11 @@ function wp_wave_list(_wave) {
     }
     if(_wave==8) array_push(_list,3);
     return _list;
+}
+function wp_wave_counts(_wave) {
+    var _list=wp_wave_list(_wave),_counts=[0,0,0,0];
+    for(var _i=0;_i<array_length(_list);++_i) _counts[_list[_i]]++;
+    return _counts;
 }
 function wp_wave_summary(_wave) {
     var _list=wp_wave_list(_wave),_counts=[0,0,0,0];

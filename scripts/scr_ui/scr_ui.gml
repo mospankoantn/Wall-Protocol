@@ -4,6 +4,34 @@ function wp_text(_x,_y,_text,_font=fnt_ui,_color=undefined,_align=fa_left) {
     draw_text(_x,_y,_text);
     draw_set_halign(fa_left);
 }
+// Same as wp_text, but with transparency and a soft shadow (wp_text always resets alpha to 1).
+function wp_text_a(_x,_y,_text,_font=fnt_ui,_color=undefined,_align=fa_left,_alpha=1) {
+    draw_set_font(_font);draw_set_halign(_align);draw_set_valign(fa_top);
+    draw_set_color(c_black);draw_set_alpha(_alpha*.7);draw_text(_x+1,_y+2,_text);
+    draw_set_color(is_undefined(_color)?global.col.text:_color);draw_set_alpha(_alpha);draw_text(_x,_y,_text);
+    draw_set_alpha(1);draw_set_halign(fa_left);
+}
+function wp_clock(_seconds) {
+    var _s=floor(max(0,_seconds));
+    return string(floor(_s/60))+":"+(_s mod 60<10?"0":"")+string(_s mod 60);
+}
+// Five-point star made of triangles (no font glyph needed). _filled=false draws only the outline.
+function wp_star(_x,_y,_radius,_filled,_color) {
+    var _pts=[];
+    for(var _i=0;_i<10;++_i) {
+        var _r=(_i mod 2==0)?_radius:_radius*.45,_a=90+_i*36;
+        array_push(_pts,[_x+lengthdir_x(_r,_a),_y+lengthdir_y(_r,_a)]);
+    }
+    draw_set_color(_color);
+    for(var _j=0;_j<10;++_j) {
+        var _p=_pts[_j],_q=_pts[(_j+1)mod 10];
+        if(_filled)draw_triangle(_x,_y,_p[0],_p[1],_q[0],_q[1],false);
+        else draw_line(_p[0],_p[1],_q[0],_q[1]);
+    }
+}
+function wp_stars(_x,_y,_count,_radius) {
+    for(var _s=0;_s<3;++_s)wp_star(_x+_s*_radius*2.4,_y,_radius,_s<_count,_s<_count?global.col.gold:global.col.line);
+}
 function wp_wrap(_x,_y,_text,_width,_color=undefined) {
     draw_set_font(fnt_ui);draw_set_color(is_undefined(_color)?global.col.muted:_color);
     draw_set_halign(fa_left);draw_set_valign(fa_top);draw_set_alpha(1);
@@ -28,8 +56,13 @@ function wp_overlay() {
         case "result":
             _title=obj_game.result==1?wp_tr("The wall holds","Стіна вистояла"):wp_tr("The ward has fallen","Оберіг зруйновано");
             _sub=wp_tr("Waves held: ","Відбиті хвилі: ")+string(obj_game.wave)+" / 8";
-            wp_text(683,330,wp_tr("Enemies defeated: ","Знищено ворогів: ")+string(obj_game.kills),fnt_ui,global.col.gold,fa_center);
-            wp_text(683,371,wp_tr("Core integrity: ","Міцність ядра: ")+string(obj_game.base_hp)+" / 20",fnt_ui,global.col.teal,fa_center);
+            wp_text(683,300,wp_tr("Enemies defeated: ","Знищено ворогів: ")+string(obj_game.kills),fnt_ui,global.col.gold,fa_center);
+            wp_text(683,328,wp_tr("Core integrity: ","Міцність ядра: ")+string(obj_game.base_hp)+" / 20",fnt_ui,global.col.teal,fa_center);
+            wp_text(683,356,wp_tr("Time: ","Час: ")+wp_clock(obj_game.elapsed),fnt_ui,global.col.muted,fa_center);
+            if(obj_game.result==1) {
+                wp_stars(683-12*2.4,404,wp_rating(obj_game.base_hp),12);
+                if(obj_game.new_record)wp_text(683,424,wp_tr("NEW RECORD","НОВИЙ РЕКОРД"),fnt_ui,global.col.gold,fa_center);
+            }
             break;
     }
     wp_text(683,213,_title,fnt_heading,global.col.text,fa_center);
@@ -70,6 +103,8 @@ function wp_button_label(_action) {
             return instance_exists(_t)&&_t.level>=3?wp_tr("Maximum level","Найвищий рівень"):wp_tr("Upgrade [U]","Покращити [U]")+(instance_exists(_t)?"   "+string(wp_upgrade_cost(_t)):"");
         case "sell":
             var _t=wp_selected_tower();return wp_tr("Sell [X]","Продати [X]")+(instance_exists(_t)?"  +"+string(round(_t.invested*.7)):"");
+        case "target":
+            var _t=wp_selected_tower();return instance_exists(_t)?wp_tr("Target: ","Ціль: ")+wp_target_name(_t.target_mode)+"  [T]":"";
     }
     return _action;
 }
@@ -83,7 +118,7 @@ function wp_button_enabled(_action) {
             var _k=real(string_char_at(_action,6));
             return instance_exists(obj_game.selected_pad)&&!instance_exists(wp_selected_tower())&&obj_game.gold>=global.towers[_k].cost;
         case "upgrade":var _t=wp_selected_tower();return instance_exists(_t)&&_t.level<3&&obj_game.gold>=wp_upgrade_cost(_t);
-        case "sell":return instance_exists(wp_selected_tower());
+        case "sell":case "target":return instance_exists(wp_selected_tower());
     }
     return true;
 }
@@ -125,5 +160,6 @@ function wp_action(_action) {
         case "build0":case "build1":case "build2":wp_build(obj_game.selected_pad,real(string_char_at(_action,6)));break;
         case "upgrade":wp_upgrade(wp_selected_tower());break;
         case "sell":wp_sell(wp_selected_tower());break;
+        case "target":wp_cycle_target(wp_selected_tower());break;
     }
 }
