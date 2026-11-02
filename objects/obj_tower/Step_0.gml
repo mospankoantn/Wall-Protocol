@@ -13,5 +13,5 @@ if(cooldown<=0&&instance_exists(target)) {
     var _power=1+(level-1)*.58;
     wp_spawn(obj_projectile,x,y-27,{shot_kind:tower_kind,target:target,shot_power:_power,tower_level:level});
     cooldown=global.towers[tower_kind].rate/(1+(level-1)*[.12,.08,.10][tower_kind]);recoil=1;
-    wp_sound(global.towers[tower_kind].sound,.45);
+    wp_sound(global.towers[tower_kind].sound,.45,.07);
 }

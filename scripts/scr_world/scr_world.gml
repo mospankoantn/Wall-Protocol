@@ -38,7 +38,7 @@ function wp_room_setup() {
     var _loaded=false;
     if(!is_undefined(global.pending_load)) {
         _loaded=wp_restore(global.pending_load);global.pending_load=undefined;
-        if(!_loaded){wp_notice(wp_tr("The map changed. Your save was kept; start a new expedition.","Мапа змінилася. Збереження залишено; почніть новий похід."));obj_game.ready=false;room_goto(rm_menu);return;}
+        if(!_loaded){wp_notice(wp_tr("The map changed. Your save was kept; start a new expedition.","Мапа змінилася. Збереження залишено; почніть новий похід."));obj_game.ready=false;wp_room_goto(rm_menu);return;}
     }
     wp_ensure_buttons();
     if(global.resume_text){wp_page("pause");global.resume_text=false;}
@@ -58,25 +58,26 @@ function wp_upgrade_cost(_tower) {return round(global.towers[_tower.tower_kind].
 function wp_build(_pad,_kind) {
     if(!wp_active()||!instance_exists(_pad)||instance_exists(_pad.tower)||_kind<0||_kind>2)return false;
     var _cost=global.towers[_kind].cost;
-    if(obj_game.gold<_cost){wp_notice(wp_tr("Not enough aether.","Недостатньо ефіру."));return false;}
+    if(obj_game.gold<_cost){wp_notice(wp_tr("Not enough aether.","Недостатньо ефіру."));wp_sound(snd_error,.7);return false;}
     obj_game.gold-=_cost;
     var _tower=wp_spawn(global.towers[_kind].object,_pad.x,_pad.y,{tower_kind:_kind});
     _tower.pad_key=_pad.pad_key;_pad.tower=_tower;
-    wp_fx(_pad.x,_pad.y,1,global.col.gold,44);wp_sound(snd_build);
+    wp_fx(_pad.x,_pad.y,1,global.col.gold,44);wp_fx(_pad.x,_pad.y-22,3,global.col.gold,46);wp_sound(snd_build);
     return true;
 }
 function wp_upgrade(_tower) {
     if(!wp_active()||!instance_exists(_tower)||_tower.level>=3)return false;
-    var _cost=wp_upgrade_cost(_tower);if(obj_game.gold<_cost)return false;
+    var _cost=wp_upgrade_cost(_tower);
+    if(obj_game.gold<_cost){wp_notice(wp_tr("Not enough aether.","Недостатньо ефіру."));wp_sound(snd_error,.7);return false;}
     obj_game.gold-=_cost;_tower.level++;_tower.invested+=_cost;_tower.cooldown=0;
-    wp_fx(_tower.x,_tower.y,1,global.col.gold,55);wp_sound(snd_build);
+    wp_fx(_tower.x,_tower.y,1,global.col.gold,55);wp_fx(_tower.x,_tower.y-30,3,global.col.gold,60);wp_fx(_tower.x,_tower.y,0,global.col.gold,48);wp_sound(snd_upgrade,.9);
     return true;
 }
 function wp_sell(_tower) {
     if(!wp_active()||!instance_exists(_tower))return false;
     obj_game.gold+=round(_tower.invested*.7);
     var _pad=wp_pad_by_key(_tower.pad_key);if(instance_exists(_pad))_pad.tower=noone;
-    wp_fx(_tower.x,_tower.y,1,global.col.gold,32);instance_destroy(_tower);wp_sound(snd_click);
+    wp_fx(_tower.x,_tower.y,1,global.col.gold,32);instance_destroy(_tower);wp_sound(snd_sell,.8);
     return true;
 }
 function wp_start_wave() {
@@ -84,12 +85,24 @@ function wp_start_wave() {
     if(!wp_active()||!instance_exists(obj_wave)||obj_wave.active||obj_game.wave>=8)return false;
     obj_game.wave++;
     obj_wave.queue=wp_wave_list(obj_game.wave);obj_wave.spawn_index=0;obj_wave.spawn_timer=.6;obj_wave.active=true;obj_wave.banner_t=2.4;
-    wp_notice(wp_tr("Wave ","Хвиля ")+string(obj_game.wave)+wp_tr(" approaches."," наближається."));wp_sound(snd_wave);
+    wp_notice(wp_tr("Wave ","Хвиля ")+string(obj_game.wave)+wp_tr(" approaches."," наближається."));wp_sound(snd_horn,.9);wp_sound(snd_wave,.7);
     return true;
 }
 function wp_fx(_x,_y,_kind,_color,_radius=30) {
     if(!global.effects)return;
     wp_spawn(obj_effect,_x,_y,{fx_kind:_kind,tint:_color,radius:_radius});
+}
+// Smooth room change: fade to black, switch rooms, fade back in (handled by obj_app). Instant in automated tests.
+function wp_room_goto(_room) {
+    if(global.test_mode){room_goto(_room);return;}
+    if(global.fade_dir>0)return;
+    global.fade_room=_room;global.fade_dir=1;
+}
+function wp_shake(_amount) { if(global.effects)global.shake=max(global.shake,_amount); }
+// A translucent copy of a fallen enemy that rises and dissolves.
+function wp_ghost(_enemy) {
+    if(!global.effects)return;
+    wp_spawn(obj_effect,_enemy.x,_enemy.y,{fx_kind:4,tint:c_white,radius:0,ghost_sprite:_enemy.sprite_index,ghost_frame:floor(_enemy.walk_time)mod 2,ghost_face:_enemy.face});
 }
 // Short floating text (aether gained, core damage). Purely cosmetic, so it follows the effects option.
 function wp_popup(_x,_y,_text,_color) {
@@ -107,9 +120,11 @@ function wp_damage(_enemy,_damage) {
     _enemy.hp-=_damage;_enemy.hit_flash=.12;
     if(_enemy.hp<=0) {
         obj_game.gold+=_enemy.reward;obj_game.kills++;
-        wp_fx(_enemy.x,_enemy.y,0,global.col.gold,22);wp_sound(snd_hit,.35);
+        wp_fx(_enemy.x,_enemy.y,0,global.col.gold,22);
+        if(_enemy.enemy_kind==0)wp_sound(snd_hit,.35,.1);else wp_sound(snd_death,_enemy.enemy_kind==3?.9:.5,.08);
         wp_popup(_enemy.x,_enemy.y-34,"+"+string(_enemy.reward),global.col.gold);
-        if(_enemy.enemy_kind==3){wp_fx(_enemy.x,_enemy.y,1,global.col.purple,130);wp_fx(_enemy.x,_enemy.y,0,global.col.gold,70);}
+        if(_enemy.enemy_kind==3){wp_fx(_enemy.x,_enemy.y,1,global.col.purple,130);wp_fx(_enemy.x,_enemy.y,0,global.col.gold,70);wp_shake(.55);}
+        wp_ghost(_enemy);
         instance_destroy(_enemy);
     }
 }
@@ -124,7 +139,7 @@ function wp_record_result() {
 function wp_end_run(_result) {
     if(obj_game.result!=0)return;
     obj_game.result=_result;obj_game.base_hp=max(0,obj_game.base_hp);wp_page("result");
-    wp_sound(_result==1?snd_victory:snd_breach);
+    wp_sound(_result==1?snd_victory:snd_defeat);
     if(room==rm_test)return;
     if(_result==1)wp_record_result();
     // Completed runs cannot be resumed as an already-finished combat state.

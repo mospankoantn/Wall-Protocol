@@ -3,7 +3,7 @@
 #macro WP_FIELD 1060
 #macro WP_STUDIO "Eclipse Wire"
 #macro WP_SAVE_VERSION 2
-#macro WP_VERSION "1.2"
+#macro WP_VERSION "1.3"
 
 function wp_init() {
     if (variable_global_exists("wp_ready")) return;
@@ -13,6 +13,13 @@ function wp_init() {
         if (parameter_string(_i) == "--wp-test") global.test_mode = true;
     }
     global.file_prefix = global.test_mode ? "wp_test_" : "wp_";
+    // 1.3 presentation state: screen shake, overlay fade-in, result reveal and room transitions.
+    global.shake = 0;
+    global.overlay_t = 0;
+    global.result_time = 0;
+    global.fade_a = global.test_mode ? 0 : 1;
+    global.fade_dir = global.test_mode ? 0 : -1;
+    global.fade_room = noone;
     global.lang = "en";
     global.language_chosen = false;
     global.music_volume = 0.45;

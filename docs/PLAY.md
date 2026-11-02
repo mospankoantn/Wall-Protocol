@@ -13,6 +13,8 @@ Defend the glowing core against eight waves. Click an empty foundation, then cho
 - **Esc:** pause or resume. **F11:** fullscreen.
 - **Tab / arrows / Enter:** navigate menus.
 
+The music grows more intense while a wave is under way and calms between waves. Enemies, towers and the battlefield have light animation and effects; effects can be reduced with the ambient-effects option.
+
 Clear all eight waves to earn 1–3 stars from the remaining core integrity; your best result is shown in the main menu. The game pauses by itself when the window loses focus.
 
 The pause menu includes Save, Load and the Field Guide. Loading restores the battle paused. Progress also saves periodically, between waves and when returning to the menu. A new expedition replaces the previous one after confirmation; completed runs end the active save.
@@ -31,6 +33,8 @@ The pause menu includes Save, Load and the Field Guide. Loading restores the bat
 - **Пробіл:** почати хвилю. **F:** темп 1x / 2x.
 - **Esc:** пауза або продовження. **F11:** повний екран.
 - **Tab / стрілки / Enter:** навігація меню.
+
+Музика посилюється під час хвилі й заспокоюється між хвилями. Вороги, вежі й поле бою мають легку анімацію та ефекти; їх можна зменшити опцією «Ефекти оточення».
 
 За відбиті вісім хвиль гравець отримує 1–3 зірки залежно від міцності ядра; найкращий результат видно в головному меню. Гра сама ставиться на паузу, коли вікно втрачає фокус.
 

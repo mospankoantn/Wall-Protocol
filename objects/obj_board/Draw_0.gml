@@ -1,4 +1,6 @@
 draw_clear(global.col.bg);
+// Screen shake: everything below the HUD is drawn through a shifted world matrix (reset at the top of obj_hud).
+if(global.shake>0)matrix_set(matrix_world,matrix_build(random_range(-1,1)*global.shake*14,random_range(-1,1)*global.shake*14,0,0,0,0,1,1,1));
 draw_set_color(make_color_rgb(27,43,43));draw_rectangle(0,0,WP_FIELD,WP_H,false);
 draw_sprite_tiled_ext(spr_ground,0,0,0,1,1,make_color_rgb(155,175,175),1);
 if(instance_exists(obj_game)&&obj_game.ready) {
@@ -25,7 +27,12 @@ if(instance_exists(obj_game)&&obj_game.ready) {
     }
 }
 if(global.effects) {
-    draw_set_alpha(.11);draw_set_color(global.col.teal);
-    for(var _m=0;_m<18;++_m)draw_circle((_m*79+global.ui_time*7)mod 1040,110+((_m*131)mod 570),1.5+sin(global.ui_time+_m),false);
-    draw_set_alpha(1);
+    // Two slow fog layers drifting in opposite directions, then floating motes of light.
+    draw_sprite_tiled_ext(spr_mist,0,global.ui_time*9,global.ui_time*3,1.8,1.8,make_color_rgb(150,195,195),.10);
+    draw_sprite_tiled_ext(spr_mist,0,-global.ui_time*6+90,global.ui_time*5,2.6,2.6,make_color_rgb(120,170,180),.07);
+    for(var _m=0;_m<26;++_m) {
+        var _mx=(_m*79+global.ui_time*(6+_m mod 5))mod 1040,_my=96+((_m*131-global.ui_time*(5+_m mod 4))mod 570+570)mod 570;
+        wp_glow(_mx,_my,7+3*sin(global.ui_time*1.3+_m),_m mod 3==0?global.col.gold:global.col.teal,.22+.12*sin(global.ui_time+_m*1.7));
+    }
 }
+draw_sprite_stretched_ext(spr_vignette,0,0,0,WP_FIELD,WP_H,c_black,.62);

@@ -10,7 +10,7 @@
   "compression": 0,
   "compressionQuality": 4,
   "conversionMode": 0,
-  "duration": 2.0,
+  "duration": 8.5,
   "exportDir": "",
   "name": "snd_victory",
   "parent": {

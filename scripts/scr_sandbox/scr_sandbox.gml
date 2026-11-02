@@ -62,8 +62,8 @@ function wp_sandbox_label(_action) {
 }
 function wp_sandbox_action(_action) {
     if(room!=rm_test||!instance_exists(obj_sandbox))return;
-    if(_action=="lab_reset"){global.pending_load=undefined;room_restart();return;}
-    if(_action=="lab_menu"){global.pending_load=undefined;room_goto(rm_menu);return;}
+    if(_action=="lab_reset"){global.pending_load=undefined;wp_room_goto(room);return;}
+    if(_action=="lab_menu"){global.pending_load=undefined;wp_room_goto(rm_menu);return;}
     if(!wp_active())return;
     if(string_copy(_action,1,9)=="lab_spawn"){wp_sandbox_spawn(real(string_char_at(_action,10)));return;}
     switch(_action) {

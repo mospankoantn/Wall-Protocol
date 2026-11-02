@@ -38,14 +38,54 @@ function wp_wrap(_x,_y,_text,_width,_color=undefined) {
     draw_text_ext(_x,_y,_text,27,_width);
 }
 function wp_panel(_x,_y,_w,_h,_alpha=1) {
-    draw_set_alpha(_alpha);draw_set_color(global.col.panel);draw_rectangle(_x,_y,_x+_w,_y+_h,false);
-    draw_set_color(global.col.line);draw_rectangle(_x,_y,_x+_w,_y+_h,true);draw_set_alpha(1);
+    // Vertical gradient, hairline border, inner highlight and gold corner brackets on larger panels.
+    var _top=merge_color(global.col.panel,c_white,.035),_bottom=merge_color(global.col.panel,c_black,.28);
+    draw_set_alpha(_alpha);draw_rectangle_color(_x,_y,_x+_w,_y+_h,_top,_top,_bottom,_bottom,false);
+    draw_set_color(global.col.line);draw_rectangle(_x,_y,_x+_w,_y+_h,true);
+    draw_set_alpha(_alpha*.28);draw_set_color(c_white);draw_line(_x+1,_y+1,_x+_w-1,_y+1);
+    if(_w>200&&_h>60) {
+        var _l=min(14,_h/4);
+        draw_set_alpha(_alpha*.8);draw_set_color(global.col.gold);
+        draw_line(_x,_y,_x+_l,_y);draw_line(_x,_y,_x,_y+_l);draw_line(_x+_w,_y,_x+_w-_l,_y);draw_line(_x+_w,_y,_x+_w,_y+_l);
+        draw_line(_x,_y+_h,_x+_l,_y+_h);draw_line(_x,_y+_h,_x,_y+_h-_l);draw_line(_x+_w,_y+_h,_x+_w-_l,_y+_h);draw_line(_x+_w,_y+_h,_x+_w,_y+_h-_l);
+    }
+    draw_set_alpha(1);
+}
+// ---- light and ground effects built on the 1.3 sprites (spr_glow, spr_flare, spr_ring, spr_runering) ----
+function wp_glow(_x,_y,_radius,_color,_alpha) {
+    if(_alpha<=0||_radius<=0)return;
+    gpu_set_blendmode(bm_add);
+    draw_sprite_ext(spr_glow,0,_x,_y,_radius/64,_radius/64,0,_color,min(1,_alpha));
+    gpu_set_blendmode(bm_normal);
+}
+function wp_flare(_x,_y,_size,_angle,_color,_alpha) {
+    if(_alpha<=0||_size<=0)return;
+    gpu_set_blendmode(bm_add);
+    draw_sprite_ext(spr_flare,0,_x,_y,_size/48,_size/48,_angle,_color,min(1,_alpha));
+    gpu_set_blendmode(bm_normal);
+}
+function wp_ring_fx(_x,_y,_radius,_color,_alpha) {
+    if(_alpha<=0||_radius<=0)return;
+    gpu_set_blendmode(bm_add);
+    draw_sprite_ext(spr_ring,0,_x,_y,_radius/47,_radius/47*.72,0,_color,min(1,_alpha));
+    gpu_set_blendmode(bm_normal);
+}
+// Rune circle lying on the ground: rotated first, then squashed to match the three-quarter view.
+function wp_rune_ground(_x,_y,_radius,_angle,_color,_alpha) {
+    if(_alpha<=0)return;
+    var _old=matrix_get(matrix_world);
+    var _m=matrix_multiply(matrix_multiply(matrix_build(0,0,0,0,0,_angle,1,1,1),matrix_build(0,0,0,0,0,0,1,.56,1)),matrix_build(_x,_y,0,0,0,0,1,1,1));
+    matrix_set(matrix_world,matrix_multiply(_m,_old));
+    gpu_set_blendmode(bm_add);
+    draw_sprite_ext(spr_runering,0,0,0,_radius/76,_radius/76,0,_color,min(1,_alpha));
+    gpu_set_blendmode(bm_normal);
+    matrix_set(matrix_world,_old);
 }
 function wp_rule(_x,_y,_w) { draw_set_color(global.col.line);draw_line(_x,_y,_x+_w,_y); }
 function wp_overlay() {
     if(global.page=="game" || global.page=="main" || global.page=="text" || global.page=="splash") return;
-    draw_set_alpha(.80);draw_set_color(global.col.bg);draw_rectangle(0,0,WP_W,WP_H,false);draw_set_alpha(1);
-    wp_panel(447,112,472,574,.98);
+    draw_set_alpha(.80*global.overlay_t);draw_set_color(global.col.bg);draw_rectangle(0,0,WP_W,WP_H,false);draw_set_alpha(1);
+    wp_panel(447,112,472,574,.98*global.overlay_t);
     draw_sprite_ext(spr_emblem,0,683,160,.28,.28,0,c_white,1);
     var _title="";var _sub="";
     switch(global.page) {
@@ -60,8 +100,8 @@ function wp_overlay() {
             wp_text(683,328,wp_tr("Core integrity: ","Міцність ядра: ")+string(obj_game.base_hp)+" / 20",fnt_ui,global.col.teal,fa_center);
             wp_text(683,356,wp_tr("Time: ","Час: ")+wp_clock(obj_game.elapsed),fnt_ui,global.col.muted,fa_center);
             if(obj_game.result==1) {
-                wp_stars(683-12*2.4,404,wp_rating(obj_game.base_hp),12);
-                if(obj_game.new_record)wp_text(683,424,wp_tr("NEW RECORD","НОВИЙ РЕКОРД"),fnt_ui,global.col.gold,fa_center);
+                wp_stars(683-12*2.4,404,min(wp_rating(obj_game.base_hp),floor(global.result_time/.45)),12);
+                if(obj_game.new_record&&global.result_time>1.6)wp_text(683,424,wp_tr("NEW RECORD","НОВИЙ РЕКОРД"),fnt_ui,global.col.gold,fa_center);
             }
             break;
     }
@@ -126,7 +166,7 @@ function wp_action(_action) {
     wp_sound(snd_click,.65);
     if(string_copy(_action,1,4)=="lab_"){wp_sandbox_action(_action);return;}
     switch(_action) {
-        case "sandbox":global.pending_load=undefined;global.resume_text=false;room_goto(rm_test);break;
+        case "sandbox":global.pending_load=undefined;global.resume_text=false;wp_room_goto(rm_test);break;
         case "continue":case "load":wp_load();break;
         case "new":
             if(file_exists(global.file_prefix+"save.json")) wp_page("confirm_new");else wp_new_game();break;
@@ -137,24 +177,24 @@ function wp_action(_action) {
         case "language":wp_page("language");break;
         case "english":case "ukrainian":
             global.lang=_action=="english"?"en":"uk";global.language_chosen=true;global.notice_time=0;wp_settings_save();
-            if(room==rm_boot)room_goto(rm_menu);else wp_page("options");break;
+            if(room==rm_boot)wp_room_goto(rm_menu);else wp_page("options");break;
         case "music":global.music_volume=round(global.music_volume*10)/10+.1;if(global.music_volume>1.01)global.music_volume=0;wp_audio_apply();wp_settings_save();break;
         case "sfx":global.sfx_volume=round(global.sfx_volume*10)/10+.1;if(global.sfx_volume>1.01)global.sfx_volume=0;wp_settings_save();break;
         case "fullscreen":global.fullscreen=!global.fullscreen;window_set_fullscreen(global.fullscreen);wp_settings_save();break;
         case "effects":global.effects=!global.effects;wp_settings_save();break;
         case "back":
-            if(room==rm_text){global.resume_text=global.text_return==rm_game;room_goto(global.text_return);}else wp_page(global.return_page);break;
+            if(room==rm_text){global.resume_text=global.text_return==rm_game;wp_room_goto(global.text_return);}else wp_page(global.return_page);break;
         case "guide":case "credits":
             global.text_page=_action=="credits"?2:0;global.text_return=instance_exists(obj_game)?rm_game:rm_menu;
             if(instance_exists(obj_game)) { if(!wp_save()) break; global.pending_load=wp_read_save(); }
-            room_goto(rm_text);break;
+            wp_room_goto(rm_text);break;
         case "text_next":global.text_page=(global.text_page+1)mod 3;break;
         case "pause":wp_page("pause");break;
         case "resume":wp_page("game");break;
         case "save":wp_save();break;
         case "menu":
             if(room!=rm_test&&instance_exists(obj_game)&&obj_game.result==0)if(!wp_save())break;
-            global.pending_load=undefined;room_goto(rm_menu);break;
+            global.pending_load=undefined;wp_room_goto(rm_menu);break;
         case "wave":wp_start_wave();break;
         case "speed":obj_game.time_scale=obj_game.time_scale==1?2:1;break;
         case "build0":case "build1":case "build2":wp_build(obj_game.selected_pad,real(string_char_at(_action,6)));break;

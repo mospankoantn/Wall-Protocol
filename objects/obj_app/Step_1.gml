@@ -2,6 +2,18 @@ var _dt=min(delta_time/1000000,.05);
 global.ui_time+=_dt;
 global.notice_time=max(0,global.notice_time-_dt);
 global.input_lock=max(0,global.input_lock-1);
+wp_music_update(_dt);
+// Presentation timers: screen shake, overlay fade-in, result reveal.
+global.shake=max(0,global.shake-_dt*1.6);
+global.overlay_t=(global.page=="pause"||global.page=="options"||global.page=="language"||global.page=="confirm_new"||global.page=="result")?min(1,global.overlay_t+_dt*7):0;
+global.result_time=global.page=="result"?global.result_time+_dt:0;
+// Room transition (see wp_room_goto): fade out, switch room, fade in. Input is locked meanwhile.
+if(global.fade_dir!=0) {
+    global.input_lock=max(global.input_lock,2);
+    global.fade_a=clamp(global.fade_a+global.fade_dir*_dt*5,0,1);
+    if(global.fade_dir>0&&global.fade_a>=1){global.fade_dir=-1;room_goto(global.fade_room);}
+    else if(global.fade_dir<0&&global.fade_a<=0)global.fade_dir=0;
+}
 if(keyboard_check_pressed(vk_f11))wp_action("fullscreen");
 // Alt-Tab safety: a running battle pauses itself when the window loses focus (never during automated tests).
 if(!global.test_mode&&global.page=="game"&&global.input_lock<=0&&!window_has_focus())wp_page("pause");

@@ -75,7 +75,9 @@ for name,item in data.items():
         path=folder/item['soundFile'];check(path.exists(),f'Missing sound {name}')
         if path.exists():
             with wave.open(str(path),'rb') as f:
-                check(f.getframerate()==44100 and f.getsampwidth()==2 and f.getnchannels()==1,f'Audio format {name}')
+                want=2 if name in ('snd_ambience','snd_battle') else 1   # music loops are stereo, effects are mono
+                check(f.getframerate()==44100 and f.getsampwidth()==2 and f.getnchannels()==want,f'Audio format {name}')
+                check(item.get('duration',0)>0 and abs(item['duration']-f.getnframes()/44100)<.01,f'Sound duration {name}')
                 raw=f.readframes(f.getnframes());values=struct.unpack('<'+'h'*(len(raw)//2),raw)
                 peak=max(abs(v) for v in values)
                 check(100<peak<32767,f'Empty/clipped sound {name}')

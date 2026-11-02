@@ -1,5 +1,18 @@
 # Verification
 
+## Version 1.3 — static checks and numeric audio analysis only
+
+The 1.3 changes (graphics, animation, audio, UI; see `CHANGELOG.md`) were written without GameMaker. What *was* done:
+
+- `python tools/check_gml.py` — 81 GML files, 72 project functions, 6 macros: **OK**.
+- `python tools/validate_project.py` — **2826 checks passed** (JSON5 metadata, resource links, sprites, fonts, audio format — music must be stereo, effects mono — and `duration` in each sound `.yy` matching its WAV).
+- Every GML built-in function new in 1.3 was listed and checked by hand for existence; argument counts of the riskiest ones (`draw_roundrect_color`, `draw_sprite_pos`, `draw_rectangle_color`, `matrix_build`, `draw_sprite_tiled_ext`, `array_delete`, `audio_sound_pitch`) were verified against the manual.
+- `tools/build_fx_art.py` and `tools/build_audio.py` were re-run: the `.yyp`, all WAVs, PNGs and `.yy` files are byte-identical (deterministic, idempotent).
+- Sprites were inspected visually on contact sheets; the fog texture was verified to tile seamlessly.
+- Audio: peak/RMS and loop-seam discontinuity measured (`build_audio.py --report`): `snd_ambience` seam 0.054 vs. max normal step 0.115; `snd_battle` 0.029 vs. 0.044.
+
+**Not done:** compiling, Project Health, Run, `tools/test.ps1`, **and listening** to any sound or music. Numeric analysis cannot tell whether the audio sounds good, is balanced against the effects, or loops without a perceptible gap. Whether GameMaker accepts the stereo uncompressed music import as configured (`channelFormat: 1`, `compression: 0`) is an assumption from the file format. Treat 1.3 as unverified; the checklist is in `Що треба зробити.md`.
+
 ## Version 1.2 — static checks only
 
 The 1.2 changes (see `CHANGELOG.md`) were written without access to GameMaker. What *was* done:

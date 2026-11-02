@@ -120,7 +120,7 @@ function wp_load() {
     var _s=wp_read_save();
     if(is_undefined(_s)) {wp_notice(wp_tr("Save is missing or damaged.","Збереження відсутнє або пошкоджене."));return false;}
     global.pending_load=_s;
-    if(room==rm_game)room_restart();else room_goto(rm_game);
+    wp_room_goto(rm_game);
     return true;
 }
 function wp_restore(_s) {
@@ -144,7 +144,7 @@ function wp_restore(_s) {
     var _lookup={};
     for(var _k=0;_k<array_length(_s.enemies);++_k) {
         var _e=_s.enemies[_k],_n=wp_spawn(global.enemy_objects[_e.kind],_e.x,_e.y,{enemy_kind:_e.kind});
-        _n.uid=_e.uid;_n.hp=_e.hp;_n.max_hp=_e.max_hp;_n.path_i=_e.path_i;_n.progress=_e.progress;_n.slow_t=_e.slow_t;_n.slow_factor=_e.slow_factor;
+        _n.spawn_t=1;_n.uid=_e.uid;_n.hp=_e.hp;_n.max_hp=_e.max_hp;_n.path_i=_e.path_i;_n.progress=_e.progress;_n.slow_t=_e.slow_t;_n.slow_factor=_e.slow_factor;
         _lookup[$ string(_e.uid)]=_n;
     }
     obj_game.next_uid=_s.next_uid;
@@ -154,4 +154,4 @@ function wp_restore(_s) {
     }
     return true;
 }
-function wp_new_game() {global.pending_load=undefined;global.resume_text=false;if(room==rm_game||room==rm_test)room_restart();else room_goto(rm_game);}
+function wp_new_game() {global.pending_load=undefined;global.resume_text=false;if(room==rm_game||room==rm_test)wp_room_goto(room);else wp_room_goto(rm_game);}

@@ -1,4 +1,8 @@
 hovered=page==global.page&&point_in_rectangle(mouse_x,mouse_y,x,y,x+button_w,y+button_h);
+var _live=page==global.page&&wp_button_enabled(action);
+hover_t=lerp(hover_t,(_live&&(hovered||global.focus_button==id))?1:0,.3);
+if(hovered&&!hover_prev&&_live&&global.input_lock<=0)wp_sound(snd_hover,.5);
+hover_prev=hovered;
 if(!hovered||global.input_lock>0)exit;
 if(mouse_check_button_pressed(mb_left)&&wp_button_enabled(action)) {
     global.focus_button=id;
