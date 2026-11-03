@@ -2,8 +2,8 @@
 #macro WP_H 768
 #macro WP_FIELD 1060
 #macro WP_STUDIO "Eclipse Wire"
-#macro WP_SAVE_VERSION 2
-#macro WP_VERSION "1.3"
+#macro WP_SAVE_VERSION 3
+#macro WP_VERSION "1.4"
 
 function wp_init() {
     if (variable_global_exists("wp_ready")) return;
@@ -28,6 +28,20 @@ function wp_init() {
     global.effects = true;
     global.best_stars = 0;
     global.best_time = 0;
+    // 1.4: story mode, save slots and per-map themes.
+    global.mode = 0;
+    global.chapter = 0;
+    global.rules = {map:0,total:8,gold:280,hpmult:1,offset:0,flavor:0,boss:[8]};
+    global.theme = undefined;
+    global.story = {version:1,unlocked:1,stars:[0,0,0,0,0],times:[0,0,0,0,0],ending:0};
+    global.story_sel = 0;
+    global.cutscene = undefined;
+    global.skip_brief = false;
+    global.confirm_kind = "survival";
+    global.slot_mode = "load";
+    global.slot_target = 1;
+    global.slot_info = [{state:"empty",mode:0,chapter:0,wave:0,total:8,hp:20,gold:0,elapsed:0,stamp:0},{state:"empty",mode:0,chapter:0,wave:0,total:8,hp:20,gold:0,elapsed:0,stamp:0},{state:"empty",mode:0,chapter:0,wave:0,total:8,hp:20,gold:0,elapsed:0,stamp:0},{state:"empty",mode:0,chapter:0,wave:0,total:8,hp:20,gold:0,elapsed:0,stamp:0}];
+    global.save_flash = 0;
     global.page = "main";
     global.return_page = "main";
     global.text_page = 0;
@@ -50,6 +64,8 @@ function wp_init() {
     global.default_route = [[70,385],[145,385],[145,210],[350,210],[350,525],[560,525],[560,300],[775,300],[775,475],[965,475]];
     global.default_pads = [[84,266],[248,320],[250,116],[454,159],[460,406],[469,635],[660,413],[670,203],[870,203],[885,365],[891,611],[711,619]];
     wp_settings_load();
+    wp_story_load();
+    global.theme = wp_map_theme(0);
     game_set_speed(60,gamespeed_fps);
     window_set_caption("Wall Protocol | " + WP_STUDIO);
     window_set_fullscreen(global.fullscreen);
@@ -87,16 +103,27 @@ function wp_spawn(_obj,_x,_y,_vars=undefined) {
     return instance_create_layer(_x,_y,_layer,_obj,_vars);
 }
 
-function wp_wave_list(_wave) {
+// Composition of a wave as a list of enemy kinds (0 risen, 1 brute, 2 runner, 3 Colossus). _rules defaults to the current run.
+// With the survival rules this is exactly the 1.3 campaign.
+function wp_wave_list(_wave,_rules=undefined) {
+    var _r=is_undefined(_rules)?global.rules:_rules;
     var _list=[];
-    var _count=6+_wave*2;
+    var _e=_wave+_r.offset;
+    var _count=6+_e*2;
     for(var _i=0;_i<_count;++_i) {
         var _kind=0;
-        if(_wave>=2 && _i mod 4==2) _kind=2;
-        if(_wave>=4 && _i mod 5==4) _kind=1;
+        if(_e>=2 && _i mod 4==2) _kind=2;
+        if(_e>=4 && _i mod 5==4) _kind=1;
+        // Chapter flavours shift the mix: 1 brutes (marsh), 2 runners (frost), 3 both (ruins), 4 everything (throne).
+        switch(_r.flavor) {
+            case 1: if(_e>=3 && _i mod 4==1) _kind=1; break;
+            case 2: if(_e>=2 && _i mod 3==0) _kind=2; break;
+            case 3: if(_i mod 4==1) _kind=(_e>=3?1:2); break;
+            case 4: if(_i mod 3==2) _kind=(_i mod 2==0?1:2); break;
+        }
         array_push(_list,_kind);
     }
-    if(_wave==8) array_push(_list,3);
+    for(var _b=0;_b<array_length(_r.boss);++_b) if(_wave==_r.boss[_b]) array_push(_list,3);
     return _list;
 }
 function wp_wave_counts(_wave) {

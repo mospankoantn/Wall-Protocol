@@ -18,7 +18,7 @@ function wp_music_update(_dt) {
     if(!instance_exists(obj_audio)||obj_audio.battle_voice==-1)return;
     var _target=0;
     if(instance_exists(obj_game)&&instance_exists(obj_wave)&&obj_wave.active&&obj_game.result==0) {
-        _target=obj_game.wave>=8?1:.8;
+        _target=obj_game.wave>=global.rules.total?1:.8;
         if(global.page=="pause"||global.page=="options"||global.page=="language")_target*=.4;
     }
     with(obj_audio) {

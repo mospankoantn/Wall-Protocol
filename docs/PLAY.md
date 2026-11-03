@@ -17,7 +17,7 @@ The music grows more intense while a wave is under way and calms between waves. 
 
 Clear all eight waves to earn 1–3 stars from the remaining core integrity; your best result is shown in the main menu. The game pauses by itself when the window loses focus.
 
-The pause menu includes Save, Load and the Field Guide. Loading restores the battle paused. Progress also saves periodically, between waves and when returning to the menu. A new expedition replaces the previous one after confirmation; completed runs end the active save.
+Story mode (menu: Story) is five chapters on five maps with cutscenes; clear a chapter to unlock the next, earn up to three stars. Survival is the original eight-wave defence. The pause menu includes Save, Load and the Field Guide: three manual slots plus an autosave. Loading restores the battle paused; Continue resumes the newest save. The autosave updates periodically, between waves and when returning to the menu. A new expedition replaces the previous one after confirmation; completed runs end the active save.
 
 **Test room:** choose Test room or press F2 in the main menu. Resume the paused room to experiment with all towers and enemies, wave selection, extra aether, core invulnerability and victory/defeat screens. Reset restores the starting layout. The test room leaves your expedition save and backup untouched.
 
@@ -25,7 +25,7 @@ The pause menu includes Save, Load and the Field Guide. Loading restores the bat
 
 Розпакуйте весь архів і відкрийте **Wall Protocol.exe**. Файли `data.win` та `options.ini` мають бути поруч. Інсталяція та інтернет не потрібні. Після заставки оберіть мову; її та гучність можна змінити в налаштуваннях.
 
-Захистіть ядро від восьми хвиль. Натисніть вільну кам'яну основу й оберіть вежу. Поєднуйте швидкі балісти, вибухи рунних шпилів і сповільнення крижаних оберегів. Останню хвилю очолює Кістяний колос.
+У режимі «Сюжет» пройдіть п'ять розділів на п'яти картах і вирішіть долю Стіни; «Виживання» — оригінальна оборона на вісім хвиль. Є три слоти збереження й автозбереження. Захистіть ядро від хвиль. Натисніть вільну кам'яну основу й оберіть вежу. Поєднуйте швидкі балісти, вибухи рунних шпилів і сповільнення крижаних оберегів. Останню хвилю очолює Кістяний колос.
 
 - **1 / 2 / 3:** будувати на вибраній основі.
 - **U / X:** покращити / продати вибрану вежу. **T:** змінити пріоритет цілі (перший / останній / найсильніший / найближчий).

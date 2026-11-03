@@ -10,7 +10,7 @@ if(spawn_index<array_length(queue)&&spawn_timer<=0) {
 }
 if(spawn_index>=array_length(queue)&&instance_number(obj_enemy)==0) {
     active=false;
-    if(obj_game.wave>=8)wp_end_run(1);
+    if(obj_game.wave>=global.rules.total)wp_end_run(1);
     else {
         var _bonus=45+obj_game.wave*10;obj_game.gold+=_bonus;
         wp_notice(wp_tr("Wave cleared. Aether +","Хвилю відбито. Ефір +")+string(_bonus));wp_sound(snd_clear,.85);wp_save(true);

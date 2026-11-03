@@ -7,4 +7,10 @@ if(global.notice_time>0) {
     wp_panel((WP_W-_width)/2,_ny,_width,44,.98*_a);
     wp_text_a(WP_W/2,_ny+10,global.notice,fnt_ui,global.col.gold,fa_center,_a);
 }
+if(global.save_flash>0&&(global.page=="game"||global.page=="pause")) {
+    // Small "saved" mark in the top-right corner after every successful save.
+    var _fa=clamp(global.save_flash/.5,0,1);
+    wp_glow(1330,16,16,global.col.teal,.5*_fa);
+    wp_text_a(1316,8,wp_tr("Saved","Збережено"),fnt_ui,global.col.teal,fa_right,_fa);
+}
 if(global.fade_a>0){draw_set_alpha(global.fade_a);draw_set_color(c_black);draw_rectangle(0,0,WP_W,WP_H,false);draw_set_alpha(1);}

@@ -5,7 +5,9 @@ global.input_lock=max(0,global.input_lock-1);
 wp_music_update(_dt);
 // Presentation timers: screen shake, overlay fade-in, result reveal.
 global.shake=max(0,global.shake-_dt*1.6);
-global.overlay_t=(global.page=="pause"||global.page=="options"||global.page=="language"||global.page=="confirm_new"||global.page=="result")?min(1,global.overlay_t+_dt*7):0;
+global.save_flash=max(0,global.save_flash-_dt);
+var _overlay_pages=["pause","options","language","confirm_new","result","chapters","slots","confirm_overwrite","confirm_delete","choice"];
+global.overlay_t=array_contains(_overlay_pages,global.page)?min(1,global.overlay_t+_dt*7):0;
 global.result_time=global.page=="result"?global.result_time+_dt:0;
 // Room transition (see wp_room_goto): fade out, switch room, fade in. Input is locked meanwhile.
 if(global.fade_dir!=0) {
@@ -16,7 +18,7 @@ if(global.fade_dir!=0) {
 }
 if(keyboard_check_pressed(vk_f11))wp_action("fullscreen");
 // Alt-Tab safety: a running battle pauses itself when the window loses focus (never during automated tests).
-if(!global.test_mode&&global.page=="game"&&global.input_lock<=0&&!window_has_focus())wp_page("pause");
+if(!global.test_mode&&global.page=="game"&&global.input_lock<=0&&!window_has_focus()){wp_page("pause");wp_save(true);}
 if(global.input_lock>0)exit;
 if(keyboard_check_pressed(vk_escape)) {
     switch(global.page) {
@@ -25,9 +27,16 @@ if(keyboard_check_pressed(vk_escape)) {
         case "options":wp_page(global.return_page);break;
         case "language":if(room!=rm_boot)wp_page("options");break;
         case "text":wp_action("back");break;
-        case "confirm_new":wp_page("main");break;
+        case "confirm_new":wp_page(global.confirm_kind=="story"?"chapters":"main");break;
+        case "chapters":wp_page("main");break;
+        case "slots":wp_page(global.return_page);break;
+        case "confirm_overwrite":case "confirm_delete":wp_page("slots");break;
     }
 }
+// Story cutscenes read their own input (click / Space / Enter to advance, Esc to skip).
+if(global.page=="story"&&!is_undefined(global.cutscene))wp_cutscene_step(_dt);
+// Developer shortcut on the chapter screen: F8 unlocks every chapter.
+if(global.page=="chapters"&&keyboard_check_pressed(vk_f8))wp_story_unlock_all();
 if(keyboard_check_pressed(vk_tab)||keyboard_check_pressed(vk_down)||keyboard_check_pressed(vk_up)) {
     var _buttons=[];
     with(obj_button)if(page==global.page&&wp_button_enabled(action))array_push(_buttons,id);

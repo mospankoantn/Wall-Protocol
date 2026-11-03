@@ -3,13 +3,17 @@ function wp_ensure_buttons() {
     var _layout=[];
     switch(room) {
         case rm_boot: _layout=[{x:503,y:355,action:"english",page:"language",button_w:360,nav_order:0},{x:503,y:417,action:"ukrainian",page:"language",button_w:360,nav_order:1}]; break;
-        case rm_menu: _layout=[{x:80,y:338,action:"continue",page:"main",button_w:360,nav_order:0},{x:80,y:398,action:"new",page:"main",button_w:360,nav_order:1},{x:80,y:458,action:"options",page:"main",button_w:360,nav_order:2},{x:80,y:518,action:"guide",page:"main",button_w:360,nav_order:3},{x:80,y:578,action:"credits",page:"main",button_w:360,nav_order:4},{x:80,y:638,action:"quit",page:"main",button_w:360,nav_order:5},{x:503,y:300,action:"music",page:"options",button_w:360,nav_order:0},{x:503,y:360,action:"sfx",page:"options",button_w:360,nav_order:1},{x:503,y:420,action:"fullscreen",page:"options",button_w:360,nav_order:2},{x:503,y:480,action:"language",page:"options",button_w:360,nav_order:3},{x:503,y:540,action:"effects",page:"options",button_w:360,nav_order:4},{x:503,y:622,action:"back",page:"options",button_w:360,nav_order:5},{x:503,y:355,action:"english",page:"language",button_w:360,nav_order:0},{x:503,y:417,action:"ukrainian",page:"language",button_w:360,nav_order:1},{x:503,y:408,action:"confirm_new",page:"confirm_new",button_w:360,nav_order:0},{x:503,y:470,action:"cancel",page:"confirm_new",button_w:360,nav_order:1}]; break;
+        case rm_menu: _layout=[{x:80,y:330,action:"story",page:"main",button_w:360,nav_order:0},{x:80,y:382,action:"continue",page:"main",button_w:360,nav_order:1},{x:80,y:434,action:"new",page:"main",button_w:360,nav_order:2},{x:80,y:486,action:"loadgame",page:"main",button_w:360,nav_order:3},{x:80,y:538,action:"options",page:"main",button_w:360,nav_order:4},{x:80,y:590,action:"guide",page:"main",button_w:360,nav_order:5},{x:80,y:642,action:"quit",page:"main",button_w:360,nav_order:6},{x:1030,y:582,action:"credits",page:"main",button_w:280,nav_order:7},{x:503,y:300,action:"music",page:"options",button_w:360,nav_order:0},{x:503,y:360,action:"sfx",page:"options",button_w:360,nav_order:1},{x:503,y:420,action:"fullscreen",page:"options",button_w:360,nav_order:2},{x:503,y:480,action:"language",page:"options",button_w:360,nav_order:3},{x:503,y:540,action:"effects",page:"options",button_w:360,nav_order:4},{x:503,y:622,action:"back",page:"options",button_w:360,nav_order:5},{x:503,y:355,action:"english",page:"language",button_w:360,nav_order:0},{x:503,y:417,action:"ukrainian",page:"language",button_w:360,nav_order:1},{x:503,y:408,action:"confirm_new",page:"confirm_new",button_w:360,nav_order:0},{x:503,y:470,action:"cancel",page:"confirm_new",button_w:360,nav_order:1}]; break;
         case rm_text: _layout=[{x:100,y:642,action:"back",page:"text",button_w:300,nav_order:0},{x:930,y:642,action:"text_next",page:"text",button_w:300,nav_order:1}]; break;
         case rm_game: _layout=[{x:1084,y:168,action:"wave",page:"game",button_w:258,nav_order:0},{x:1084,y:227,action:"speed",page:"game",button_w:124,nav_order:1},{x:1218,y:227,action:"pause",page:"game",button_w:124,nav_order:2},{x:1084,y:398,action:"build0",page:"game",button_w:258,nav_order:3},{x:1084,y:458,action:"build1",page:"game",button_w:258,nav_order:4},{x:1084,y:518,action:"build2",page:"game",button_w:258,nav_order:5},{x:1084,y:584,action:"upgrade",page:"game",button_w:258,nav_order:6},{x:1084,y:641,action:"sell",page:"game",button_w:258,nav_order:7},{x:503,y:290,action:"resume",page:"pause",button_w:360,nav_order:0},{x:503,y:350,action:"save",page:"pause",button_w:360,nav_order:1},{x:503,y:410,action:"load",page:"pause",button_w:360,nav_order:2},{x:503,y:470,action:"options",page:"pause",button_w:360,nav_order:3},{x:503,y:530,action:"guide",page:"pause",button_w:360,nav_order:4},{x:503,y:590,action:"menu",page:"pause",button_w:360,nav_order:5},{x:503,y:300,action:"music",page:"options",button_w:360,nav_order:0},{x:503,y:360,action:"sfx",page:"options",button_w:360,nav_order:1},{x:503,y:420,action:"fullscreen",page:"options",button_w:360,nav_order:2},{x:503,y:480,action:"language",page:"options",button_w:360,nav_order:3},{x:503,y:540,action:"effects",page:"options",button_w:360,nav_order:4},{x:503,y:622,action:"back",page:"options",button_w:360,nav_order:5},{x:503,y:355,action:"english",page:"language",button_w:360,nav_order:0},{x:503,y:417,action:"ukrainian",page:"language",button_w:360,nav_order:1},{x:503,y:460,action:"retry",page:"result",button_w:360,nav_order:0},{x:503,y:522,action:"menu",page:"result",button_w:360,nav_order:1}]; break;
         case Room1: _layout=[{x:1084,y:168,action:"wave",page:"game",button_w:258,nav_order:0},{x:1084,y:227,action:"speed",page:"game",button_w:124,nav_order:1},{x:1218,y:227,action:"pause",page:"game",button_w:124,nav_order:2},{x:1084,y:398,action:"build0",page:"game",button_w:258,nav_order:3},{x:1084,y:458,action:"build1",page:"game",button_w:258,nav_order:4},{x:1084,y:518,action:"build2",page:"game",button_w:258,nav_order:5},{x:1084,y:584,action:"upgrade",page:"game",button_w:258,nav_order:6},{x:1084,y:641,action:"sell",page:"game",button_w:258,nav_order:7},{x:503,y:290,action:"resume",page:"pause",button_w:360,nav_order:0},{x:503,y:350,action:"save",page:"pause",button_w:360,nav_order:1},{x:503,y:410,action:"load",page:"pause",button_w:360,nav_order:2},{x:503,y:470,action:"options",page:"pause",button_w:360,nav_order:3},{x:503,y:530,action:"guide",page:"pause",button_w:360,nav_order:4},{x:503,y:590,action:"menu",page:"pause",button_w:360,nav_order:5},{x:503,y:300,action:"music",page:"options",button_w:360,nav_order:0},{x:503,y:360,action:"sfx",page:"options",button_w:360,nav_order:1},{x:503,y:420,action:"fullscreen",page:"options",button_w:360,nav_order:2},{x:503,y:480,action:"language",page:"options",button_w:360,nav_order:3},{x:503,y:540,action:"effects",page:"options",button_w:360,nav_order:4},{x:503,y:622,action:"back",page:"options",button_w:360,nav_order:5},{x:503,y:355,action:"english",page:"language",button_w:360,nav_order:0},{x:503,y:417,action:"ukrainian",page:"language",button_w:360,nav_order:1},{x:503,y:460,action:"retry",page:"result",button_w:360,nav_order:0},{x:503,y:522,action:"menu",page:"result",button_w:360,nav_order:1}]; break;
     }
     if(room==rm_test)_layout=wp_sandbox_buttons();
-    if(room==rm_menu)array_push(_layout,{x:1030,y:638,action:"sandbox",page:"main",button_w:280,nav_order:6});
+    if(room==rm_menu)array_push(_layout,{x:1030,y:638,action:"sandbox",page:"main",button_w:280,nav_order:8});
+    // 1.4: story chapters, save slots and the story result / choice buttons.
+    if(room==rm_menu||room==rm_game||room==Room1)wp_layout_slots(_layout);
+    if(room==rm_menu)wp_layout_chapters(_layout);
+    if(room==rm_game||room==Room1)wp_layout_story_game(_layout);
     // 1.2: targeting-mode button in the bottom bar; hidden until a tower is selected.
     if(room==rm_game||room==Room1)array_push(_layout,{x:760,y:708,action:"target",page:"game",button_w:280,nav_order:8});
     for(var _i=0;_i<array_length(_layout);++_i) {
@@ -17,4 +21,29 @@ function wp_ensure_buttons() {
         with(obj_button) if(action==_b.action&&page==_b.page)_found=true;
         if(!_found)wp_spawn(obj_button,_b.x,_b.y,_b);
     }
+}
+
+// Save slot screen: four slot cards with delete buttons, plus the overwrite / delete confirmations.
+function wp_layout_slots(_layout) {
+    for(var _i=0;_i<4;++_i) {
+        array_push(_layout,{x:330,y:204+_i*92,action:"slot"+string(_i),page:"slots",button_w:574,button_h:76,nav_order:_i});
+        array_push(_layout,{x:914,y:204+_i*92,action:"delslot"+string(_i),page:"slots",button_w:122,button_h:76,nav_order:4+_i});
+    }
+    array_push(_layout,{x:503,y:612,action:"back",page:"slots",button_w:360,nav_order:8});
+    array_push(_layout,{x:503,y:408,action:"confirm_overwrite",page:"confirm_overwrite",button_w:360,nav_order:0});
+    array_push(_layout,{x:503,y:470,action:"cancel_slot",page:"confirm_overwrite",button_w:360,nav_order:1});
+    array_push(_layout,{x:503,y:408,action:"confirm_delete",page:"confirm_delete",button_w:360,nav_order:0});
+    array_push(_layout,{x:503,y:470,action:"cancel_slot",page:"confirm_delete",button_w:360,nav_order:1});
+}
+// Chapter select (main menu only).
+function wp_layout_chapters(_layout) {
+    for(var _c=0;_c<WP_CHAPTERS;++_c)array_push(_layout,{x:206,y:196+_c*64,action:"chapter"+string(_c),page:"chapters",button_w:430,button_h:56,nav_order:_c});
+    array_push(_layout,{x:668,y:612,action:"story_play",page:"chapters",button_w:492,nav_order:5});
+    array_push(_layout,{x:206,y:612,action:"back",page:"chapters",button_w:430,nav_order:6});
+}
+// Story result button and the final choice (battle room only).
+function wp_layout_story_game(_layout) {
+    array_push(_layout,{x:503,y:584,action:"story_next",page:"result",button_w:360,nav_order:2});
+    array_push(_layout,{x:503,y:330,action:"choice_keep",page:"choice",button_w:360,nav_order:0});
+    array_push(_layout,{x:503,y:470,action:"choice_free",page:"choice",button_w:360,nav_order:1});
 }

@@ -1,5 +1,18 @@
 # Verification
 
+## Version 1.4 — static checks and a balance simulation only
+
+Story mode, four generated maps and the slot system were written without GameMaker. What *was* done:
+
+- `python tools/check_gml.py` — 84 GML files, 131 project functions, 8 macros: **OK**.
+- `python tools/validate_project.py` — **3005 checks passed** (114 resources, 33 objects, 6 rooms).
+- `tools/story_maps.py --report`: every generated map passes its geometry checks (pads clear of the road and of each other, route inside the field, portal/core separated). Previews are in `docs/maps/`.
+- `tools/story_maps.py --write` and `tools/build_story_art.py` were re-run; outputs are deterministic.
+- `tools/balance_sim.py`: Python port of the battle rules with a scripted player. HP margin: survival x2.8; chapters x3.4, x3.0, x2.8, x2.5, x2.3. **This is an estimate** — a human player will do better or worse.
+- 30 new runtime assertions were added to `obj_test` (rules and wave lists, chapter maps, story progress, save format 2/3, slot write / backup recovery / damage / delete, a story battle on a generated map across save, new game and load, story victory unlocking the next chapter). **They have never been run.**
+
+**Not done:** compiling, Project Health, Run, `tools/test.ps1`, any play-through of the five chapters, a check that cutscene and slot text fit their panels in English and Ukrainian, the new main-menu layout, weather performance. The story text has not been proof-read by a native speaker. Checklist: `Що треба зробити.md`.
+
 ## Version 1.3 — static checks and numeric audio analysis only
 
 The 1.3 changes (graphics, animation, audio, UI; see `CHANGELOG.md`) were written without GameMaker. What *was* done:

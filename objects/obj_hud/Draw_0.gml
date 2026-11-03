@@ -1,5 +1,6 @@
 matrix_set(matrix_world,matrix_build_identity());
 if(!instance_exists(obj_game)||!obj_game.ready)exit;
+if(global.page=="story"&&!is_undefined(global.cutscene)){wp_cutscene_draw();exit;}
 var _g=obj_game;
 var _low=_g.base_hp<=6;
 // Wave progress: enemies still to spawn plus those alive on the road.
@@ -9,7 +10,7 @@ var _progress=(obj_wave.active&&_total>0)?clamp(1-_left/_total,0,1):0;
 wp_panel(0,0,1060,77,.97);
 draw_sprite_ext(spr_emblem,0,42,38,.23,.23,0,c_white,1);
 wp_text(79,14,"WALL PROTOCOL",fnt_ui,global.col.gold);
-wp_text(79,41,wp_tr("THE LAST WARD","ОСТАННІЙ ОБЕРІГ"),fnt_ui,global.col.muted);
+wp_text(79,41,global.mode==1&&room!=rm_test?wp_roman(global.chapter)+"  "+wp_chapter_title(global.chapter):wp_tr("THE LAST WARD","ОСТАННІЙ ОБЕРІГ"),fnt_ui,global.col.muted);
 wp_text(433,15,wp_tr("CORE INTEGRITY","МІЦНІСТЬ ЯДРА"),fnt_ui,global.col.muted);
 draw_set_color(global.col.bg);draw_rectangle(434,46,634,55,false);
 var _bar=_low?merge_color(global.col.red,c_white,.18+.18*sin(global.ui_time*8)):global.col.teal,_bar_hi=merge_color(_bar,c_white,.4);
@@ -19,7 +20,7 @@ for(var _tick=1;_tick<20;++_tick)draw_line(434+_tick*10,46,434+_tick*10,55);
 draw_set_alpha(1);draw_set_color(global.col.line);draw_rectangle(434,46,634,55,true);
 wp_text(653,35,string(max(0,_g.base_hp))+" / 20",fnt_ui,_low?global.col.red:global.col.text);
 wp_text(819,15,wp_tr("WAVE","ХВИЛЯ"),fnt_ui,global.col.muted);
-wp_text(819,41,string(_g.wave)+" / 8",fnt_ui,global.col.gold);
+wp_text(819,41,string(_g.wave)+" / "+string(global.rules.total),fnt_ui,global.col.gold);
 draw_set_color(global.col.bg);draw_rectangle(886,46,970,55,false);
 var _gold_hi=merge_color(global.col.gold,c_white,.4);
 draw_rectangle_color(886,46,886+84*_progress,55,_gold_hi,_gold_hi,global.col.gold,global.col.gold,false);
@@ -36,7 +37,7 @@ wp_rule(1084,142,258);
 wp_text(1084,288,obj_wave.active?wp_tr("CURRENT ASSAULT","ПОТОЧНИЙ ШТУРМ"):wp_tr("NEXT ASSAULT","НАСТУПНИЙ ШТУРМ"),fnt_ui,global.col.gold);
 if(obj_wave.active)wp_text(1342,288,wp_tr(string(_left)+" left","ще "+string(_left)),fnt_ui,global.col.muted,fa_right);
 // Composition of the wave as enemy icons with counts. Hover an icon to read the enemy name.
-var _counts=wp_wave_counts(room==rm_test?obj_sandbox.test_wave:clamp(_g.wave+(obj_wave.active?0:1),1,8));
+var _counts=wp_wave_counts(room==rm_test?obj_sandbox.test_wave:clamp(_g.wave+(obj_wave.active?0:1),1,global.rules.total));
 var _names=[wp_tr("Risen","Мерці"),wp_tr("Brutes","Громили"),wp_tr("Runners","Бігуни"),wp_tr("Colossus","Колос")];
 var _slot=0;
 for(var _k=0;_k<4;++_k) {
@@ -102,12 +103,13 @@ if(instance_exists(obj_core)) {
 }
 // Wave banner: fades in, holds, fades out (timer lives in obj_wave and only runs while the game runs).
 if(obj_wave.banner_t>0&&global.page=="game") {
-    var _bt=obj_wave.banner_t,_ba=clamp(min((2.4-_bt)/.3,_bt/.6),0,1),_final=_g.wave>=8;
+    var _bt=obj_wave.banner_t,_ba=clamp(min((2.4-_bt)/.3,_bt/.6),0,1),_final=_g.wave>=global.rules.total&&array_length(global.rules.boss)>0;
     var _bc=_final?global.col.red:global.col.gold;
     draw_set_color(global.col.bg);draw_set_alpha(.55*_ba);draw_rectangle(0,282,WP_FIELD,372,false);
     draw_set_color(_bc);draw_set_alpha(.5*_ba);draw_line(0,282,WP_FIELD,282);draw_line(0,372,WP_FIELD,372);
     draw_set_alpha(1);
     wp_text_a(WP_FIELD/2,291,_final?wp_tr("FINAL WAVE","ОСТАННЯ ХВИЛЯ"):wp_tr("WAVE ","ХВИЛЯ ")+string(_g.wave),fnt_heading,_bc,fa_center,_ba);
-    wp_text_a(WP_FIELD/2,336,_final?wp_tr("The Bone Colossus marches.","Кістяний колос наближається."):wp_tr("The dead are on the road.","Мерці на дорозі."),fnt_ui,global.col.muted,fa_center,_ba);
+    var _line=obj_wave.caption!=""?obj_wave.caption:(_final?wp_tr("The Bone Colossus marches.","Кістяний колос наближається."):wp_tr("The dead are on the road.","Мерці на дорозі."));
+    wp_text_a(WP_FIELD/2,336,_line,fnt_ui,obj_wave.caption!=""?global.col.text:global.col.muted,fa_center,_ba);
 }
 wp_overlay();

@@ -46,7 +46,7 @@ function wp_settings_save() {
 }
 function wp_snapshot() {
     var _g=obj_game,_w=obj_wave;
-    var _data={version:WP_SAVE_VERSION,gold:_g.gold,hp:_g.base_hp,wave:_g.wave,kills:_g.kills,elapsed:_g.elapsed,time_scale:_g.time_scale,next_uid:_g.next_uid,route:_g.route,active:_w.active,spawn_index:_w.spawn_index,spawn_timer:_w.spawn_timer,towers:[],enemies:[],projectiles:[]};
+    var _data={version:WP_SAVE_VERSION,mode:global.mode,chapter:global.chapter,gold:_g.gold,hp:_g.base_hp,wave:_g.wave,kills:_g.kills,elapsed:_g.elapsed,time_scale:_g.time_scale,next_uid:_g.next_uid,route:_g.route,active:_w.active,spawn_index:_w.spawn_index,spawn_timer:_w.spawn_timer,towers:[],enemies:[],projectiles:[]};
     with(obj_tower) {
         array_push(_data.towers,{pad_key:pad_key,kind:tower_kind,level:level,invested:invested,cooldown:cooldown,x:x,y:y,mode:target_mode});
     }
@@ -58,16 +58,29 @@ function wp_snapshot() {
     }
     return _data;
 }
+// Save format 3 (1.4) adds mode, chapter and an optional meta block. Version 2 files (1.1-1.3) are always survival.
+function wp_save_mode(_s) { return variable_struct_exists(_s,"mode")?_s.mode:0; }
+function wp_save_chapter(_s) { return variable_struct_exists(_s,"chapter")?_s.chapter:0; }
+function wp_save_stamp(_s) { return (variable_struct_exists(_s,"meta")&&is_struct(_s.meta)&&variable_struct_exists(_s.meta,"stamp")&&is_real(_s.meta.stamp))?_s.meta.stamp:0; }
 function wp_validate_save(_s) {
     if(!wp_fields(_s,["version","gold","hp","wave","kills","elapsed","time_scale","next_uid","route","active","spawn_index","spawn_timer","towers","enemies","projectiles"]))return false;
-    if(_s.version!=WP_SAVE_VERSION||!wp_integer(_s.gold,0,1000000)||!wp_integer(_s.hp,1,20)||!wp_integer(_s.wave,0,8)||!wp_integer(_s.kills,0,100000)||!wp_number(_s.elapsed,0,10000000)||!wp_integer(_s.time_scale,1,2)||!wp_integer(_s.next_uid,1,1000000)||!is_bool(_s.active)||!wp_integer(_s.spawn_index,0,100)||!wp_number(_s.spawn_timer,-1,20))return false;
+    if(!wp_integer(_s.version,2,WP_SAVE_VERSION))return false;
+    if(_s.version>=3&&!wp_fields(_s,["mode","chapter"]))return false;
+    if(variable_struct_exists(_s,"mode")&&(!wp_integer(_s.mode,0,1)||!variable_struct_exists(_s,"chapter")||!wp_integer(_s.chapter,0,WP_CHAPTERS-1)))return false;
+    if(variable_struct_exists(_s,"meta")) {
+        if(!is_struct(_s.meta))return false;
+        if(variable_struct_exists(_s.meta,"stamp")&&!wp_number(_s.meta.stamp,0,10000000))return false;
+        if(variable_struct_exists(_s.meta,"game")&&(!is_string(_s.meta.game)||string_length(_s.meta.game)>16))return false;
+    }
+    var _rules=wp_rules_for(wp_save_mode(_s),wp_save_chapter(_s));
+    if(!wp_integer(_s.gold,0,1000000)||!wp_integer(_s.hp,1,20)||!wp_integer(_s.wave,0,_rules.total)||!wp_integer(_s.kills,0,100000)||!wp_number(_s.elapsed,0,10000000)||!wp_integer(_s.time_scale,1,2)||!wp_integer(_s.next_uid,1,1000000)||!is_bool(_s.active)||!wp_integer(_s.spawn_index,0,100)||!wp_number(_s.spawn_timer,-1,20))return false;
     if(!is_array(_s.route)||array_length(_s.route)<2||array_length(_s.route)>256||!is_array(_s.towers)||array_length(_s.towers)>256||!is_array(_s.enemies)||array_length(_s.enemies)>256||!is_array(_s.projectiles)||array_length(_s.projectiles)>1024)return false;
     for(var _i=0;_i<array_length(_s.route);++_i) {
         var _r=_s.route[_i];if(!is_array(_r)||array_length(_r)!=2||!wp_number(_r[0],-1000,10000)||!wp_number(_r[1],-1000,10000))return false;
     }
     if(_s.active&&_s.wave==0)return false;
-    if(_s.wave==8&&!_s.active)return false;
-    if(_s.spawn_index>array_length(wp_wave_list(max(1,_s.wave))))return false;
+    if(_s.wave==_rules.total&&!_s.active)return false;
+    if(_s.spawn_index>array_length(wp_wave_list(max(1,_s.wave),_rules)))return false;
     if(!_s.active&&array_length(_s.enemies)>0)return false;
     var _keys={};
     for(var _j=0;_j<array_length(_s.towers);++_j) {
@@ -92,39 +105,26 @@ function wp_validate_save(_s) {
     }
     return true;
 }
+// Reads the autosave (slot 0), falling back to its backup. Manual slots are read with wp_slot_read.
 function wp_read_save() {
-    var _s=wp_read_json(global.file_prefix+"save.json");
-    if(wp_validate_save(_s))return _s;
-    _s=wp_read_json(global.file_prefix+"save.bak");
-    if(wp_validate_save(_s)) {wp_notice(wp_tr("Recovered the backup save.","Відновлено резервне збереження."));return _s;}
-    return undefined;
+    var _r=wp_slot_read(0);
+    if(is_undefined(_r))return undefined;
+    if(_r.recovered)wp_notice(wp_tr("Recovered the backup save.","Відновлено резервне збереження."));
+    return _r.data;
 }
-function wp_save(_quiet=false) {
-    if(room==rm_test)return false;
-    if(!instance_exists(obj_game)||!obj_game.ready||obj_game.result!=0)return false;
-    var _s=wp_snapshot();
-    if(!wp_validate_save(_s)) {wp_notice(wp_tr("Cannot save this game state.","Цей стан гри неможливо зберегти."));return false;}
-    var _file=global.file_prefix+"save.json";
-    // Keep the previous verified state even if writing the new file is interrupted.
-    if(wp_validate_save(wp_read_json(_file))) {
-        var _bak=global.file_prefix+"save.bak";
-        if(file_exists(_bak))file_delete(_bak);
-        file_copy(_file,_bak);
-    }
-    var _ok=wp_write_json(_file,_s);
-    if(!_quiet||!_ok)wp_notice(_ok?wp_tr("Expedition saved.","Похід збережено."):wp_tr("Save failed. Previous backup retained.","Помилка запису. Резервна копія збережена."));
-    return _ok;
-}
+// The autosave: periodic, between waves, when leaving a battle. Manual saves go through wp_save_slot.
+function wp_save(_quiet=false) { return wp_save_slot(0,_quiet); }
+// "Continue": resumes the newest readable slot.
 function wp_load() {
     if(room==rm_test)return false;
-    var _s=wp_read_save();
-    if(is_undefined(_s)) {wp_notice(wp_tr("Save is missing or damaged.","Збереження відсутнє або пошкоджене."));return false;}
-    global.pending_load=_s;
-    wp_room_goto(rm_game);
-    return true;
+    var _slot=wp_latest_slot();
+    if(_slot<0) {wp_notice(wp_tr("Save is missing or damaged.","Збереження відсутнє або пошкоджене."));return false;}
+    return wp_load_slot(_slot);
 }
 function wp_restore(_s) {
     if(!wp_validate_save(_s))return false;
+    // A save belongs to one story chapter / survival; the room must have been set up for it.
+    if(wp_save_mode(_s)!=global.mode||wp_save_chapter(_s)!=global.chapter)return false;
     // Reject stale map saves safely, before modifying any instance or economy.
     if(array_length(_s.route)!=array_length(obj_game.route))return false;
     for(var _r=0;_r<array_length(_s.route);++_r)if(point_distance(_s.route[_r][0],_s.route[_r][1],obj_game.route[_r][0],obj_game.route[_r][1])>.01)return false;
@@ -135,7 +135,7 @@ function wp_restore(_s) {
     with(obj_enemy)instance_destroy();with(obj_tower)instance_destroy();with(obj_projectile)instance_destroy();with(obj_effect)instance_destroy();
     with(obj_build_pad)tower=noone;
     obj_game.gold=_s.gold;obj_game.base_hp=_s.hp;obj_game.wave=_s.wave;obj_game.kills=_s.kills;obj_game.elapsed=_s.elapsed;obj_game.time_scale=_s.time_scale;obj_game.selected_pad=noone;
-    obj_wave.active=_s.active;obj_wave.spawn_index=_s.spawn_index;obj_wave.spawn_timer=_s.spawn_timer;obj_wave.queue=wp_wave_list(max(1,_s.wave));
+    obj_wave.active=_s.active;obj_wave.spawn_index=_s.spawn_index;obj_wave.spawn_timer=_s.spawn_timer;obj_wave.queue=wp_wave_list(max(1,_s.wave));obj_wave.caption="";
     for(var _j=0;_j<array_length(_s.towers);++_j) {
         var _t=_s.towers[_j],_p=wp_pad_by_key(_t.pad_key);
         var _new=wp_spawn(global.towers[_t.kind].object,_p.x,_p.y,{tower_kind:_t.kind,level:_t.level});
@@ -154,4 +154,5 @@ function wp_restore(_s) {
     }
     return true;
 }
-function wp_new_game() {global.pending_load=undefined;global.resume_text=false;if(room==rm_game||room==rm_test)wp_room_goto(room);else wp_room_goto(rm_game);}
+// New survival run (mode 0). Story chapters start with wp_story_start.
+function wp_new_game() {global.pending_load=undefined;global.resume_text=false;wp_rules_set(0,0);if(room==rm_game||room==rm_test)wp_room_goto(room);else wp_room_goto(rm_game);}

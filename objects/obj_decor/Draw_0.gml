@@ -1,4 +1,8 @@
-if(decor_kind==0&&global.effects) {
+if(decor_kind==0&&global.theme.tree!=c_white) {
+    // Trees of the story maps are tinted (frost, ash, marsh); they sway by a tiny rotation because draw_sprite_pos cannot be tinted.
+    var _rot=global.effects?sin(global.ui_time*1.1+x*.043+y*.021)*1.1:0;
+    draw_sprite_ext(sprite_index,0,x,y,1,1,_rot,global.theme.tree,1);
+} else if(decor_kind==0&&global.effects) {
     // Trees sway slightly: the crown moves, the trunk stays planted.
     var _w=sprite_get_width(sprite_index),_h=sprite_get_height(sprite_index);
     var _sw=sin(global.ui_time*1.1+x*.043+y*.021)*2.4,_l=x-_w/2,_r=x+_w/2,_t=y-_h/2,_b=y+_h/2;

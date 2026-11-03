@@ -83,8 +83,11 @@ function wp_rune_ground(_x,_y,_radius,_angle,_color,_alpha) {
 }
 function wp_rule(_x,_y,_w) { draw_set_color(global.col.line);draw_line(_x,_y,_x+_w,_y); }
 function wp_overlay() {
-    if(global.page=="game" || global.page=="main" || global.page=="text" || global.page=="splash") return;
+    if(global.page=="game" || global.page=="main" || global.page=="text" || global.page=="splash" || global.page=="story") return;
     draw_set_alpha(.80*global.overlay_t);draw_set_color(global.col.bg);draw_rectangle(0,0,WP_W,WP_H,false);draw_set_alpha(1);
+    // Wide screens with their own layout.
+    if(global.page=="chapters"){wp_chapters_draw();return;}
+    if(global.page=="slots"){wp_slots_draw();return;}
     wp_panel(447,112,472,574,.98*global.overlay_t);
     draw_sprite_ext(spr_emblem,0,683,160,.28,.28,0,c_white,1);
     var _title="";var _sub="";
@@ -92,10 +95,18 @@ function wp_overlay() {
         case "language": _title="Language / Мова";_sub="Choose your language / Оберіть мову";break;
         case "options":_title=wp_tr("Options","Налаштування");_sub=wp_tr("Make yourself at home.","Налаштуйте гру під себе.");break;
         case "pause":_title=room==rm_test?wp_tr("Test range paused","Полігон на паузі"):wp_tr("Watch suspended","Варту призупинено");_sub=room==rm_test?wp_tr("Resume to try the test controls.","Продовжіть, щоб почати тестування."):wp_tr("The wall can wait a moment.","Стіна зачекає на ваше повернення.");break;
-        case "confirm_new":_title=wp_tr("A new watch?","Нова варта?");_sub=wp_tr("This will replace your saved expedition.","Попередній похід буде перезаписано.");break;
+        case "confirm_new":_title=global.confirm_kind=="story"?wp_tr("Begin the chapter?","Почати розділ?"):wp_tr("A new watch?","Нова варта?");_sub=wp_tr("This replaces your autosave. Manual slots are kept.","Це замінить автозбереження. Ручні слоти лишаться.");break;
+        case "confirm_overwrite":_title=wp_tr("Overwrite ","Перезаписати ")+wp_slot_name(global.slot_target)+"?";_sub=wp_tr("The expedition saved there will be replaced.","Збережений там похід буде замінено.");break;
+        case "confirm_delete":_title=wp_tr("Delete ","Видалити ")+wp_slot_name(global.slot_target)+"?";_sub=wp_tr("This cannot be undone.","Це неможливо скасувати.");break;
+        case "choice":
+            _title=wp_tr("The Wire awaits","Дріт чекає");_sub=wp_tr("Your word ends the story.","Твоє слово завершить історію.");
+            wp_wrap(483,386,wp_tr("The ward holds. The valley lives. The bound souls keep the watch.","Оберіг стоїть. Долина живе. Прив'язані душі й далі несуть варту."),400);
+            wp_wrap(483,526,wp_tr("The Wall ends. The souls go free. The valley stands on its own.","Стіна завершиться. Душі стануть вільні. Долина вистоїть сама."),400);
+            break;
         case "result":
             _title=obj_game.result==1?wp_tr("The wall holds","Стіна вистояла"):wp_tr("The ward has fallen","Оберіг зруйновано");
-            _sub=wp_tr("Waves held: ","Відбиті хвилі: ")+string(obj_game.wave)+" / 8";
+            _sub=wp_tr("Waves held: ","Відбиті хвилі: ")+string(obj_game.wave)+" / "+string(global.rules.total);
+            if(global.mode==1)_sub=wp_roman(global.chapter)+"  "+wp_chapter_title(global.chapter)+"   -   "+string(obj_game.wave)+" / "+string(global.rules.total);
             wp_text(683,300,wp_tr("Enemies defeated: ","Знищено ворогів: ")+string(obj_game.kills),fnt_ui,global.col.gold,fa_center);
             wp_text(683,328,wp_tr("Core integrity: ","Міцність ядра: ")+string(obj_game.base_hp)+" / 20",fnt_ui,global.col.teal,fa_center);
             wp_text(683,356,wp_tr("Time: ","Час: ")+wp_clock(obj_game.elapsed),fnt_ui,global.col.muted,fa_center);
@@ -112,15 +123,26 @@ function wp_button_label(_action) {
     if(string_copy(_action,1,4)=="lab_")return wp_sandbox_label(_action);
     switch(_action) {
         case "sandbox":return wp_tr("Test room [F2]","Тестова кімната [F2]");
-        case "continue":return wp_tr("Continue expedition","Продовжити похід");
-        case "new":case "confirm_new":return wp_tr("Begin a new watch","Почати нову варту");
+        case "continue":return wp_tr("Continue","Продовжити");
+        case "story":return wp_tr("Story mode","Сюжетний режим");
+        case "loadgame":return wp_tr("Load game","Завантажити гру");
+        case "new":return wp_tr("Survival: new watch","Виживання: нова варта");
+        case "confirm_new":return global.confirm_kind=="story"?wp_tr("Begin the chapter","Почати розділ"):wp_tr("Begin a new watch","Почати нову варту");
+        case "story_play":return global.story_sel<global.story.unlocked?(global.story.stars[global.story_sel]>0?wp_tr("Replay chapter","Пройти знову"):wp_tr("Play chapter","Грати розділ")):wp_tr("Locked","Заблоковано");
+        case "story_next":return wp_tr("Continue the story","Продовжити історію");
+        case "choice_keep":return wp_tr("Relight the Wall","Запалити Стіну знову");
+        case "choice_free":return wp_tr("Release the dead","Відпустити мертвих");
+        case "confirm_overwrite":return wp_tr("Overwrite","Перезаписати");
+        case "confirm_delete":return wp_tr("Delete","Видалити");
+        case "cancel_slot":return wp_tr("Cancel","Скасувати");
+        case "delslot0":case "delslot1":case "delslot2":case "delslot3":return wp_tr("Delete","Видалити");
         case "retry":return wp_tr("Try again","Спробувати знову");
         case "options":return wp_tr("Options","Налаштування");
         case "guide":return wp_tr("Field guide","Польовий довідник");
         case "credits":return wp_tr("About & credits","Про гру та авторів");
         case "quit":return wp_tr("Exit game","Вийти з гри");
         case "back":return wp_tr("Back","Назад");
-        case "cancel":return wp_tr("Keep current expedition","Залишити поточний похід");
+        case "cancel":return wp_tr("Keep current autosave","Залишити автозбереження");
         case "english":return "English";
         case "ukrainian":return "Українська";
         case "language":return wp_tr("Language: English","Мова: українська");
@@ -129,8 +151,8 @@ function wp_button_label(_action) {
         case "fullscreen":return wp_tr("Fullscreen","Повний екран")+": "+(global.fullscreen?wp_tr("on","так"):wp_tr("off","ні"));
         case "effects":return wp_tr("Ambient effects","Ефекти оточення")+": "+(global.effects?wp_tr("on","так"):wp_tr("off","ні"));
         case "resume":return wp_tr("Resume","Продовжити");
-        case "save":return wp_tr("Save expedition","Зберегти похід");
-        case "load":return wp_tr("Load saved expedition","Завантажити похід");
+        case "save":return wp_tr("Save game","Зберегти гру");
+        case "load":return wp_tr("Load game","Завантажити гру");
         case "menu":return room==rm_test||(instance_exists(obj_game)&&obj_game.result!=0)?wp_tr("Main menu","Головне меню"):wp_tr("Save & main menu","Зберегти й до меню");
         case "text_next":return wp_tr("Next page","Наступна сторінка");
         case "wave":return instance_exists(obj_wave)&&obj_wave.active?wp_tr("Wave in progress","Хвиля триває"):wp_tr("Start wave  [Space]","Почати хвилю [Пробіл]");
@@ -152,8 +174,15 @@ function wp_button_enabled(_action) {
     if(room==rm_test&&(_action=="save"||_action=="load"||_action=="guide"))return false;
     if(_action=="lab_cycle")return !obj_wave.active;
     switch(_action) {
-        case "continue":case "load":return file_exists(global.file_prefix+"save.json") || file_exists(global.file_prefix+"save.bak");
-        case "wave":return instance_exists(obj_wave)&&!obj_wave.active&&(room==rm_test||obj_game.wave<8);
+        case "continue":case "load":case "loadgame":return wp_any_save();
+        case "story_play":return global.story_sel<global.story.unlocked;
+        case "story_next":return instance_exists(obj_game)&&global.mode==1&&obj_game.result==1;
+        case "slot0":case "slot1":case "slot2":case "slot3":
+            var _slot=real(string_char_at(_action,5)),_state=global.slot_info[_slot].state;
+            // Load: any readable slot. Save: manual slots only (the autosave belongs to the game).
+            return global.slot_mode=="load"?(_state=="ok"||_state=="recovered"):_slot>0;
+        case "delslot0":case "delslot1":case "delslot2":case "delslot3":return global.slot_info[real(string_char_at(_action,8))].state!="empty";
+        case "wave":return instance_exists(obj_wave)&&!obj_wave.active&&(room==rm_test||obj_game.wave<global.rules.total);
         case "build0":case "build1":case "build2":
             var _k=real(string_char_at(_action,6));
             return instance_exists(obj_game.selected_pad)&&!instance_exists(wp_selected_tower())&&obj_game.gold>=global.towers[_k].cost;
@@ -165,13 +194,30 @@ function wp_button_enabled(_action) {
 function wp_action(_action) {
     wp_sound(snd_click,.65);
     if(string_copy(_action,1,4)=="lab_"){wp_sandbox_action(_action);return;}
+    if(string_copy(_action,1,7)=="chapter"){global.story_sel=clamp(real(string_char_at(_action,8)),0,WP_CHAPTERS-1);return;}
+    if(string_copy(_action,1,4)=="slot"){wp_slot_click(real(string_char_at(_action,5)));return;}
+    if(string_copy(_action,1,7)=="delslot"){global.slot_target=real(string_char_at(_action,8));wp_page("confirm_delete");return;}
     switch(_action) {
+        case "story":wp_story_open();break;
+        case "story_play":
+            global.confirm_kind="story";
+            if(file_exists(global.file_prefix+"save.json"))wp_page("confirm_new");else wp_story_start(global.story_sel);
+            break;
+        case "story_next":wp_story_epilogue();break;
+        case "choice_keep":wp_story_choose(1);break;
+        case "choice_free":wp_story_choose(2);break;
+        case "confirm_overwrite":wp_save_slot(global.slot_target);wp_slots_refresh();wp_page("slots");break;
+        case "confirm_delete":wp_delete_slot(global.slot_target);wp_page("slots");break;
+        case "cancel_slot":wp_page("slots");break;
         case "sandbox":global.pending_load=undefined;global.resume_text=false;wp_room_goto(rm_test);break;
-        case "continue":case "load":wp_load();break;
+        case "continue":wp_load();break;
+        case "load":case "loadgame":wp_slots_open("load");break;
         case "new":
+            global.confirm_kind="survival";
             if(file_exists(global.file_prefix+"save.json")) wp_page("confirm_new");else wp_new_game();break;
-        case "confirm_new":case "retry":wp_new_game();break;
-        case "cancel":wp_page("main");break;
+        case "confirm_new":if(global.confirm_kind=="story")wp_story_start(global.story_sel);else wp_new_game();break;
+        case "retry":if(global.mode==1)wp_story_start(global.chapter,true);else wp_new_game();break;
+        case "cancel":wp_page(global.confirm_kind=="story"?"chapters":"main");break;
         case "quit":game_end();break;
         case "options":global.return_page=global.page;wp_page("options");break;
         case "language":wp_page("language");break;
@@ -191,7 +237,7 @@ function wp_action(_action) {
         case "text_next":global.text_page=(global.text_page+1)mod 3;break;
         case "pause":wp_page("pause");break;
         case "resume":wp_page("game");break;
-        case "save":wp_save();break;
+        case "save":wp_slots_open("save");break;
         case "menu":
             if(room!=rm_test&&instance_exists(obj_game)&&obj_game.result==0)if(!wp_save())break;
             global.pending_load=undefined;wp_room_goto(rm_menu);break;
@@ -202,4 +248,13 @@ function wp_action(_action) {
         case "sell":wp_sell(wp_selected_tower());break;
         case "target":wp_cycle_target(wp_selected_tower());break;
     }
+}
+
+// Buttons that exist on a page but only apply in some situations are not drawn (and cannot be clicked) otherwise.
+function wp_button_visible(_action) {
+    switch(_action) {
+        case "target":return instance_exists(wp_selected_tower());
+        case "story_next":return instance_exists(obj_game)&&global.mode==1&&obj_game.result==1;
+    }
+    return true;
 }

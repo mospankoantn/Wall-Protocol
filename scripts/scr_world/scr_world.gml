@@ -5,6 +5,10 @@ function wp_room_setup() {
     if(room==rm_menu) {wp_ensure(obj_menu);wp_page("main");wp_ensure_buttons();return;}
     if(room==rm_text) {wp_ensure(obj_text,100,150);wp_page("text");wp_ensure_buttons();return;}
     wp_ensure(obj_game);wp_ensure(obj_wave);wp_ensure(obj_board);wp_ensure(obj_hud);
+    // 1.4: the run (survival or a story chapter) decides rules, map layout and visual theme. A save to be loaded decides first.
+    if(room==rm_test)wp_rules_set(0,0);
+    else if(!is_undefined(global.pending_load))wp_rules_set(wp_save_mode(global.pending_load),wp_save_chapter(global.pending_load));
+    wp_map_apply(room==rm_test?0:global.rules.map);
     wp_ensure(obj_core,966,475);wp_ensure(obj_portal,70,385);
     if(instance_number(obj_path_node)<2) {
         with(obj_path_node)instance_destroy();
@@ -33,6 +37,7 @@ function wp_room_setup() {
         else {var _new=wp_spawn(obj_build_pad,x,y,{pad_key:"authored_"+string(round(x))+"_"+string(round(y))});_new.tower=id;pad_key=_new.pad_key;}
     }
     obj_game.ready=true;
+    obj_game.gold=global.rules.gold;
     wp_page("game");
     if(room==rm_test){wp_sandbox_setup();wp_ensure_buttons();return;}
     var _loaded=false;
@@ -44,6 +49,9 @@ function wp_room_setup() {
     if(global.resume_text){wp_page("pause");global.resume_text=false;}
     else if(_loaded)wp_page("pause");
     if(!_loaded)wp_save(true);
+    // Story chapters open with a briefing (skipped on retry and when resuming a save).
+    if(global.mode==1&&!_loaded&&!global.skip_brief&&global.page=="game")wp_cutscene_start("brief",global.chapter,wp_story_lines("brief",global.chapter));
+    global.skip_brief=false;
     if(global.test_mode)wp_ensure(obj_test);
 }
 function wp_pad_by_key(_key) {
@@ -82,9 +90,9 @@ function wp_sell(_tower) {
 }
 function wp_start_wave() {
     if(room==rm_test&&wp_active()&&!obj_wave.active)obj_game.wave=obj_sandbox.test_wave-1;
-    if(!wp_active()||!instance_exists(obj_wave)||obj_wave.active||obj_game.wave>=8)return false;
+    if(!wp_active()||!instance_exists(obj_wave)||obj_wave.active||obj_game.wave>=global.rules.total)return false;
     obj_game.wave++;
-    obj_wave.queue=wp_wave_list(obj_game.wave);obj_wave.spawn_index=0;obj_wave.spawn_timer=.6;obj_wave.active=true;obj_wave.banner_t=2.4;
+    obj_wave.queue=wp_wave_list(obj_game.wave);obj_wave.spawn_index=0;obj_wave.spawn_timer=.6;obj_wave.active=true;obj_wave.banner_t=2.4;obj_wave.caption=wp_wave_caption(obj_game.wave);
     wp_notice(wp_tr("Wave ","Хвиля ")+string(obj_game.wave)+wp_tr(" approaches."," наближається."));wp_sound(snd_horn,.9);wp_sound(snd_wave,.7);
     return true;
 }
@@ -141,8 +149,31 @@ function wp_end_run(_result) {
     obj_game.result=_result;obj_game.base_hp=max(0,obj_game.base_hp);wp_page("result");
     wp_sound(_result==1?snd_victory:snd_defeat);
     if(room==rm_test)return;
-    if(_result==1)wp_record_result();
+    if(_result==1) {
+        if(global.mode==1)wp_story_record(global.chapter,wp_rating(obj_game.base_hp),obj_game.elapsed);
+        else wp_record_result();
+    }
     // Completed runs cannot be resumed as an already-finished combat state.
     var _file=global.file_prefix+"save.json",_bak=global.file_prefix+"save.bak";
     if(file_exists(_file))file_delete(_file);if(file_exists(_bak))file_delete(_bak);
+}
+
+// Applies a generated map (scr_maps) over the room: replaces route, pads, decor, core and portal, and sets the visual theme.
+// Map 0 keeps whatever the room contains (the editable forest map).
+function wp_map_apply(_id) {
+    global.theme=wp_map_theme(_id);
+    if(_id==0)return;
+    var _m=wp_map_data(_id);
+    if(is_undefined(_m))return;
+    with(obj_path_node)instance_destroy();
+    with(obj_build_pad)instance_destroy();
+    with(obj_decor)instance_destroy();
+    with(obj_core)instance_destroy();
+    with(obj_portal)instance_destroy();
+    for(var _i=0;_i<array_length(_m.route);++_i)wp_spawn(obj_path_node,_m.route[_i][0],_m.route[_i][1],{node_order:_i});
+    for(var _p=0;_p<array_length(_m.pads);++_p)wp_spawn(obj_build_pad,_m.pads[_p][0],_m.pads[_p][1],{pad_key:"pad_"+(_p<10?"0":"")+string(_p)});
+    var _kinds=[obj_tree,obj_rocks,obj_brazier,obj_wall,obj_grave];
+    for(var _d=0;_d<array_length(_m.decor);++_d)wp_spawn(_kinds[_m.decor[_d][0]],_m.decor[_d][1],_m.decor[_d][2]);
+    wp_spawn(obj_core,_m.core[0],_m.core[1]);
+    wp_spawn(obj_portal,_m.portal[0],_m.portal[1]);
 }

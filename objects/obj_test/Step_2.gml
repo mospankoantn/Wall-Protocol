@@ -217,6 +217,92 @@ switch(phase) {
     case 29:
         if(ticks<4)break;
         check(room==rm_game&&global.page=="pause"&&campaign_save==json_stringify(wp_snapshot()),"expedition resumes unchanged after test room");
+        // ---- 1.4: rules, maps, story progress, save format 3 and slots (logic first, then a story battle across rooms) ----
+        var _surv=wp_rules_for(0,0);
+        check(_surv.total==8&&array_length(wp_wave_list(8,_surv))==23&&wp_wave_list(8,_surv)[22]==3&&array_length(wp_wave_list(1,_surv))==8,"survival rules reproduce the 1.3 campaign");
+        var _waves_ok=true,_bosses_ok=true;
+        for(var _c=0;_c<WP_CHAPTERS;++_c) {
+            var _r=wp_rules_for(1,_c);
+            for(var _w=1;_w<=_r.total;++_w) {
+                var _wl=wp_wave_list(_w,_r);
+                if(array_length(_wl)<6)_waves_ok=false;
+                for(var _q=0;_q<array_length(_wl);++_q)if(_wl[_q]<0||_wl[_q]>3)_waves_ok=false;
+                if(array_contains(_r.boss,_w)!=(_wl[array_length(_wl)-1]==3))_bosses_ok=false;
+            }
+        }
+        check(_waves_ok&&_bosses_ok,"every chapter wave list is valid and bosses appear only on boss waves");
+        var _maps_ok=true;
+        for(var _m=1;_m<wp_map_count();++_m) {
+            var _md=wp_map_data(_m),_th=wp_map_theme(_m);
+            if(is_undefined(_md)||array_length(_md.route)<8||array_length(_md.pads)<12||_th.weather<=0)_maps_ok=false;
+        }
+        check(_maps_ok&&wp_map_count()==WP_CHAPTERS,"four generated maps have routes, pads and themes");
+        var _st=wp_story_default();
+        check(wp_story_validate(_st),"default story progress is valid");
+        var _bad_st=json_parse(json_stringify(_st));_bad_st.stars[2]=1;
+        check(!wp_story_validate(_bad_st),"a locked chapter cannot be cleared");
+        _bad_st=json_parse(json_stringify(_st));_bad_st.ending=3;
+        check(!wp_story_validate(_bad_st),"unknown ending rejected");
+        var _real_story=global.story;
+        global.story=wp_story_default();
+        wp_story_record(0,2,100);wp_story_record(0,1,50);
+        check(global.story.unlocked==2&&global.story.stars[0]==2&&global.story.times[0]==100,"story record keeps the best stars and unlocks the next chapter");
+        wp_story_record(0,2,80);
+        check(global.story.times[0]==80&&wp_story_validate(wp_read_json(global.file_prefix+"story.json")),"faster clear improves the time and progress persists");
+        global.story=wp_story_default();wp_story_save();
+        global.story=_real_story;
+        if(file_exists(global.file_prefix+"story.json"))file_delete(global.file_prefix+"story.json");
+        if(file_exists(global.file_prefix+"story.bak"))file_delete(global.file_prefix+"story.bak");
+        var _v2=json_parse(json_stringify(saved));variable_struct_remove(_v2,"mode");variable_struct_remove(_v2,"chapter");_v2.version=2;
+        check(wp_validate_save(_v2)&&wp_save_mode(_v2)==0&&wp_save_chapter(_v2)==0,"version 2 saves (1.1-1.3) still load as survival");
+        var _v3=json_parse(json_stringify(saved));variable_struct_remove(_v3,"mode");
+        check(!wp_validate_save(_v3),"version 3 save without a mode is rejected");
+        _v3=json_parse(json_stringify(saved));_v3.chapter=9;
+        check(!wp_validate_save(_v3),"chapter out of range rejected");
+        var _a0=wp_read_json(wp_slot_file(0)),_auto_before=is_undefined(_a0)?"":json_stringify(_a0);
+        check(wp_save_slot(2,true),"manual save into slot 2");
+        wp_slots_refresh();
+        check(global.slot_info[2].state=="ok"&&global.slot_info[2].wave==wp_snapshot().wave&&global.slot_info[1].state=="empty","slot card reflects the saved battle");
+        _a0=wp_read_json(wp_slot_file(0));
+        check(_auto_before==(is_undefined(_a0)?"":json_stringify(_a0)),"manual save leaves the autosave untouched");
+        wp_save_slot(2,true);
+        var _fh=file_text_open_write(wp_slot_file(2));file_text_write_string(_fh,"{broken");file_text_close(_fh);
+        wp_slots_refresh();
+        check(global.slot_info[2].state=="recovered"&&!is_undefined(wp_slot_read(2)),"damaged slot is recovered from its own backup");
+        _fh=file_text_open_write(wp_slot_file(3));file_text_write_string(_fh,"{broken");file_text_close(_fh);
+        wp_slots_refresh();
+        check(global.slot_info[3].state=="damaged"&&is_undefined(wp_slot_read(3))&&wp_latest_slot()>=0,"unreadable slot is reported as damaged and skipped by Continue");
+        wp_delete_slot(2);wp_delete_slot(3);
+        check(!wp_slot_exists(2)&&!wp_slot_exists(3),"manual slots can be deleted");
+        wp_story_start(3,true);phase=30;ticks=0;break;
+    case 30:
+        if(ticks<4)break;
+        check(room==rm_game&&global.mode==1&&global.chapter==3&&global.page=="game","story chapter 4 starts without the briefing when skipped");
+        check(array_length(obj_game.route)==12&&instance_number(obj_build_pad)==13&&obj_game.gold==340,"generated map replaces the route, pads and starting aether");
+        check(instance_number(obj_core)==1&&instance_number(obj_portal)==1&&obj_core.x==obj_game.route[11][0]&&obj_portal.x==obj_game.route[0][0],"core and portal sit at the ends of the generated road");
+        check(global.rules.total==8&&global.theme.weather==2,"chapter rules and theme are active");
+        obj_game.selected_pad=wp_pad_by_key("pad_00");
+        check(wp_build(obj_game.selected_pad,0)&&wp_start_wave(),"build and start a wave on the generated map");
+        check(array_length(obj_wave.queue)==array_length(wp_wave_list(1))&&obj_wave.active,"wave queue follows the chapter rules");
+        check(wp_save_slot(1,true),"story battle saves to slot 1");
+        story_snapshot=json_stringify(wp_snapshot());
+        check(wp_snapshot().mode==1&&wp_snapshot().chapter==3,"save records the story chapter");
+        wp_new_game();phase=31;ticks=0;break;
+    case 31:
+        if(ticks<4)break;
+        check(global.mode==0&&array_length(obj_game.route)==10&&instance_number(obj_build_pad)==12,"new survival run restores the forest map and rules");
+        check(wp_load_slot(1),"load the story slot from survival");
+        phase=32;ticks=0;break;
+    case 32:
+        if(ticks<4)break;
+        check(room==rm_game&&global.mode==1&&global.chapter==3&&global.page=="pause","loading a story save switches map, rules and chapter");
+        check(json_stringify(wp_snapshot())==story_snapshot,"story battle restores exactly on its generated map");
+        wp_delete_slot(1);
+        wp_end_run(1);
+        check(global.page=="result"&&global.story.unlocked==WP_CHAPTERS&&global.story.stars[3]>=1&&wp_button_enabled("story_next"),"story victory records stars, unlocks the next chapter and offers the epilogue");
+        global.story=wp_story_default();
+        if(file_exists(global.file_prefix+"story.json"))file_delete(global.file_prefix+"story.json");
+        if(file_exists(global.file_prefix+"story.bak"))file_delete(global.file_prefix+"story.bak");
         test_log("ALL TESTS PASSED: "+string(checks));
         wp_write_json("wp_test_results.json",{passed:true,checks:checks,log:global.test_log});
         game_end();break;
